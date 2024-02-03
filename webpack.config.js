@@ -4,7 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 module.exports = {
     mode: 'development',
     entry: {
-        main: './src/static/main.js'
+        main: './src/index.js'
     },
     devtool: 'inline-source-map',
     output: {
@@ -14,8 +14,8 @@ module.exports = {
     },
     plugins: [
         new HtmlWebpackPlugin({
-            title: '2Doo',
-            template: './src/templates/index.html',
+            title: 'Tasko',
+            template: './public/index.html',
             filename: 'index.html',
             inject: 'body',
         })
