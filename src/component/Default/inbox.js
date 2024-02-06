@@ -1,4 +1,4 @@
-import project from "./project";
+import project from "../../static/project";
 
 const inbox = () => Object.create(project(), {
 

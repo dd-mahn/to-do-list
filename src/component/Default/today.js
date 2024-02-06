@@ -1,4 +1,4 @@
-import project from "./project";
+import project from "../../static/project";
 
 const today = () => Object.create(project(), {
 
