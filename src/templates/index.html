@@ -3,8 +3,103 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tasko</title>
+    <link rel="stylesheet" href="../style/style.css">
+    <link
+    href="https://cdn.jsdelivr.net/npm/remixicon@4.1.0/fonts/remixicon.css"
+    rel="stylesheet"
+/>
 </head>
 <body>
-    
+    <header >
+        <div class="menu__btn icon__big">
+            <i class="ri-menu-line"></i>
+        </div>
+        <div class="logo">
+            <i class="ri-stack-line"></i>
+            <span>Tasko</span>
+        </div>
+        <div class="add__btn icon__big">
+            <i class="ri-add-line"></i>
+        </div>
+    </header>
+    <section class="container">
+        <div class="nav__bar">
+            <div class="nav__items">
+                <div class="nav__item icon__big search__nav">
+                    <i class="ri-search-line"></i>
+                </div>
+                <div class="nav__item icon__big inbox__nav">
+                    <i class="ri-inbox-2-line"></i>
+                </div>
+                <div class="nav__item icon__big today__nav">
+                    <i class="ri-calendar-line"></i>
+                </div>
+                <div class="nav__item icon__big project__nav">
+                    <i class="ri-archive-line"></i>
+                </div>
+                <div class="nav__item icon__big history__nav">
+                    <i class="ri-history-line"></i>
+                </div>
+            </div>
+            <div class="appearance__mode icon__big">
+                <i class="ri-sun-line"></i>
+            </div>
+        </div>
+
+        <div class="menu d-off">
+            <div class="menu__top">
+                <div class="search__bar">
+                    <input type="text">
+                    <div class="search__icon icon__small">
+                        <i class="ri-search-line"></i>
+                    </div>
+                </div>
+                <div class="menu__item">
+                    <div class="inbox__nav icon__small">
+                        <i class="ri-inbox-2-line"></i>
+                    </div>
+                    <span>Inbox</span>
+                </div>
+                <div class="menu__item">
+                    <div class="today__nav icon__small">
+                        <i class="ri-calendar-line"></i>
+                    </div>
+                    <span>Today</span>
+                </div>
+                <div class="menu__item project__list">
+                    <div class="">
+                        <div class="project__nav icon__small">
+                            <i class="ri-archive-line"></i>
+                        </div>
+                        <span>Project</span>
+                        <div class="arrow icon__small">
+                            <i class="ri-arrow-up-s-line"></i>
+                        </div>
+                    </div>
+                    <ul>
+                        <li>Project 1</li>
+                        <li>Project 2</li>
+                        <li class="project__add-btn">
+                            <button>+</button>
+                        </li>
+                    </ul>
+                </div>
+                <div class="menu__item">
+                    <div class="history__nav icon__small">
+                        <i class="ri-history-line"></i>
+                    </div>
+                    <span>History</span>
+                </div>
+            </div>
+            <div class="menu__bot icon__big">
+                <i class="ri-sun-line"></i>
+            </div>
+        </div>
+
+        <div class="content">
+
+        </div>
+    </section>
 </body>
 </html>
