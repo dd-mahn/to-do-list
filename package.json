@@ -20,5 +20,8 @@
     "style-loader": "^3.3.4",
     "webpack": "^5.90.0",
     "webpack-cli": "^5.1.4"
+  },
+  "dependencies": {
+    "remixicon": "^4.1.0"
   }
 }
