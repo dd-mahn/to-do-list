@@ -2,7 +2,7 @@ export default function header(){
     const header = document.createElement('header')
 
     const menuBtn = document.createElement('div')
-    menuBtn.classList.add('menu__btn icon__big')
+    menuBtn.classList.add('menu__btn','icon__big')
     menuBtn.innerHTML = `<i class="ri-menu-line></i>`
 
     const logo = document.createElement('div')
@@ -19,4 +19,5 @@ export default function header(){
     header.appendChild(logo)
     header.appendChild(addBtn)
 
+    return header
 }
