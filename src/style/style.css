@@ -22,6 +22,7 @@
     --edit-btn-color: #78ACC2;
     --delete-btn-color: #E15151;
     --light-mode-color: #B89B01;
+    --shadow-color: #c6c6c6;
 }
 
 body{
@@ -61,6 +62,18 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.priority__btn.priority__low{
+    color: var(--priority-low-color);
+}
+
+.priority__btn.priority__medium{
+    color: var(--priority-medium-color);
+}
+
+.priority__btn.priority__high{
+    color: var(--priority-high-color);
 }
 
 
@@ -107,8 +120,10 @@ header .add__btn:hover{
     border-right: 1px solid var(--tab-border-color);
 }
 
-.nav__item{
-    margin-bottom: 1rem;
+.nav__items{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
 }
 
 .inbox__nav i{
@@ -264,5 +279,134 @@ header .add__btn:hover{
 }
 
 /* CONTENT SECTION */
+.content{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem 2.5rem;
+    color: var(--text-color-dark);
+}
+
+.content h1{
+    font-size: 2.5rem;
+}
+
+.content__items{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    gap:1rem;
+}
+
+/* TODOS*/
+
+.to-do,
+.note{
+    display: flex;
+    width: 60%;
+    height: 2.5rem;
+    border: 1px solid var(--nav-border-color);
+    border-radius: 10px;
+}
+
+.to-do:hover,
+.note:hover{
+    border: 2px solid var(--nav-border-color);
+    box-shadow: var(--shadow-color) 5px 5px 10px;
+}
+
+.to-do .checkbox{
+    width: 2.5rem;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-right:1px solid var(--nav-border-color);
+    flex-grow: 1;
+}
+
+.to-do .title{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    padding: 0 1rem;
+    border-right: 1px solid var(--nav-border-color);
+    flex-grow: 20;
+}
+.note .title{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    padding: 0 1rem;
+    border-right: 1px solid var(--nav-border-color);
+    flex-grow: 5;
+}
+
+.to-do .buttons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.3rem;
+    flex-grow: 4;
+    gap: 1rem;
+}
+.note .buttons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.3rem;
+    flex-grow: 1;
+    gap: 1rem;
+}
+
+.to-do .buttons button,
+.note .buttons button
+    {
+    border: none;
+    background: inherit;
+    height: 100%;
+    font-size: 1.3rem;
+}
+
+.to-do .buttons button:hover,
+.note .buttons button:hover{
+    color: var(--hover-text-color);
+}
+
+/* CHECKBOX */
+input[type='checkbox']{
+    appearance: none;
+    background-color: #fff;
+    margin:0;
+    font:inherit;
+    color: var(--priority-low-color);
+    border: 1px solid var(--header-hover-color);
+    width: 1.2rem;
+    height:1.2rem;
+    border-radius: 5px;
+    display: grid;
+    place-content: center;
+}
+
+input[type='checkbox']:hover{
+    border:2px solid var(--header-hover-color)
+}
+
+input[type='checkbox']::before{
+    content: '';
+    width: 0.6rem;
+    height: 0.6rem;
+    border-radius: 3px;
+    transform: scale(0);
+    transition: .12s transform ease-in-out;
+    box-shadow: inset 1em 1em var(--priority-low-color);
+}
+
+input[type='checkbox']:checked::before{
+    transform:scale(1);
+}
+
+
 
 
