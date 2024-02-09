@@ -2,12 +2,11 @@ import {format} from 'date-fns'
 
 export default function project(){
     const arr = []
-    let title, description
+    let title
     const date = format(new Date(), 'MM/dd/yyyy')
 
-    const changeValue = (tit,des) => {
+    const changeValue = (tit) => {
         title = tit
-        description = des
     }
 
     const getValue = () => {title, description, date}
