@@ -76,6 +76,22 @@ body{
     color: var(--priority-high-color);
 }
 
+.btn{
+    border: none;
+    border-radius: 10px;
+    padding: .5rem 1rem;
+    font-weight: 600;
+    font-family: 'Inconsolata', monospace;
+}
+
+.btn:hover{
+    opacity: .8;
+}
+
+.show__detail{
+    width: 70% !important;
+}
+
 
 /* HEADER SECTION */
 header{
@@ -87,6 +103,7 @@ header{
     color: var(--text-color-light);
     font-size: 1.2rem;
     padding: 0 .25rem;
+    flex-grow: 4;
 }
 
 header .logo{
@@ -107,7 +124,7 @@ header .add__btn:hover{
 .container{
     display: flex;
     flex-direction: row;
-    height: 90vh;
+    min-height: 95vh;
 }
 /* NAVIGATION SECTION */
 .nav__bar{
@@ -288,6 +305,7 @@ header .add__btn:hover{
 }
 
 .content h1{
+    margin: 2rem 0;
     font-size: 2.5rem;
 }
 
@@ -407,6 +425,39 @@ input[type='checkbox']:checked::before{
     transform:scale(1);
 }
 
+/* DETAIL SECTION */
+.detail{
+    background: var(--background-color-2);
+    padding: 1rem 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-grow: 2;
+}
 
+.detail h1{
+    margin: 2rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
+.detail p{
+    margin: 0 0 1rem 0;
+    width: 100%;
+}
 
+.detail div{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    gap: 1rem;
+    width: 100%;
+    margin-bottom: 2rem;
+}
+
+.detail button{
+    background: var(--delete-btn-color);
+    color: var(--text-color-light);
+}
