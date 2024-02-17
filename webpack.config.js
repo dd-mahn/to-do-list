@@ -14,7 +14,6 @@ module.exports = {
     },
     plugins: [
         new HtmlWebpackPlugin({
-            title: 'Tasko',
             template: './public/index.html',
             filename: 'index.html',
             inject: 'body',
@@ -24,8 +23,8 @@ module.exports = {
         rules: [
             {
                 test: /\.css$/i,
-                use: ['style-loader', 
-                {loader:'css-loader', options: {minimize: true}}]
+                use: ['style-loader', 'css-loader' ]
+                // {loader:'css-loader', options: {minimize: true}}]
             },
             {
                 test: /\.(png|svg|jpg|jpeg|gif)$/i,
