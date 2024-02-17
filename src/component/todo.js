@@ -17,12 +17,14 @@ export default function todo(){
     }
 
     const getValue = () => {
-        title,
-        description,
-        startDate,
-        dueDate,
-        priority,
-        status 
+        return{
+            title,
+            description,
+            startDate,
+            dueDate,
+            priority,
+            status
+        }
     }
 
     return{

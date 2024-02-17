@@ -10,9 +10,11 @@ export default function note(){
     }
 
     const getValue = () => {
-        title,
-        description,
-        date
+        return {
+            title,
+            description,
+            date
+        }
     }
 
     return{
