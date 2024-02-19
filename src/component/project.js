@@ -22,13 +22,11 @@ export default function project(){
         arr.splice(index,index)
     }
 
-    const displayItem = (index) => {
-        if(index >= 0 && index < arr.length){
-            console.log(arr[index].getValue())
-        }
+    const getItem = (index) => {
+        return arr[index]
     }
-    const displayAllItem = () => {
-        console.log(arr)
+    const getAllItem = () => {
+        return arr
     }
 
     return{
@@ -36,7 +34,7 @@ export default function project(){
         getValue,
         addItem,
         deleteItem,
-        displayItem,
-        displayAllItem
+        getItem,
+        getAllItem
     }
 }
