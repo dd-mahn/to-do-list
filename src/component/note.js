@@ -1,6 +1,7 @@
 import {format} from 'date-fns'
 
 export default function note(){
+    const type = 'note'
     let title, description 
     const date = format(new Date(), 'MM/dd/yyyy')
 
@@ -8,6 +9,8 @@ export default function note(){
         title = tit
         description = des
     }
+
+    const getType = () => type
 
     const getValue = () => {
         return {
@@ -19,6 +22,7 @@ export default function note(){
 
     return{
         changeValue,
+        getType,
         getValue
     }
 }

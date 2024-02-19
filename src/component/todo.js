@@ -1,6 +1,7 @@
 import {format} from 'date-fns'
 
 export default function todo(){
+    const type = 'todo'
     let title, description, dueDate, priority
     const startDate = format(new Date(), 'MM/dd/yyyy')
     let status = false
@@ -15,6 +16,8 @@ export default function todo(){
     const changeStatus = () => {
         status === false ? true : false
     }
+    
+    const getType = () => type
 
     const getValue = () => {
         return{
@@ -30,6 +33,7 @@ export default function todo(){
     return{
         changeValue,
         changeStatus,
+        getType,
         getValue
     }
 }
