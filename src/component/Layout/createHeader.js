@@ -1,26 +1,24 @@
-export default function createHeader(){
-    const header = document.createElement('header')
+import appendChildren from "../../utils/appendChildren";
+import createDivWithClass from "../../utils/createDivWithClass";
+import createIconWithClass from "../../utils/createIconWithClass";
 
-    const menuBtn = document.createElement('div')
-    menuBtn.classList.add('menu__btn','icon__big')
-    // menuBtn.innerHTML = `<i class="ri-menu-line></i>`
-    const menuIcon = document.createElement('i')
-    menuIcon.classList.add('ri-menu-line')
-    menuBtn.appendChild(menuIcon)
+export default function createHeader() {
+    const header = document.createElement('header');
 
-    const logo = document.createElement('div')
-    logo.classList.add('logo')
+    const menuBtn = createDivWithClass('menu__btn', 'icon__big');
+    const menuIcon = createIconWithClass('ri-menu-line');
+    menuBtn.appendChild(menuIcon);
+
+    const logo = createDivWithClass('logo');
     logo.innerHTML = `
         <i class="ri-stack-line"></i>
-        <span>Tasko</span>`
+        <span>Tasko</span>`;
 
-    const addBtn = document.createElement('div')
-    addBtn.classList.add('add__btn','icon__big')
-    addBtn.innerHTML = `<i class="ri-add-line"></i>`
+    const addBtn = createDivWithClass('add__btn', 'icon__big');
+    const addIcon = createIconWithClass('ri-add-line');
+    addBtn.appendChild(addIcon);
 
-    header.appendChild(menuBtn)
-    header.appendChild(logo)
-    header.appendChild(addBtn)
+    appendChildren(header, [menuBtn, logo, addBtn]);
 
-    return header
+    return header;
 }
