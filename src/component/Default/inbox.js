@@ -1,7 +1,8 @@
 import project from "../../static/project";
 
-const inbox = () => Object.create(project(), {
-
-})
+const inbox = () => {
+    const inboxObj = Object.create(project())
+    
+}
 
 export default inbox
