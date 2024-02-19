@@ -1,10 +1,12 @@
-export default function createDetail(obj){
+import appendChildren from "../../utils/appendChildren"
+import createDivWithClass from "../../utils/createDivWithClass"
+
+export default function createDetail(obj) {
     const detail = obj.getValue()
     const title = detail.title
     const description = detail.description
 
-    const detailDiv = document.createElement('div')
-    detailDiv.classList.add('detail')
+    const detailDiv = createDivWithClass('detail')
 
     const titleH1 = document.createElement('h1')
     titleH1.innerHTML = title
@@ -13,10 +15,10 @@ export default function createDetail(obj){
     descriptionP.innerHTML = description
 
     const detailList = document.createElement('div')
-    for(let item in detail){
-        if(item !== 'title' && item !== 'description'){
+    for (let item in detail) {
+        if (item !== 'title' && item !== 'description') {
             const detailItem = document.createElement('span')
-            detailItem.innerHTML = `<strong>${item}: </strong> ${detail.item}`
+            detailItem.innerHTML = `<strong>${item}: </strong> ${detail[item]}`
             detailList.appendChild(detailItem)
         }
     }
@@ -25,10 +27,8 @@ export default function createDetail(obj){
     deleteBtn.classList.add('btn')
     deleteBtn.innerHTML = `Delete`
 
-    detailDiv.appendChild(titleH1)
-    detailDiv.appendChild(descriptionP)
-    detailDiv.appendChild(detailList)
-    detailDiv.appendChild(deleteBtn)
+    appendChildren(detailDiv, [titleH1, descriptionP, detailList, deleteBtn])
 
     return detailDiv
 }
+

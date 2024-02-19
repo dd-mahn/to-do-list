@@ -1,24 +1,24 @@
-import appendChildren from "../../utils/appendChildren";
-import createDivWithClass from "../../utils/createDivWithClass";
-import createIconWithClass from "../../utils/createIconWithClass";
+import appendChildren from "../../utils/appendChildren"
+import createDivWithClass from "../../utils/createDivWithClass"
+import createIconWithClass from "../../utils/createIconWithClass"
 
 export default function createHeader() {
-    const header = document.createElement('header');
+    const header = document.createElement('header')
 
-    const menuBtn = createDivWithClass('menu__btn', 'icon__big');
-    const menuIcon = createIconWithClass('ri-menu-line');
-    menuBtn.appendChild(menuIcon);
+    const menuBtn = createDivWithClass('menu__btn', 'icon__big')
+    const menuIcon = createIconWithClass('ri-menu-line')
+    menuBtn.appendChild(menuIcon)
 
-    const logo = createDivWithClass('logo');
+    const logo = createDivWithClass('logo')
     logo.innerHTML = `
         <i class="ri-stack-line"></i>
-        <span>Tasko</span>`;
+        <span>Tasko</span>`
 
-    const addBtn = createDivWithClass('add__btn', 'icon__big');
-    const addIcon = createIconWithClass('ri-add-line');
-    addBtn.appendChild(addIcon);
+    const addBtn = createDivWithClass('add__btn', 'icon__big')
+    const addIcon = createIconWithClass('ri-add-line')
+    addBtn.appendChild(addIcon)
 
-    appendChildren(header, [menuBtn, logo, addBtn]);
+    appendChildren(header, [menuBtn, logo, addBtn])
 
-    return header;
+    return header
 }

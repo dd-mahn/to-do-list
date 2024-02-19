@@ -1,10 +1,10 @@
-import appendChildren from "../../utils/appendChildren";
-import createDivWithClass from "../../utils/createDivWithClass";
+import appendChildren from "../../utils/appendChildren"
+import createDivWithClass from "../../utils/createDivWithClass"
 
 export default function createMenu() {
-    const menu = createDivWithClass('menu', 'd-off');
+    const menu = createDivWithClass('menu', 'd-off')
 
-    const menuTop = createDivWithClass('menu__top');
+    const menuTop = createDivWithClass('menu__top')
     const menuItemsHTML = `
         <div class="search__bar">
             <input type="text">
@@ -48,13 +48,13 @@ export default function createMenu() {
             </div>
             <span>History</span>
         </div>
-    `;
-    menuTop.innerHTML = menuItemsHTML;
+    `
+    menuTop.innerHTML = menuItemsHTML
 
-    const menuBot = createDivWithClass('menu__bot', 'icon__big');
-    menuBot.innerHTML = '<i class="ri-sun-line"></i>';
+    const menuBot = createDivWithClass('menu__bot', 'icon__big')
+    menuBot.innerHTML = '<i class="ri-sun-line"></i>'
 
-    appendChildren(menu, [menuTop, menuBot]);
+    appendChildren(menu, [menuTop, menuBot])
 
-    return menu;
+    return menu
 }

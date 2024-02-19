@@ -1,23 +1,23 @@
-import appendChildren from "../../utils/appendChildren.js";
-import createDivWithClass from "../../utils/createDivWithClass";
+import appendChildren from "../../utils/appendChildren.js"
+import createDivWithClass from "../../utils/createDivWithClass"
 
 export default function createNote(note) {
-    const detail = note.getValue();
+    const detail = note.getValue()
 
-    const noteDiv = createDivWithClass('note');
+    const noteDiv = createDivWithClass('note')
 
-    const titleDiv = createDivWithClass('title');
-    titleDiv.innerHTML = `<span>${detail.title}</span>`;
+    const titleDiv = createDivWithClass('title')
+    titleDiv.innerHTML = `<span>${detail.title}</span>`
 
-    const buttonDiv = createDivWithClass('buttons');
+    const buttonDiv = createDivWithClass('buttons')
     buttonDiv.innerHTML = `
         <button class="edit__btn"><i class="ri-edit-box-line"></i></button>
         <button class="move__btn"><i class="ri-arrow-right-circle-line"></i></button>
         <button class="delete__btn"><i class="ri-delete-bin-6-line"></i></button>
-    `;
+    `
 
-    appendChildren(noteDiv, [titleDiv, buttonDiv]);
+    appendChildren(noteDiv, [titleDiv, buttonDiv])
 
-    return noteDiv;
+    return noteDiv
 }
 
