@@ -16,13 +16,16 @@ export default function createTodo(todo){
     const buttonDiv = document.createElement('div')
     buttonDiv.classList.add('buttons')
     const editBtn = document.createElement('button')
+    editBtn.classList.add('edit__btn')
     editBtn.innerHTML = `<i class="ri-edit-box-line"></i>`
     const priorityBtn = document.createElement('button')
     priorityBtn.classList.add('priority__btn')
     priorityBtn.innerHTML = `<i class="ri-flag-2-line"></i>`
     const moveBtn = document.createElement('button')
+    moveBtn.classList.add('move__btn')
     moveBtn.innerHTML = `<i class="ri-arrow-right-circle-line"></i>`
     const deleteBtn = document.createElement('button')
+    deleteBtn.classList.add('delete__btn')
     deleteBtn.innerHTML = `<i class="ri-delete-bin-6-line"></i>`
 
     switch(detail.priority){
