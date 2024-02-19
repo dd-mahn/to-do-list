@@ -1,53 +1,36 @@
-export default function createTodo(todo){
+import appendChildren from "../../utils/appendChildren"
+import createButtonWithClass from "../../utils/createButtonWithClass"
+import createDivWithClass from "../../utils/createDivWithClass"
+import setPriorityClass from "../../utils/setPriorityClass"
+
+export default function createTodo(todo) {
     const detail = todo.getValue()
 
     const todoDiv = document.createElement('div')
     todoDiv.classList.add('to-do')
 
-    const checkboxDiv = document.createElement('div')
-    checkboxDiv.classList.add('checkbox')
+    const checkboxDiv = createDivWithClass('checkbox')
     const checkbox = document.createElement('input')
     checkbox.type = 'checkbox'
+    checkboxDiv.appendChild(checkbox)
 
-    const titleDiv = document.createElement('div')
-    titleDiv.classList.add('title')
-    titleDiv.innerHtml = `<span>${detail.title}</span>`
+    const titleDiv = createDivWithClass('title')
+    titleDiv.innerHTML = `<span>${detail.title}</span>`
 
-    const buttonDiv = document.createElement('div')
-    buttonDiv.classList.add('buttons')
-    const editBtn = document.createElement('button')
-    editBtn.classList.add('edit__btn')
-    editBtn.innerHTML = `<i class="ri-edit-box-line"></i>`
-    const priorityBtn = document.createElement('button')
-    priorityBtn.classList.add('priority__btn')
-    priorityBtn.innerHTML = `<i class="ri-flag-2-line"></i>`
-    const moveBtn = document.createElement('button')
-    moveBtn.classList.add('move__btn')
-    moveBtn.innerHTML = `<i class="ri-arrow-right-circle-line"></i>`
-    const deleteBtn = document.createElement('button')
-    deleteBtn.classList.add('delete__btn')
-    deleteBtn.innerHTML = `<i class="ri-delete-bin-6-line"></i>`
+    const buttonDiv = createDivWithClass('buttons')
+    const editBtn = createButtonWithClass('edit__btn', 'ri-edit-box-line')
+    const priorityBtn = createButtonWithClass('priority__btn', 'ri-flag-2-line')
+    const moveBtn = createButtonWithClass('move__btn', 'ri-arrow-right-circle-line')
+    const deleteBtn = createButtonWithClass('delete__btn', 'ri-delete-bin-6-line')
 
-    switch(detail.priority){
-        case 'low':
-            priorityBtn.classList.add('priority__low')
-            break
-        case 'medium':
-            priorityBtn.classList.add('priority__medium')
-            break
-        case 'high':
-            priorityBtn.classList.add('priority__high')
-            break
-    }
+    setPriorityClass(priorityBtn, detail.priority)
 
-    buttonDiv.appendChild(editBtn)
-    buttonDiv.appendChild(priorityBtn)
-    buttonDiv.appendChild(moveBtn)
-    buttonDiv.appendChild(deleteBtn)
-
-    todoDiv.appendChild(checkboxDiv)
-    todoDiv.appendChild(titleDiv)
-    todoDiv.appendChild(buttonDiv)
+    appendChildren(buttonDiv, [editBtn, priorityBtn, moveBtn, deleteBtn])
+    appendChildren(todoDiv, [checkboxDiv, titleDiv, buttonDiv])
 
     return todoDiv
 }
+
+
+
+
