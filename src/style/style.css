@@ -92,6 +92,9 @@ body{
     width: 70% !important;
 }
 
+.rotate-180{
+    transform: rotate(180deg);
+}
 
 /* HEADER SECTION */
 header{
@@ -192,6 +195,7 @@ header .add__btn:hover{
     width: 10rem;
     border: none;
     border-radius: 10px;
+    padding-left: .5rem;
 }
 
 .search__bar > input:focus{
@@ -226,7 +230,6 @@ header .add__btn:hover{
 
 .menu__item.project__list{
     flex-direction: column;
-    border-bottom: 1px solid var(--nav-border-color);
     border-radius:0;
 }
 
@@ -239,7 +242,6 @@ header .add__btn:hover{
     display: flex;
     justify-content: start;
     position: relative;
-    margin-bottom: 1rem;
     border-radius: 10px;
 }
 
@@ -253,8 +255,12 @@ header .add__btn:hover{
     right:0;
 }
 
+.arrow i{
+    color: var(--text-color-dark) !important;
+}
+
 .menu__item.project__list ul{
-    margin: 0;
+    margin: 1rem 0 0 0;
     padding: 0;
 }
 
@@ -275,6 +281,7 @@ header .add__btn:hover{
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-bottom: 0 !important;
 }
 
 .project__add-btn button{
