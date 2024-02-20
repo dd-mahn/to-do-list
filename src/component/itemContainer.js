@@ -1,19 +1,19 @@
-export default function projectContainer() {
+export default function ItemContainer() {
     const arr = []
 
-    const addProject = (prj) => {
-        arr.push(prj)
+    const addItem = (item) => {
+        arr.push(item)
     }
 
-    const getProject = (index) => {
+    const getItem = (index) => {
         if(index >= 0 && index < arr.length) return arr[index]
     }
 
-    const getAllProject = () => {
+    const getAllItem = () => {
         return arr
     }
 
-    const deleteProject = (index) => {
+    const deleteItem = (index) => {
         if(index >= 0 && index < arr.length) arr.splice(index,index)
     }
 
