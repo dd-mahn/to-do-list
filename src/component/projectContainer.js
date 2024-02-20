@@ -1,28 +1,26 @@
 export default function projectContainer() {
     const arr = []
 
-    const addItem = (item) => {
-        arr.push(item)
+    const addProject = (prj) => {
+        arr.push(prj)
     }
 
-    const displayItem = (index) => {
-        if(index >= 0 && index < arr.length) clg(arr[index].displayAllItem())
+    const getProject = (index) => {
+        if(index >= 0 && index < arr.length) return arr[index].getAllItem()
     }
 
-    const displayAllItem = () => {
-        arr.forEach(item , () => {
-            console.log(item.displayAllItem())
-        })
+    const getAllProject = () => {
+        return arr
     }
 
-    const deleteItem = (index) => {
+    const deleteProject = (index) => {
         if(index >= 0 && index < arr.length) arr.splice(index,index)
     }
 
     return{
         addItem,
-        displayItem,
-        displayAllItem,
+        getItem,
+        getAllItem,
         deleteItem
     }
 }
