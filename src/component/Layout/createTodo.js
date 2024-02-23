@@ -1,7 +1,7 @@
-import appendChildren from "../../utils/appendChildren"
-import createButtonWithClass from "../../utils/createButtonWithClass"
-import createDivWithClass from "../../utils/createDivWithClass"
-import setPriorityClass from "../../utils/setPriorityClass"
+import appendChildren from "../../utils/common/appendChildren"
+import createButtonWithClass from "../../utils/common/createButtonWithClass"
+import createDivWithClass from "../../utils/common/createDivWithClass"
+import setPriorityClass from "../../utils/common/setPriorityClass"
 
 export default function createTodo(todo) {
     const detail = todo.getValue()

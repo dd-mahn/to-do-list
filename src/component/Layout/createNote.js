@@ -1,5 +1,5 @@
-import appendChildren from "../../utils/appendChildren.js"
-import createDivWithClass from "../../utils/createDivWithClass"
+import appendChildren from "../../utils/common/appendChildren.js"
+import createDivWithClass from "../../utils/common/createDivWithClass.js"
 
 export default function createNote(note) {
     const detail = note.getValue()

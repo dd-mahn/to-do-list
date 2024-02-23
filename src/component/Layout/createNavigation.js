@@ -1,5 +1,5 @@
-import appendChildren from "../../utils/appendChildren"
-import createDivWithClass from "../../utils/createDivWithClass"
+import appendChildren from "../../utils/common/appendChildren"
+import createDivWithClass from "../../utils/common/createDivWithClass"
 
 export default function createNavigationBar() {
     const navBar = createDivWithClass('nav__bar')

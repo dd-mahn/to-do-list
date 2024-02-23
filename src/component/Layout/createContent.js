@@ -2,8 +2,8 @@ import createTodo from "./createTodo"
 import createNote from "./createNote"
 import todo from "../todo"
 import note from "../note"
-import appendChildren from "../../utils/appendChildren"
-import createDivWithClass from "../../utils/createDivWithClass"
+import appendChildren from "../../utils/common/appendChildren"
+import createDivWithClass from "../../utils/common/createDivWithClass"
 
 export default function createContent(prj) {
     const title = prj.getValue().title

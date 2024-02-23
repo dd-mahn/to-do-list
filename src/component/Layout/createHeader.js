@@ -1,6 +1,6 @@
-import appendChildren from "../../utils/appendChildren"
-import createDivWithClass from "../../utils/createDivWithClass"
-import createIconWithClass from "../../utils/createIconWithClass"
+import appendChildren from "../../utils/common/appendChildren"
+import createDivWithClass from "../../utils/common/createDivWithClass"
+import createIconWithClass from "../../utils/common/createIconWithClass"
 
 export default function createHeader() {
     const header = document.createElement('header')
