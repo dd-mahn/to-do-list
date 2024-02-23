@@ -12,7 +12,7 @@ export default function contentHandler(){
 
 function detailController(){
     const content = document.querySelector('.content')
-    const detail = document.querySelector('detail')
+    const detail = document.querySelector('.detail')
     if(detail.classList.contains('d-off')){
         openThis(detail)
         content.classList.add('show__detail')
