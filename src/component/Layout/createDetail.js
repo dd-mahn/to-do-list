@@ -6,7 +6,7 @@ export default function createDetail(obj) {
     const title = detail.title
     const description = detail.description
 
-    const detailDiv = createDivWithClass('detail')
+    const detailDiv = createDivWithClass('detail', 'd-off')
 
     const titleH1 = document.createElement('h1')
     titleH1.innerHTML = title
