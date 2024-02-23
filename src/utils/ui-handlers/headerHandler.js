@@ -1,5 +1,5 @@
-import closeThis from "../closeThis"
-import openThis from "../openThis"
+import closeThis from "../common/closeThis"
+import openThis from "../common/openThis"
 
 export default function headerHandler(){
     const header = document.querySelector('header')
