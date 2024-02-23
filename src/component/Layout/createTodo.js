@@ -6,8 +6,7 @@ import setPriorityClass from "../../utils/common/setPriorityClass"
 export default function createTodo(todo) {
     const detail = todo.getValue()
 
-    const todoDiv = document.createElement('div')
-    todoDiv.classList.add('to-do')
+    const todoDiv = createDivWithClass('to-do','content__item')
 
     const checkboxDiv = createDivWithClass('checkbox')
     const checkbox = document.createElement('input')

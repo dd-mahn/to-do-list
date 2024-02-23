@@ -4,7 +4,7 @@ import createDivWithClass from "../../utils/common/createDivWithClass.js"
 export default function createNote(note) {
     const detail = note.getValue()
 
-    const noteDiv = createDivWithClass('note')
+    const noteDiv = createDivWithClass('note', 'content__item')
 
     const titleDiv = createDivWithClass('title')
     titleDiv.innerHTML = `<span>${detail.title}</span>`
