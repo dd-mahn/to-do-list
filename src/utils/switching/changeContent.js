@@ -1,4 +1,4 @@
-import createContent from "./createContent"
+import createContent from "../../component/Layout/createContent"
 
 export default function changeContent(obj){
     const container = document.querySelector('.container')
@@ -7,4 +7,5 @@ export default function changeContent(obj){
 
     container.removeChild(oldContent)
     container.appendChild(newContent)
+
 }
