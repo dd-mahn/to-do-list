@@ -1,9 +1,10 @@
 import inbox from "../../component/Default Project/inbox"
-import closeThis from "../closeThis"
-import openThis from "../openThis"
+import closeThis from "../common/closeThis"
+import openThis from "../common/openThis"
 import today from "../../component/Default Project/today"
 import history from "../../component/Default Project/history"
-import changeContent from "../../component/Layout/changeContent"
+import { setCurrentState } from "../state"
+import renderLayout from "../render"
 
 export default function navHandler(){
     const navBar = document.querySelector('.nav__bar')
@@ -15,10 +16,19 @@ export default function navHandler(){
 
     searchNav.addEventListener('click', () => openMenu())
     
-    inboxNav.addEventListener('click', () => changeContent(inbox()))
-    todayNav.addEventListener('click', () => changeContent(today()))
+    inboxNav.addEventListener('click', () => {
+        setCurrentState(inbox())
+        renderLayout()
+    })
+    todayNav.addEventListener('click', () => {
+        setCurrentState(today())
+        renderLayout()
+    })
     projectNav.addEventListener('click', () => openMenu())
-    historyNav.addEventListener('click', () => changeContent(history()))
+    historyNav.addEventListener('click', () => {
+        setCurrentState(history())
+        renderLayout()
+    })
 
 }
 

@@ -1,9 +1,8 @@
 import inbox from "../../component/Default Project/inbox"
-import closeThis from "../closeThis"
-import openThis from "../openThis"
 import today from "../../component/Default Project/today"
 import history from "../../component/Default Project/history"
-import changeContent from "../../component/Layout/changeContent"
+import { setCurrentState } from "../state"
+import renderLayout from "../render"
 
 export default function menuHandler(){
     const menu = document.querySelector('.menu')
@@ -12,8 +11,14 @@ export default function menuHandler(){
     const projectNav = menu.querySelector('.project__nav')
     const historyNav = menu.querySelector('.history__nav')
     
-    inboxNav.addEventListener('click', () => changeContent(inbox()))
-    todayNav.addEventListener('click', () => changeContent(today()))
+    inboxNav.addEventListener('click', () => {
+        setCurrentState(inbox())
+        renderLayout()
+    })
+    todayNav.addEventListener('click', () => {
+        setCurrentState(today())
+        renderLayout()
+    })
     projectNav.addEventListener('click', () => {
         const list = menu.querySelector('ul')
         if(list.classList.contains('d-off')){
@@ -22,7 +27,10 @@ export default function menuHandler(){
             closeProjectList()
         }
     })
-    historyNav.addEventListener('click', () => changeContent(history()))
+    historyNav.addEventListener('click', () => {
+        setCurrentState(history())
+        renderLayout()
+    })
 
 }
 
