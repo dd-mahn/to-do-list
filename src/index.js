@@ -1,9 +1,13 @@
 import './style/style.css'
-import createLayout from './component/Layout/createLayout'
+import { setCurrentState } from './utils/state'
+import renderLayout from './utils/render'
+import inbox from './component/Default Project/inbox'
 
-//Create layout
-createLayout()
-//Create Defaults 
-//Add functions
-//
+function ScreenController(){
+    setCurrentState(inbox())
+    renderLayout()
+}
+
+ScreenController()
+
 
