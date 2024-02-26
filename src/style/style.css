@@ -455,6 +455,7 @@ input[type='checkbox']:checked::before{
     flex-direction: column;
     align-items: center;
     flex-grow: 2;
+    position: relative;
 }
 
 .detail h1{
@@ -479,7 +480,22 @@ input[type='checkbox']:checked::before{
     margin-bottom: 2rem;
 }
 
-.detail button{
+.detail button.delete__btn{
     background: var(--delete-btn-color);
     color: var(--text-color-light);
 }
+
+.detail button.close__btn{
+    position: absolute;
+    top: .1rem;
+    left: .1rem;
+    border:none;
+    background: inherit;
+    font-size: 1.2rem;
+    opacity: 0.5;
+}
+
+.detail button.close__btn:hover{
+    color: var(--hover-text-color)
+}
+
