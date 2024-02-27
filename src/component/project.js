@@ -2,7 +2,7 @@ import {format} from 'date-fns'
 import itemContainer from './itemContainer'
 
 export default function project(){
-    const container = itemContainer
+    const arr = []
     let title, description
     const date = format(new Date(), 'MM/dd/yyyy')
 
@@ -16,18 +16,18 @@ export default function project(){
     }
 
     const addItem = (item) => {
-        container.addItem(item)
+        arr.push(item)
     }
 
     const deleteItem = (index) => {
-        container.deleteItem(index)
+        arr.splice(index, index)
     }
 
     const getItem = (index) => {
-        return container.getItem(index)
+        return arr[index]
     }
     const getAllItem = () => {
-        return container.getAllItem()
+        return arr
     }
 
     return{
