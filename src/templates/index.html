@@ -130,16 +130,103 @@
             </div>
         </div>
         <div class="detail">
+            <button class="close__btn">x</button>
             <h1>todo 1</h1>
             <p>Lorem ipsum blablablablablabla</p>
             <div>
                 <span><strong>Due date: </strong>02/10/2024</span>
                 <span><strong>Priority: </strong>Low</span>
-                <span><strong>Project: </strong  rong>Inbox</span>
+                <span><strong>Project: </strong>Inbox</span>
                 <span><strong>Status: </strong>On-going</span>
             </div>
             <button class="btn">Delete</button>
         </div>
     </section>
+    <dialog id="project__add-dialog">
+        <form id="add-form">
+            <div>
+                <label for="name">Project Name:</label>
+                <input required type="text" id="name" name="name" >
+            </div>
+            <div>
+                <label for="description">Description:</label>
+                <textarea required type="text" id="description" name="description" > </textarea>
+            </div>
+            <div class="center">
+                <button type="submit" class="button" id="add-btn" formmethod="dialog">Create</button>
+                <button type="submit" class="button" id="close-form" formmethod="dialog" value="canceled">Cancel</button>
+            </div>
+        </form>
+    </dialog>
+
+    <dialog open id="item__add-dialog">
+        <form action="select__item-form">
+            <label for="item">Choose which item to create:</label>
+            <select name="item" id="item">
+                <option value="to-do">Todo</option>
+                <option value="note">Note</option>
+            </select>
+        </form>
+        <form id="todo__add-form">
+            <div>
+                <label for="title">Title:</label>
+                <input required type="text" id="title" name="title" >
+            </div>
+            <div>
+                <label for="description">Description:</label>
+                <input required type="text" id="description" name="description" >
+            </div>
+            <div>
+                <label for="startDate">Start date:</label>
+                <input required type="time" name="startDate" id="startDate" >
+            </div>
+            <div>
+                <label for="dueDate">Due date:</label>
+                <input required type="time" name="dueDate" id="dueDate" >
+            </div>
+            <div>
+                <label for="priority">Priority:</label>
+                <select name="priority" id="priority">
+                    <option value="low">Low</option>
+                    <option value="medium">Medium</option>
+                    <option value="high">High</option>
+                </select>
+            </div>
+            <div>
+                <label for="project">Project:</label>
+                <select name="project" id="project">
+                    <option>Project 1</option>
+                    <option>Project 2</option>
+                    <option>Project 3</option>
+                </select>
+            </div>
+            <div class="center">
+                <button type="submit" class="button" id="add-btn" formmethod="dialog">Create</button>
+                <button type="submit" class="button" id="close-form" formmethod="dialog" value="canceled">Cancel</button>
+            </div>
+        </form>
+        <form id="note__add-form" class="d-off">
+            <div>
+                <label for="title">Title:</label>
+                <input required type="text" id="title" name="title" >
+            </div>
+            <div>
+                <label for="description">Description:</label>
+                <input required type="text" id="description" name="description" >
+            </div>
+            <div>
+                <label for="project">Project:</label>
+                <select name="project" id="project">
+                    <option>Project 1</option>
+                    <option>Project 2</option>
+                    <option>Project 3</option>
+                </select>
+            </div>
+            <div class="center">
+                <button type="submit" class="button" id="add-btn" formmethod="dialog">Create</button>
+                <button type="submit" class="button" id="close-form" formmethod="dialog" value="canceled">Cancel</button>
+            </div>
+        </form>
+    </dialog>
 </body>
 </html>
