@@ -122,7 +122,7 @@ function createButtonDiv(){
     const buttonDiv = createDivWithClass('buttons')
     buttonDiv.innerHTML = `
         <button class="btn add__btn" formmethod="dialog">Create</button>
-        <button class="btn close__form" formmethod="dialog">Cancel</button>`
+        <button class="btn close__btn" formmethod="dialog">Cancel</button>`
 
     return buttonDiv
 }
