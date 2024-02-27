@@ -18,7 +18,27 @@ export default function createDetail(obj) {
     for (let item in detail) {
         if (item !== 'title' && item !== 'description') {
             const detailItem = document.createElement('span')
-            detailItem.innerHTML = `<strong>${item}: </strong> ${detail[item]}`
+            switch(item){
+                case 'date':
+                    detailItem.innerHTML = `<strong>Date created: </strong> ${detail[item]}`
+                    break
+                case 'startDate':
+                    detailItem.innerHTML = `<strong>Start date: </strong> ${detail[item]}`
+                    break
+                case 'dueDate':
+                    detailItem.innerHTML = `<strong>Due date: </strong> ${detail[item]}`
+                    break
+                case 'priority':
+                    detailItem.innerHTML = `<strong>Priority: </strong> ${detail[item]}`
+                    break
+                case 'status':
+                    if(detail[item] === true){
+                        detailItem.innerHTML = `<strong>Status: </strong> Finished`
+                    }else{
+                        detailItem.innerHTML = `<strong>Status: </strong> On-going`
+                    }
+                    break
+            }
             detailList.appendChild(detailItem)
         }
     }
