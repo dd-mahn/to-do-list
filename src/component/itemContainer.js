@@ -1,4 +1,4 @@
-function ItemContainer() {
+function itemContainer() {
     const arr = []
 
     const addItem = (item) => {
