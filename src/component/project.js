@@ -1,8 +1,8 @@
 import {format} from 'date-fns'
-import ItemContainer from './itemContainer'
+import itemContainer from './itemContainer'
 
 export default function project(){
-    const container = ItemContainer()
+    const container = itemContainer
     let title, description
     const date = format(new Date(), 'MM/dd/yyyy')
 
