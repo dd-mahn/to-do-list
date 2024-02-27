@@ -11,12 +11,12 @@ export function createProjectDialog(){
 
     form.innerHTML = `
         <div>
-            <label for="name">Project Name:</label>
-            <input required type="text" id="name" name="name" >
+            <label for="title">Project Title:</label>
+            <input required type="text" id="title" name="title" class="project__title-input" >
         </div>
         <div>
             <label for="description">Description:</label>
-            <input required type="text" id="description" name="description" >
+            <input required type="text" id="description" name="description" class="project__des-input">
         </div>
     `;
 
@@ -47,23 +47,23 @@ export function createItemDialog(){
     todoAddForm.innerHTML = `
         <div>
             <label for="title">Title:</label>
-            <input required type="text" id="title" name="title" >
+            <input required type="text" id="title" name="title" class="todo__title-input" >
         </div>
         <div>
             <label for="description">Description:</label>
-            <input required type="text" id="description" name="description" >
+            <input required type="text" id="description" name="description" class="todo__des-input" >
         </div>
         <div>
             <label for="startDate">Start date:</label>
-            <input required type="time" name="startDate" id="startDate" >
+            <input required type="time" name="startDate" id="startDate" class="todo__start-input">
         </div>
         <div>
             <label for="dueDate">Due date:</label>
-            <input required type="time" name="dueDate" id="dueDate" >
+            <input required type="time" name="dueDate" id="dueDate" class="todo__due-input">
         </div>
         <div>
             <label for="priority">Priority:</label>
-            <select name="priority" id="priority">
+            <select name="priority" id="priority" class="todo__priority-input">
                 <option value="low">Low</option>
                 <option value="medium">Medium</option>
                 <option value="high">High</option>
@@ -78,11 +78,11 @@ export function createItemDialog(){
     noteAddForm.innerHTML = `
         <div>
             <label for="title">Title:</label>
-            <input required type="text" id="title" name="title" >
+            <input required type="text" id="title" name="title" class="note__title-input">
         </div>
         <div>
             <label for="description">Description:</label>
-            <input required type="text" id="description" name="description" >
+            <input required type="text" id="description" name="description" class="note__des-input">
         </div>`;
 
     appendChildren(todoAddForm, [createProjectSelect()])
@@ -121,8 +121,8 @@ function createProjectSelect(){
 function createButtonDiv(){
     const buttonDiv = createDivWithClass('buttons')
     buttonDiv.innerHTML = `
-        <button class="btn add-btn" formmethod="dialog">Create</button>
-        <button class="btn close-form" formmethod="dialog">Cancel</button>`
+        <button class="btn add__btn" formmethod="dialog">Create</button>
+        <button class="btn close__form" formmethod="dialog">Cancel</button>`
 
     return buttonDiv
 }
