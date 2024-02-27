@@ -2,14 +2,15 @@ import project from "../project";
 import todo from "../todo"
 import note from "../note"
 
+const todo1Date = new Date()
+todo1Date.setFullYear(todo1Date.getFullYear() + 1)
 
 const inbox = () => {
     const inboxObj = Object.create(project())
     inboxObj.changeValue('Inbox', 'Where you store all your new stuffs')
 
     const todo1 = todo()
-    const todo1Date = new Date()
-    todo1Date.setFullYear(todo1Date.getFullYear() + 1)
+    
     todo1.changeValue('Create your first project!', 'Click the add button on our menu', todo1Date, 'high')
 
     const note1 = note()
@@ -21,4 +22,6 @@ const inbox = () => {
     return inboxObj
 }
 
-export default inbox
+const inboxObj = inbox()
+
+export default inboxObj

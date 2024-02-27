@@ -1,4 +1,4 @@
-export default function projectContainer() {
+function projectContainer() {
     const arr = []
 
     const addProject = (prj) => {
@@ -24,3 +24,6 @@ export default function projectContainer() {
         deleteItem
     }
 }
+
+const projectContainerObj = projectContainer()
+export default projectContainerObj

@@ -1,4 +1,4 @@
-export default function ItemContainer() {
+function ItemContainer() {
     const arr = []
 
     const addItem = (item) => {
@@ -24,3 +24,6 @@ export default function ItemContainer() {
         deleteItem
     }
 }
+
+const itemContainerObj = itemContainer()
+export default itemContainerObj
