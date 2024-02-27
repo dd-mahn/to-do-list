@@ -3,6 +3,7 @@ import today from "../../component/Default Project/today"
 import history from "../../component/Default Project/history"
 import { setCurrentState } from "../state"
 import renderLayout from "../render"
+import projectDialogHandler from "./projectDialogHandler"
 
 export default function menuHandler(){
     const menu = document.querySelector('.menu')
@@ -37,6 +38,7 @@ export default function menuHandler(){
     })
     projectAddButton.addEventListener('click', () => {
         projectDialog.showModal()
+        projectDialogHandler()
     })
 
 }
