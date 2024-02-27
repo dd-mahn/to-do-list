@@ -17,7 +17,7 @@ export default function navHandler(){
     searchNav.addEventListener('click', () => openMenu())
     
     inboxNav.addEventListener('click', () => {
-        setCurrentState(inbox())
+        setCurrentState(inbox)
         renderLayout()
     })
     todayNav.addEventListener('click', () => {
