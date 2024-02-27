@@ -1,3 +1,4 @@
+import inbox from './Default Project/inbox'
 function projectContainer() {
     const arr = []
 
@@ -18,12 +19,13 @@ function projectContainer() {
     }
 
     return{
-        addItem,
-        getItem,
-        getAllItem,
-        deleteItem
+        addProject,
+        getProject,
+        getAllProject,
+        deleteProject
     }
 }
 
 const projectContainerObj = projectContainer()
+projectContainerObj.addProject(inbox)
 export default projectContainerObj
