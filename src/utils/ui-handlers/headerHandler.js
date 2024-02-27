@@ -19,6 +19,7 @@ export default function headerHandler(){
     })
 
     addBtn.addEventListener('click', () => {
-        
+        const itemDialog = document.getElementById('item__add-dialog')
+        itemDialog.showModal()
     })
 }
