@@ -10,6 +10,10 @@ export default function menuHandler(){
     const todayNav = menu.querySelector('.today__nav')
     const projectNav = menu.querySelector('.project__nav')
     const historyNav = menu.querySelector('.history__nav')
+    const projectAddButtonDiv = menu.querySelector('.project__add-btn')
+    const projectAddButton = projectAddButtonDiv.querySelector('button')
+    const projectDialog = document.getElementById('project__add-dialog')
+
     
     inboxNav.addEventListener('click', () => {
         setCurrentState(inbox())
@@ -30,6 +34,9 @@ export default function menuHandler(){
     historyNav.addEventListener('click', () => {
         setCurrentState(history())
         renderLayout()
+    })
+    projectAddButton.addEventListener('click', () => {
+        projectDialog.showModal()
     })
 
 }
