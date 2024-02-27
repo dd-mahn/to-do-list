@@ -51,6 +51,7 @@ body{
 }
 
 .icon__big:hover{
+    cursor: pointer;
     background: var(--hover-background-color);
     color: var(--hover-text-color);
 }
@@ -85,6 +86,7 @@ body{
 }
 
 .btn:hover{
+    cursor: pointer;
     opacity: .8;
 }
 
@@ -121,7 +123,8 @@ header .logo i{
 
 header .menu__btn:hover,
 header .add__btn:hover{
-    background: var(--header-hover-color) !important;
+    cursor: pointer;
+    background: inherit!important;
 }
 /* CONTAINER SECTION */
 .container{
@@ -207,6 +210,7 @@ header .add__btn:hover{
 }
 
 .search__bar > div:hover{
+    cursor: pointer;
     color: var(--hover-text-color)
 }
 
@@ -218,6 +222,7 @@ header .add__btn:hover{
 }
 
 .menu__item:hover{
+    cursor: pointer;
     background:var(--hover-background-color);
     color: var(--hover-text-color);
 }
@@ -234,6 +239,7 @@ header .add__btn:hover{
 }
 
 .menu__item.project__list:hover{
+    cursor: default !important;
     background: inherit;
     color:inherit;
 }
@@ -248,6 +254,7 @@ header .add__btn:hover{
 .menu__item.project__list > div:hover{
     background: var(--hover-background-color);
     color:var(--hover-text-color);
+    cursor: pointer;
 }
 
 .arrow {
@@ -273,6 +280,7 @@ header .add__btn:hover{
 }
 
 .menu__item.project__list ul li:hover{
+    cursor: pointer;
     border:2px solid var(--nav-border-color);
 }
 
@@ -282,6 +290,10 @@ header .add__btn:hover{
     align-items: center;
     justify-content: center;
     margin-bottom: 0 !important;
+}
+
+.project__add-btn:hover{
+    cursor: default !important;
 }
 
 .project__add-btn button{
@@ -294,6 +306,7 @@ header .add__btn:hover{
 }
 
 .project__add-btn button:hover{
+    cursor: pointer;
     opacity: 0.8;
     border:none !important;
 }
@@ -328,6 +341,7 @@ header .add__btn:hover{
 }
 
 .content__title i:hover{
+    cursor: pointer;
     color: var(--hover-text-color);
 }
 
@@ -383,6 +397,12 @@ header .add__btn:hover{
     flex-grow: 5;
 }
 
+.to-do .checkbox input:hover,
+.to-do .title:hover,
+.note .title:hover{
+    cursor:pointer;
+}
+
 .to-do .buttons{
     display: flex;
     justify-content: center;
@@ -411,6 +431,7 @@ header .add__btn:hover{
 
 .to-do .buttons button:hover,
 .note .buttons button:hover{
+    cursor: pointer;
     color: var(--hover-text-color);
 }
 
@@ -496,6 +517,7 @@ input[type='checkbox']:checked::before{
 }
 
 .detail button.close__btn:hover{
+    cursor: pointer;
     color: var(--hover-text-color)
 }
 
