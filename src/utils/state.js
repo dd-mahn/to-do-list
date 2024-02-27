@@ -1,7 +1,7 @@
 import inbox from "../component/Default Project/inbox"
 
 let currentState = {
-    currentProject: null
+    currentProject: inbox
 }
 
 export function setCurrentState(obj){
