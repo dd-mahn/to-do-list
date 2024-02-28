@@ -1,5 +1,6 @@
 import closeThis from "../common/closeThis"
 import openThis from "../common/openThis"
+import itemDialogHandler from "./itemDialogHandler"
 
 export default function headerHandler(){
     const header = document.querySelector('header')
@@ -21,5 +22,6 @@ export default function headerHandler(){
     addBtn.addEventListener('click', () => {
         const itemDialog = document.getElementById('item__add-dialog')
         itemDialog.showModal()
+        itemDialogHandler()
     })
 }
