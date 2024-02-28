@@ -2,13 +2,13 @@ import {format} from 'date-fns'
 
 export default function todo(){
     const type = 'todo'
-    let title, description, dueDate, priority
-    const startDate = format(new Date(), 'MM/dd/yyyy')
+    let title, description,startDate, dueDate, priority
     let status = false
 
-    const changeValue = (tit,des,due,pri) => {
+    const changeValue = (tit,des, start, due,pri) => {
         title = tit
         description = des
+        startDate = format(start, 'MM/dd/yyyy')
         dueDate = format(due, 'MM/dd/yyyy')
         priority = pri
     }
