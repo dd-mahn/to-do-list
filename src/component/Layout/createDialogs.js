@@ -2,23 +2,22 @@ import appendChildren from "../../utils/common/appendChildren"
 import createDivWithClass from "../../utils/common/createDivWithClass"
 import projectContainer from '../projectContainer'
 
-export function createProjectDialog(){
+export function createProjectDialog() {
     const dialog = document.createElement('dialog')
     dialog.id = 'project__add-dialog'
 
     const form = document.createElement('form')
     form.id = 'project__add-form'
-
     form.innerHTML = `
         <div>
             <label for="title">Project Title:</label>
-            <input required type="text" id="title" name="title" class="project__title-input" >
+            <input required type="text" id="title" name="title" class="project__title-input">
         </div>
         <div>
             <label for="description">Description:</label>
             <input required type="text" id="description" name="description" class="project__des-input">
         </div>
-    `;
+    `
 
     appendChildren(form, [createButtonDiv()])
     dialog.appendChild(form)
@@ -26,40 +25,50 @@ export function createProjectDialog(){
     return dialog
 }
 
-export function createItemDialog(){
+export function createItemDialog() {
     const dialog = document.createElement('dialog')
     dialog.id = 'item__add-dialog'
 
-    //Select Item
     const selectItemForm = document.createElement('form')
-    selectItemForm.setAttribute('action', 'select__item-form')
-
+    selectItemForm.classList.add('select__item-form')
     selectItemForm.innerHTML = `
         <label for="item">Choose which item to create:</label>
-        <select name="item" id="item">
+        <select name="item" id="item" class="select__item-input">
             <option value="to-do">Todo</option>
             <option value="note">Note</option>
         </select>`
 
-    // Todo-add-form
+    const todoAddForm = createTodoAddForm()
+    const noteAddForm = createNoteAddForm()
+
+    appendChildren(dialog, [selectItemForm, todoAddForm, noteAddForm, createProjectSelect(), createButtonDiv()])
+
+    return dialog
+}
+
+export function createConfirmDialog() {
+    return document.createElement('dialog')
+}
+
+function createTodoAddForm() {
     const todoAddForm = document.createElement('form')
     todoAddForm.id = 'todo__add-form'
     todoAddForm.innerHTML = `
         <div>
             <label for="title">Title:</label>
-            <input required type="text" id="title" name="title" class="todo__title-input" >
+            <input required type="text" id="title" name="title" class="todo__title-input">
         </div>
         <div>
             <label for="description">Description:</label>
-            <input required type="text" id="description" name="description" class="todo__des-input" >
+            <textarea col=10 row=5 id="description" name="description" class="todo__des-input"></textarea>
         </div>
         <div>
             <label for="startDate">Start date:</label>
-            <input required type="time" name="startDate" id="startDate" class="todo__start-input">
+            <input required type="date" name="startDate" id="startDate" class="todo__start-input">
         </div>
         <div>
             <label for="dueDate">Due date:</label>
-            <input required type="time" name="dueDate" id="dueDate" class="todo__due-input">
+            <input required type="date" name="dueDate" id="dueDate" class="todo__due-input">
         </div>
         <div>
             <label for="priority">Priority:</label>
@@ -68,13 +77,15 @@ export function createItemDialog(){
                 <option value="medium">Medium</option>
                 <option value="high">High</option>
             </select>
-        </div>`;
-    
-    // Note-add-form
+        </div>`
+
+    return todoAddForm
+}
+
+function createNoteAddForm() {
     const noteAddForm = document.createElement('form')
     noteAddForm.id = 'note__add-form'
     noteAddForm.classList.add('d-off')
-
     noteAddForm.innerHTML = `
         <div>
             <label for="title">Title:</label>
@@ -82,29 +93,20 @@ export function createItemDialog(){
         </div>
         <div>
             <label for="description">Description:</label>
-            <input required type="text" id="description" name="description" class="note__des-input">
-        </div>`;
+            <textarea id="description" name="description" class="note__des-input"></textarea>
+        </div>`
 
-    appendChildren(todoAddForm, [createProjectSelect()])
-    appendChildren(noteAddForm, [createProjectSelect()])
-
-    appendChildren(dialog, [selectItemForm, todoAddForm, noteAddForm, createButtonDiv()])
-
-    return dialog
+    return noteAddForm
 }
 
-export function createConfirmDialog(){
-    const dialog = document.createElement('dialog')
-    return dialog
-}
-
-function createProjectSelect(){
+function createProjectSelect() {
     const projectSelectDiv = document.createElement('div')
     const projectSelectLabel = document.createElement('label')
-    projectSelectLabel.setAttribute('for','project')
+    projectSelectLabel.setAttribute('for', 'project')
     const projectSelectList = document.createElement('select')
-    projectSelectList.setAttribute('name','project')
-    projectSelectList.setAttribute('id','project')
+    projectSelectList.classList.add('item__project-input')
+    projectSelectList.setAttribute('name', 'project')
+    projectSelectList.setAttribute('id', 'project')
 
     appendChildren(projectSelectDiv, [projectSelectLabel, projectSelectList])
 
@@ -113,12 +115,12 @@ function createProjectSelect(){
         const option = document.createElement('option')
         option.innerText = `${prj.getValue().title}`
         projectSelectList.appendChild(option)
-    });
+    })
 
     return projectSelectDiv
 }
 
-function createButtonDiv(){
+function createButtonDiv() {
     const buttonDiv = createDivWithClass('buttons')
     buttonDiv.innerHTML = `
         <button class="btn add__btn" formmethod="dialog">Create</button>

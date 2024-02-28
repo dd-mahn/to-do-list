@@ -46,18 +46,18 @@ export default function createMenu() {
 function createProjectList(){
     const projectListDiv = createDivWithClass('menu__item', 'project__list')
     projectListDiv.innerHTML = `
-    <div class="project__nav ">
-        <div class="icon__small">
-            <i class="ri-archive-line"></i>
-        </div>
-        <span>Project</span>
-        <div class="arrow icon__small">
-            <i class="ri-arrow-up-s-line"></i>
-        </div>
-    </div>`
+        <div class="project__nav ">
+            <div class="icon__small">
+                <i class="ri-archive-line"></i>
+            </div>
+            <span>Project</span>
+            <div class="arrow icon__small">
+                <i class="ri-arrow-up-s-line"></i>
+            </div>
+        </div>`
 
     const projectList = document.createElement('ul')
-    projectList.classList.add('project__list-items','d-off')
+    projectList.classList.add('project__list-items', 'd-off')
     const projects = projectContainerObj.getAllProject()
     projects.forEach(prj => {
         if(prj.getValue().title !== 'Inbox' && prj.getValue().title !== 'Today'){
@@ -77,4 +77,3 @@ function createProjectList(){
     projectListDiv.appendChild(projectList)
     return projectListDiv
 }
-
