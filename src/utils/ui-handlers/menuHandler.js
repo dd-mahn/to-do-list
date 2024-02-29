@@ -38,6 +38,7 @@ export default function menuHandler(){
     })
     projectAddButton.addEventListener('click', () => {
         projectDialog.showModal()
+        projectDialog.classList.add('df')
         projectDialogHandler()
     })
 
