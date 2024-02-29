@@ -15,7 +15,7 @@ export function createProjectDialog() {
         </div>
         <div>
             <label for="description">Description:</label>
-            <input required type="text" id="description" name="description" class="project__des-input">
+            <textarea required type="text" id="description" name="description" class="project__des-input"></textarea>
         </div>
     `
 
@@ -60,7 +60,7 @@ function createTodoAddForm() {
         </div>
         <div>
             <label for="description">Description:</label>
-            <textarea col=10 row=5 id="description" name="description" class="todo__des-input"></textarea>
+            <textarea required id="description" name="description" class="todo__des-input"></textarea>
         </div>
         <div>
             <label for="startDate">Start date:</label>
