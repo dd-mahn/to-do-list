@@ -11,7 +11,10 @@ export default function projectDialogHandler() {
     const closeBtn = projectForm.querySelector('.close__btn')
 
     closeBtn.addEventListener('click', () => {
+        projectForm.removeAttribute('novalidate')
         projectDialog.close("canceled")
+        projectDialog.classList.remove('df')
+        projectForm.setAttribute('novalidate','true')
     })
 
     addBtn.addEventListener('click', () => {

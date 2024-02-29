@@ -22,7 +22,17 @@ export default function itemDialogHandler() {
 
     selectInput.addEventListener('change', switchForm)
 
-    closeBtn.addEventListener('click', () => itemDialog.close("canceled"))
+    closeBtn.addEventListener('click', () => {
+        if(selectInput.value === 'to-do'){
+            todoForm.removeAttribute('novalidate')
+            itemDialog.close("canceled")
+            todoForm.setAttribute('novalidate','true')
+        }else{
+            noteForm.removeAttribute('novalidate')
+            itemDialog.close("canceled")
+            noteForm.setAttribute('novalidate','true')
+        }
+    })
 
     addBtn.addEventListener('click', () => {
         if (selectInput.value === 'to-do') {
