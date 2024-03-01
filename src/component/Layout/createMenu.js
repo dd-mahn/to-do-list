@@ -62,6 +62,7 @@ function createProjectList(){
     projects.forEach(prj => {
         if(prj.getValue().title !== 'Inbox' && prj.getValue().title !== 'Today'){
             const projectLi = document.createElement('li')
+            projectLi.classList.add('project__list-item')
             projectLi.textContent = prj.getValue().title
             projectList.appendChild(projectLi)
         }
