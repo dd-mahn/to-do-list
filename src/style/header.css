@@ -1,0 +1,27 @@
+header{
+    height: 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--header-color);
+    color: var(--text-color-light);
+    font-size: 1.2rem;
+    padding: 0 .25rem;
+    flex-grow: 4;
+}
+
+header .logo{
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+}
+
+header .logo i{
+    font-size: 1.3rem;
+}
+
+header .menu__btn:hover,
+header .add__btn:hover{
+    cursor: pointer;
+    background: inherit!important;
+}

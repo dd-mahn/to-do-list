@@ -1,0 +1,36 @@
+.nav__bar{
+    display: flex;
+    flex-direction: column;
+    width: 3rem;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 0;
+    border-right: 1px solid var(--tab-border-color);
+}
+
+.nav__items{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.inbox__nav i{
+    color: var(--inbox-color);
+}
+
+.today__nav i{
+    color:var(--today-color)
+}
+
+.project__nav i{
+    color:var(--project-color)
+}
+
+.history__nav i{
+    color:var(--history-color)
+}
+
+.appearance__mode i,
+.menu__bot i{
+    color: var(--light-mode-color);
+}
