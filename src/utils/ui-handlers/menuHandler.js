@@ -44,7 +44,7 @@ export default function menuHandler(){
 
 }
 
-function openProjectList(){
+export function openProjectList(){
     const menu = document.querySelector('.menu')
     const list = menu.querySelector('ul')
     const arrow = menu.querySelector('.arrow')
