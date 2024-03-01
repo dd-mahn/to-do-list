@@ -4,6 +4,7 @@ import history from "../../component/Default Project/history"
 import { setCurrentState } from "../state"
 import renderLayout from "../render"
 import projectDialogHandler from "./projectDialogHandler"
+import projectContainerObj from "../../component/projectContainer"
 
 export default function menuHandler(){
     const menu = document.querySelector('.menu')
@@ -14,8 +15,8 @@ export default function menuHandler(){
     const projectAddButtonDiv = menu.querySelector('.project__add-btn')
     const projectAddButton = projectAddButtonDiv.querySelector('button')
     const projectDialog = document.getElementById('project__add-dialog')
+    const projectListItems = document.querySelectorAll('.project__list-item')
 
-    
     inboxNav.addEventListener('click', () => {
         setCurrentState(inbox())
         renderLayout()
@@ -40,6 +41,15 @@ export default function menuHandler(){
         projectDialog.showModal()
         projectDialog.classList.add('df')
         projectDialogHandler()
+    })
+
+    projectListItems.forEach(item => {
+        const projects = projectContainerObj.getAllProject()
+        item.addEventListener('click', () => {
+            const targetProject = projects.find(prj => prj.getValue().title === item.textContent)
+            setCurrentState(targetProject)
+            renderLayout()
+        })
     })
 
 }
