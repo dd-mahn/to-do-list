@@ -3,7 +3,7 @@
 .to-do,
 .note{
     display: flex;
-    width: 60%;
+    width: 1200px;
     height: 2.5rem;
     border: 1px solid var(--nav-border-color);
     border-radius: 10px;
