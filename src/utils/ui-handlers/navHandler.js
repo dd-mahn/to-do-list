@@ -5,6 +5,7 @@ import today from "../../component/Default Project/today"
 import history from "../../component/Default Project/history"
 import { setCurrentState } from "../state"
 import renderLayout from "../render"
+import { openProjectList } from "./menuHandler"
 
 export default function navHandler(){
     const navBar = document.querySelector('.nav__bar')
@@ -24,7 +25,10 @@ export default function navHandler(){
         setCurrentState(today())
         renderLayout()
     })
-    projectNav.addEventListener('click', () => openMenu())
+    projectNav.addEventListener('click', () => {
+        openMenu()
+        openProjectList()
+    })
     historyNav.addEventListener('click', () => {
         setCurrentState(history())
         renderLayout()
