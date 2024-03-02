@@ -5,6 +5,7 @@ import { setCurrentState } from "../state"
 import renderLayout from "../render"
 import projectDialogHandler from "./projectDialogHandler"
 import projectContainerObj from "../../component/projectContainer"
+import { openMenu } from "./navHandler"
 
 export default function menuHandler(){
     const menu = document.querySelector('.menu')
@@ -18,12 +19,14 @@ export default function menuHandler(){
     const projectListItems = document.querySelectorAll('.project__list-item')
 
     inboxNav.addEventListener('click', () => {
-        setCurrentState(inbox())
+        setCurrentState(inbox)
         renderLayout()
+        openMenu()
     })
     todayNav.addEventListener('click', () => {
-        setCurrentState(today())
+        setCurrentState(today)
         renderLayout()
+        openMenu()
     })
     projectNav.addEventListener('click', () => {
         const list = menu.querySelector('ul')
@@ -34,8 +37,9 @@ export default function menuHandler(){
         }
     })
     historyNav.addEventListener('click', () => {
-        setCurrentState(history())
+        setCurrentState(history)
         renderLayout()
+        openMenu()
     })
     projectAddButton.addEventListener('click', () => {
         projectDialog.showModal()
@@ -49,6 +53,7 @@ export default function menuHandler(){
             const targetProject = projects.find(prj => prj.getValue().title === item.textContent)
             setCurrentState(targetProject)
             renderLayout()
+            openMenu()
         })
     })
 
@@ -70,4 +75,13 @@ function closeProjectList(){
 
     list.classList.add('d-off')
     arrow.classList.remove('rotate-180')
+}
+
+export function isMenuOpen(){
+    const menu = document.querySelector('.menu')
+    if(!menu.classList.contains('d-off')){
+        return true
+    }else{
+        return false
+    }
 }
