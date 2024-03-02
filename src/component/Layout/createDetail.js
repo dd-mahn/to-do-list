@@ -47,11 +47,11 @@ export default function createDetail(obj) {
     closeBtn.classList.add('close__btn')
     closeBtn.innerHTML = `<i class="ri-close-line"></i>`
 
-    const deleteBtn = document.createElement('button')
-    deleteBtn.classList.add('btn','delete__btn')
-    deleteBtn.innerHTML = `Delete`
+    // const deleteBtn = document.createElement('button')
+    // deleteBtn.classList.add('btn','delete__btn')
+    // deleteBtn.innerHTML = `Delete`
 
-    appendChildren(detailDiv, [closeBtn, titleH1, descriptionP, detailList, deleteBtn])
+    appendChildren(detailDiv, [closeBtn, titleH1, descriptionP, detailList])
 
     return detailDiv
 }
