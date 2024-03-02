@@ -4,6 +4,10 @@ import todo from '../../component/todo'
 import note from '../../component/note'
 import projectContainerObj from '../../component/projectContainer'
 import renderLayout from '../render'
+import itemContainerObj from '../../component/itemContainer'
+import { isMenuOpen } from './menuHandler'
+import { openMenu } from './navHandler'
+import { isDetailOpen, openDetail } from './detailHandler'
 
 export default function itemDialogHandler() {
     const itemDialog = document.getElementById('item__add-dialog')
@@ -35,12 +39,16 @@ export default function itemDialogHandler() {
     })
 
     addBtn.addEventListener('click', () => {
+        const menuOpen = isMenuOpen()
+        const detailOpen = isDetailOpen()
         if (selectInput.value === 'to-do') {
             addTodo()
         } else if (selectInput.value === 'note') {
             addNote()
         }
         renderLayout()
+        menuOpen === true ? openMenu() : false
+        detailOpen === true ? openDetail() : false
     })
 
     function addTodo() {
@@ -53,6 +61,7 @@ export default function itemDialogHandler() {
         const newTodo = todo()
         newTodo.changeValue(titleInput.value, desInput.value, startInput.value, dueInput.value, priorityInput.value)
         getSelectedProject().addItem(newTodo)
+        itemContainerObj.addItem(newTodo)
     }
 
     function addNote() {

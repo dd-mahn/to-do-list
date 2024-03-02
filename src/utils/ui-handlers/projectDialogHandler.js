@@ -1,6 +1,8 @@
 import project from "../../component/project"
 import projectContainerObj from "../../component/projectContainer"
 import renderLayout from "../render"
+import { openProjectList } from "./menuHandler"
+import { openMenu } from "./navHandler"
 
 export default function projectDialogHandler() {
     const projectDialog = document.getElementById('project__add-dialog')
@@ -30,6 +32,8 @@ export default function projectDialogHandler() {
             }
             projectContainerObj.addProject(newProject)
             renderLayout()
+            openMenu()
+            openProjectList()
         } else {
             console.log('Empty input')
         }
