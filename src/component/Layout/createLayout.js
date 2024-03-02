@@ -3,7 +3,7 @@ import navBar from './createNavigation'
 import menu from './createMenu'
 import createContent from './createContent'
 import createDetail from './createDetail'
-import {createProjectDialog, createItemDialog, createConfirmDialog} from './createDialogs'
+import {createProjectDialog, createItemDialog, createConfirmDialog, createEditDialog} from './createDialogs'
 import appendChildren from '../../utils/common/appendChildren'
 
 export default function createLayout(obj){
@@ -16,8 +16,9 @@ export default function createLayout(obj){
     const detail = createDetail(obj)
     const projectDialog = createProjectDialog()
     const itemDialog = createItemDialog()
+    const editDialog = createEditDialog()
     const confirmDialog = createConfirmDialog()
 
     appendChildren(body, [header(), container])
-    appendChildren(container, [navBar(), menu(), content, detail, projectDialog, itemDialog, confirmDialog])
+    appendChildren(container, [navBar(), menu(), content, detail, projectDialog, itemDialog, editDialog, confirmDialog])
 }
