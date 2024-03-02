@@ -22,7 +22,7 @@ export default function navHandler(){
         renderLayout()
     })
     todayNav.addEventListener('click', () => {
-        setCurrentState(today())
+        setCurrentState(today)
         renderLayout()
     })
     projectNav.addEventListener('click', () => {
@@ -30,13 +30,13 @@ export default function navHandler(){
         openProjectList()
     })
     historyNav.addEventListener('click', () => {
-        setCurrentState(history())
+        setCurrentState(history)
         renderLayout()
     })
 
 }
 
-function openMenu(){
+export function openMenu(){
     const navBar = document.querySelector('.nav__bar')
     const menu = document.querySelector('.menu')
 
