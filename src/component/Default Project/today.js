@@ -1,14 +1,16 @@
+import itemContainerObj from '../itemContainer'
 import project from '../project'
 import {format} from 'date-fns'
 
 
 const today = () => {
     const todayObj = Object.create(project())
-    const curDate = format(new Date(), 'MM/dd/yyyy')
 
-    todayObj.changeValue('Today', 'You will see all today todos here')
+    todayObj.changeValue('Today', `You can store your today's to-dos here`)
 
     return todayObj
 }
 
-export default today
+const todayObj = today()
+
+export default todayObj
