@@ -1,6 +1,7 @@
 import appendChildren from "../../utils/common/appendChildren"
 import createDivWithClass from "../../utils/common/createDivWithClass"
 import projectContainer from '../projectContainer'
+import {getCurrentState} from '../../utils/state'
 
 export function createProjectDialog() {
     const dialog = document.createElement('dialog')
@@ -107,6 +108,7 @@ function createProjectSelect() {
     projectSelectList.classList.add('item__project-input')
     projectSelectList.setAttribute('name', 'project')
     projectSelectList.setAttribute('id', 'project')
+    const currentProject = getCurrentState()
 
     appendChildren(projectSelectDiv, [projectSelectLabel, projectSelectList])
 
@@ -117,6 +119,7 @@ function createProjectSelect() {
         projectSelectList.appendChild(option)
     })
 
+    projectSelectList.value = currentProject.getValue().title
     return projectSelectDiv
 }
 
