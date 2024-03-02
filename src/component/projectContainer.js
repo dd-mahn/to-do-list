@@ -1,4 +1,5 @@
-import inbox from './Default Project/inbox'
+import inboxObj from './Default Project/inbox'
+import todayObj from './Default Project/today'
 function projectContainer() {
     const arr = []
 
@@ -27,5 +28,6 @@ function projectContainer() {
 }
 
 const projectContainerObj = projectContainer()
-projectContainerObj.addProject(inbox)
+projectContainerObj.addProject(inboxObj)
+projectContainerObj.addProject(todayObj)
 export default projectContainerObj
