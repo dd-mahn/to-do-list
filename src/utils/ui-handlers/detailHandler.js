@@ -11,9 +11,9 @@ export function detailHandler(){
         closeThis(detail)
     })
 
-    deleteBtn.addEventListener('click', () => {
+    // deleteBtn.addEventListener('click', () => {
 
-    })
+    // })
     
 }
 
@@ -22,5 +22,14 @@ export function openDetail(){
     if(detail.classList.contains('d-off')){
         openThis(detail)
         detailHandler()
+    }
+}
+
+export function isDetailOpen(){
+    const detail = document.querySelector('.detail')
+    if(!detail.classList.contains('d-off')){
+        return true
+    }else{
+        return false
     }
 }
