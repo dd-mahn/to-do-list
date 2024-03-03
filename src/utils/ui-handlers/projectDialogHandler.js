@@ -1,8 +1,9 @@
+// For projectDialogHandler
 import project from "../../component/project"
 import projectContainerObj from "../../component/projectContainer"
 import renderLayout from "../render"
-import { openProjectList } from "./menuHandler"
-import { openMenu } from "./navHandler"
+import { setCurrentState } from "../state"
+import { openMenu, openProjectList } from "./menuHandler"
 
 export default function projectDialogHandler() {
     const projectDialog = document.getElementById('project__add-dialog')
@@ -14,23 +15,25 @@ export default function projectDialogHandler() {
 
     closeBtn.addEventListener('click', () => {
         projectForm.removeAttribute('novalidate')
-        projectDialog.close("canceled")
+        projectDialog.close('canceled')
         projectDialog.classList.remove('df')
-        projectForm.setAttribute('novalidate','true')
+        projectForm.setAttribute('novalidate', 'true')
     })
 
     addBtn.addEventListener('click', () => {
         const allProjects = projectContainerObj.getAllProject()
-        if (nameInput.value !== '' && desInput.value !== '') {
+        const nameValue = nameInput.value.trim()
+        const desValue = desInput.value.trim()
+        if (nameValue && desValue) {
+            const existingProject = allProjects.find(prj => prj.getValue().title === nameValue)
             const newProject = project()
-            const existingProject = allProjects.find(prj => prj.getValue().title === nameInput.value)
             if (existingProject) {
-                const duplicatedName = nameInput.value + '1'
-                newProject.changeValue(duplicatedName, desInput.value)
+                newProject.changeValue(nameValue + '1', desValue)
             } else {
-                newProject.changeValue(nameInput.value, desInput.value)
+                newProject.changeValue(nameValue, desValue)
             }
             projectContainerObj.addProject(newProject)
+            setCurrentState(newProject)
             renderLayout()
             openMenu()
             openProjectList()

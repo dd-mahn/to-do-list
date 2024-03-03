@@ -5,8 +5,7 @@ import note from '../../component/note'
 import projectContainerObj from '../../component/projectContainer'
 import renderLayout from '../render'
 import itemContainerObj from '../../component/itemContainer'
-import { isMenuOpen } from './menuHandler'
-import { openMenu } from './navHandler'
+import { isMenuOpen, openMenu } from './menuHandler'
 import { isDetailOpen, openDetail } from './detailHandler'
 
 export default function itemDialogHandler() {
@@ -27,50 +26,42 @@ export default function itemDialogHandler() {
     selectInput.addEventListener('change', switchForm)
 
     closeBtn.addEventListener('click', () => {
-        if(selectInput.value === 'to-do'){
-            todoForm.removeAttribute('novalidate')
-            itemDialog.close("canceled")
-            todoForm.setAttribute('novalidate','true')
-        }else{
-            noteForm.removeAttribute('novalidate')
-            itemDialog.close("canceled")
-            noteForm.setAttribute('novalidate','true')
-        }
+        const form = selectInput.value === 'to-do' ? todoForm : noteForm
+        form.removeAttribute('novalidate')
+        itemDialog.close('canceled')
+        form.setAttribute('novalidate', 'true')
     })
 
     addBtn.addEventListener('click', () => {
         const menuOpen = isMenuOpen()
         const detailOpen = isDetailOpen()
-        if (selectInput.value === 'to-do') {
-            addTodo()
-        } else if (selectInput.value === 'note') {
-            addNote()
-        }
+        if (selectInput.value === 'to-do') addTodo()
+        else if (selectInput.value === 'note') addNote()
         renderLayout()
-        menuOpen === true ? openMenu() : false
-        detailOpen === true ? openDetail() : false
+        if (menuOpen) openMenu()
+        if (detailOpen) openDetail()
     })
 
     function addTodo() {
-        const titleInput = todoForm.querySelector('.todo__title-input')
-        const desInput = todoForm.querySelector('.todo__des-input')
-        const startInput = todoForm.querySelector('.todo__start-input')
-        const dueInput = todoForm.querySelector('.todo__due-input')
-        const priorityInput = todoForm.querySelector('.todo__priority-input')
-
         const newTodo = todo()
-        newTodo.changeValue(titleInput.value, desInput.value, startInput.value, dueInput.value, priorityInput.value)
+        populateItem(newTodo, todoForm)
         getSelectedProject().addItem(newTodo)
         itemContainerObj.addItem(newTodo)
     }
 
     function addNote() {
-        const titleInput = noteForm.querySelector('.note__title-input')
-        const desInput = noteForm.querySelector('.note__des-input')
-
         const newNote = note()
-        newNote.changeValue(titleInput.value, desInput.value)
+        populateItem(newNote, noteForm)
         getSelectedProject().addItem(newNote)
+    }
+
+    function populateItem(item, form) {
+        const titleInput = form.querySelector('.item__title-input')
+        const desInput = form.querySelector('.item__des-input')
+        const startInput = form.querySelector('.item__start-input')
+        const dueInput = form.querySelector('.item__due-input')
+        const priorityInput = form.querySelector('.item__priority-input')
+        item.changeValue(titleInput.value, desInput.value, startInput.value, dueInput.value, priorityInput.value)
     }
 
     function getSelectedProject() {
