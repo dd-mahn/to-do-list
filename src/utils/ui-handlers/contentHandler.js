@@ -1,8 +1,8 @@
 import closeThis from '../common/closeThis'
 import openThis from '../common/openThis'
 import {getCurrentState} from '../state'
-import changeDetail from "./changeDetail"
-import { openDetail, detailHandler } from "./detailHandler"
+import { openDetail, detailHandler, changeDetail } from "./detailHandler"
+import { editNoteDialogHandler, editTodoDialogHandler } from './editDialogHandler'
 
 export default function contentHandler(){
     const titleDiv = document.querySelector('.content__title')
@@ -34,9 +34,11 @@ export default function contentHandler(){
             if(item.classList.contains('note')){
                 openThis(noteForm)
                 closeThis(todoForm)
+                editNoteDialogHandler(currentProject.getItem(index))
             }else{
                 openThis(todoForm)
                 closeThis(noteForm)
+                editTodoDialogHandler(currentProject.getItem(index))
             }
         })
     })
