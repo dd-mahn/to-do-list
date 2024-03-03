@@ -1,3 +1,4 @@
+import createDetail from "../../component/Layout/createDetail"
 import closeThis from "../common/closeThis"
 import openThis from "../common/openThis"
 
@@ -15,6 +16,15 @@ export function detailHandler(){
 
     // })
     
+}
+
+export function changeDetail(obj){
+    const container = document.querySelector('.container')
+    const oldDetail = container.querySelector('.detail')
+    const newDetail = createDetail(obj)
+    
+    container.removeChild(oldDetail)
+    container.appendChild(newDetail)
 }
 
 export function openDetail(){
