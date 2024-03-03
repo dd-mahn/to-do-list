@@ -1,6 +1,7 @@
 import closeThis from '../common/closeThis'
 import openThis from '../common/openThis'
 import {getCurrentState} from '../state'
+import { deleteConfirmHandler } from './confirmDialogHandler'
 import { openDetail, detailHandler, changeDetail } from "./detailHandler"
 import { editNoteDialogHandler, editTodoDialogHandler } from './editDialogHandler'
 
@@ -40,6 +41,18 @@ export default function contentHandler(){
                 closeThis(noteForm)
                 editTodoDialogHandler(currentProject.getItem(index))
             }
+        })
+
+        const moveBtn = item.querySelector('.move__btn')
+        moveBtn.addEventListener('click', () => {
+            
+        })
+
+        const deleteBtn = item.querySelector('.delete__btn')
+        deleteBtn.addEventListener('click', () => {
+            const confirmDialog = document.getElementById('confirm__dialog')
+            confirmDialog.showModal()
+            deleteConfirmHandler(currentProject, index)
         })
     })
 }
