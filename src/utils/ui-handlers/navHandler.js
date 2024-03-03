@@ -1,11 +1,9 @@
 import inbox from "../../component/Default Project/inbox"
-import closeThis from "../common/closeThis"
-import openThis from "../common/openThis"
 import today from "../../component/Default Project/today"
 import history from "../../component/Default Project/history"
 import { setCurrentState } from "../state"
 import renderLayout from "../render"
-import { openProjectList } from "./menuHandler"
+import { openMenu, openProjectList } from "./menuHandler"
 
 export default function navHandler(){
     const navBar = document.querySelector('.nav__bar')
@@ -36,10 +34,3 @@ export default function navHandler(){
 
 }
 
-export function openMenu(){
-    const navBar = document.querySelector('.nav__bar')
-    const menu = document.querySelector('.menu')
-
-    closeThis(navBar)
-    openThis(menu)
-}

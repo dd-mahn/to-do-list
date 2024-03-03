@@ -5,7 +5,8 @@ import { setCurrentState } from "../state"
 import renderLayout from "../render"
 import projectDialogHandler from "./projectDialogHandler"
 import projectContainerObj from "../../component/projectContainer"
-import { openMenu } from "./navHandler"
+import closeThis from "../common/closeThis"
+import openThis from "../common/openThis"
 
 export default function menuHandler(){
     const menu = document.querySelector('.menu')
@@ -84,4 +85,12 @@ export function isMenuOpen(){
     }else{
         return false
     }
+}
+
+export function openMenu(){
+    const navBar = document.querySelector('.nav__bar')
+    const menu = document.querySelector('.menu')
+
+    closeThis(navBar)
+    openThis(menu)
 }
