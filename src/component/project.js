@@ -20,7 +20,11 @@ export default function project(){
     }
 
     const deleteItem = (index) => {
-        arr.splice(index, index)
+        if(index === 0){
+            arr.splice(0,1)
+        }else{
+            arr.splice(index, index)
+        }
     }
 
     const getItem = (index) => {

@@ -14,7 +14,11 @@ function itemContainer() {
     }
 
     const deleteItem = (index) => {
-        if(index >= 0 && index < arr.length) arr.splice(index,index)
+        if(index === 0){
+            arr.splice(0,1)
+        }else{
+            arr.splice(index, index)
+        }
     }
 
     return{
