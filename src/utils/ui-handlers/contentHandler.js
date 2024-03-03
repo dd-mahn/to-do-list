@@ -4,6 +4,7 @@ import {getCurrentState} from '../state'
 import { deleteConfirmHandler } from './confirmDialogHandler'
 import { openDetail, detailHandler, changeDetail } from "./detailHandler"
 import { editNoteDialogHandler, editTodoDialogHandler } from './editDialogHandler'
+import moveDialogHandler from './moveDialogHandler'
 
 export default function contentHandler(){
     const titleDiv = document.querySelector('.content__title')
@@ -45,7 +46,9 @@ export default function contentHandler(){
 
         const moveBtn = item.querySelector('.move__btn')
         moveBtn.addEventListener('click', () => {
-            
+            const moveDialog = document.getElementById('item__move-dialog')
+            moveDialog.showModal()
+            moveDialogHandler(currentProject, index)
         })
 
         const deleteBtn = item.querySelector('.delete__btn')
