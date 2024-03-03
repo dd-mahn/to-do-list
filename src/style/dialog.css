@@ -16,7 +16,8 @@
 }
 
 #project__add-dialog>form>div,
-#item__add-dialog>form>div {
+#item__add-dialog>form>div,
+#item__edit-dialog>form>div {
     /* Styling for form divs */
     display: flex;
     flex-direction: column;
@@ -25,7 +26,8 @@
 }
 
 #project__add-dialog>form>div>input,
-#item__add-dialog>form>div>input {
+#item__add-dialog>form>div>input,
+#item__edit-dialog>form>div>input {
     /* Styling for form inputs */
     border: 1px solid var(--nav-border-color);
     height: 30px;
@@ -36,7 +38,8 @@
 }
 
 #project__add-dialog>form>div>label,
-#item__add-dialog>form>div>label {
+#item__add-dialog>form>div>label,
+#item__edit-dialog>form>div>label {
     /* Styling for form labels */
     width: 150px;
     font-size: 1rem;
@@ -45,7 +48,8 @@
 }
 
 #project__add-dialog>form>div>textarea,
-#item__add-dialog>form>div>textarea {
+#item__add-dialog>form>div>textarea,
+#item__edit-dialog>form>div>textarea {
     /* Styling for form textareas */
     border: 1px solid var(--nav-border-color);
     height: 60px;
@@ -57,7 +61,8 @@
 }
 
 #project__add-dialog .buttons,
-#item__add-dialog .buttons {
+#item__add-dialog .buttons,
+#item__edit-dialog .buttons {
     /* Styling for button container */
     display: flex !important;
     flex-direction: row !important;
@@ -69,7 +74,8 @@
 }
 
 #project__add-dialog .buttons .add__btn,
-#item__add-dialog .buttons .add__btn {
+#item__add-dialog .buttons .add__btn,
+#item__edit-dialog .buttons .add__btn {
     /* Styling for add button */
     background-color: var(--priority-low-color);
     color: var(--text-color-light);
@@ -77,7 +83,8 @@
 }
 
 #project__add-dialog .buttons .close__btn,
-#item__add-dialog .buttons .close__btn {
+#item__add-dialog .buttons .close__btn,
+#item__edit-dialog .buttons .close__btn {
     /* Styling for close button */
     background-color: var(--delete-btn-color);
     color: var(--text-color-light);
@@ -147,4 +154,15 @@
     padding: 0 0.25rem;
     font-size: 1rem;
     font-family: 'Inconsolata', monospace;
+}
+
+/* Edit dialog section */
+#item__edit-dialog{
+    padding: 1rem 2rem;
+    width: 400px;
+    background-color: var(--background-color-2);
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    border: 1px solid var(--nav-border-color);
 }
