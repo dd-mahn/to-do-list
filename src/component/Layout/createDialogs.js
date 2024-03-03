@@ -102,6 +102,7 @@ function createProjectSelect() {
     const projectSelectDiv = document.createElement('div')
     const projectSelectLabel = document.createElement('label')
     projectSelectLabel.setAttribute('for', 'project')
+    projectSelectLabel.innerHTML = `Put it in: `
     const projectSelectList = document.createElement('select')
     projectSelectList.classList.add('item__project-input')
     projectSelectList.setAttribute('name', 'project')
@@ -214,4 +215,14 @@ function createEditButtonDiv() {
         <button class="btn close__btn" formmethod="dialog">Cancel</button>`
 
     return buttonDiv
+}
+
+// Move dialog 
+
+export function createMoveDialog(){
+    const dialog = document.createElement('dialog')
+    dialog.id = 'item__move-dialog'
+    appendChildren(dialog, [createProjectSelect(), createEditButtonDiv()])
+
+    return dialog
 }
