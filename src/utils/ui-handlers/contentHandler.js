@@ -1,13 +1,15 @@
 import historyObj from '../../component/Default Project/history'
+import createUndoBox from '../../component/Layout/createUndoBox'
 import closeThis from '../common/closeThis'
 import openThis from '../common/openThis'
 import setPriorityClass from '../common/setPriorityClass'
 import renderLayout from '../render'
 import { getCurrentState } from '../state'
-import { deleteConfirmHandler } from './confirmDialogHandler'
+import { addToQueue, checkUndoBoxQueue, deleteConfirmHandler } from './confirmDialogHandler'
 import { openDetail, detailHandler, changeDetail } from './detailHandler'
 import { editNoteDialogHandler, editTodoDialogHandler } from './editDialogHandler'
 import moveDialogHandler from './moveDialogHandler'
+import { undoCheckboxHandler } from './undoHandler'
 
 export default function contentHandler() {
     const titleDiv = document.querySelector('.content__title')
@@ -70,6 +72,16 @@ export default function contentHandler() {
             historyObj.addItem(finishedItem)
             currentProject.deleteItem(index)
             renderLayout()
+            console.log('rerendered')
+
+            setTimeout(() => {
+                const content = document.querySelector('.content')
+                const undoBox = createUndoBox('1 item marked finished')
+                content.appendChild(undoBox)
+                undoCheckboxHandler(currentProject, finishedItem, undoBox) // Pass undoBox to undoDeleteHandler
+                addToQueue(undoBox) // Add undoBox to the queue
+                checkUndoBoxQueue() // Check the queue for handling undoBox elements
+            }, 500)
         }, 500)
     }
 
@@ -98,7 +110,9 @@ export default function contentHandler() {
                 priorityBtn.addEventListener('click', () => handlePriorityButtonClick(index, priorityBtn))
 
                 const checkbox = item.querySelector('.checkbox__input')
-                checkbox.addEventListener('change', () => handleCheckboxChange(index))
+                checkbox.addEventListener('change', () => {
+                    handleCheckboxChange(index)
+                })
             }
         } else {
             const deleteBtn = item.querySelector('.delete__btn')

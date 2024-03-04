@@ -1,3 +1,4 @@
+import historyObj from "../../component/Default Project/history"
 import renderLayout from "../render"
 import { removeUndoBox } from "./confirmDialogHandler"
 
@@ -16,11 +17,20 @@ export function undoDeleteHandler(project, item, undoBox){
     })
 }
 
-export function undoCheckboxHandler(project, index){
-    const content = document.querySelector('.content')
-    const undoBox = document.querySelector('.undo__box')
+export function undoCheckboxHandler(project, item, undoBox){
+    const undoBtn = undoBox.querySelector('.undo__btn')
+    const closeBtn = undoBox.querySelector('.close__btn')
 
-    project.addItem(index)
+    undoBtn.addEventListener('click', () => {
+        item.changeStatus()
+        project.addItem(item)
+        const index = historyObj.getAllItem().findIndex(obj => obj.getValue().title === item.getValue().title)
+        historyObj.deleteItem(index)
+        removeUndoBox(undoBox)
+        renderLayout()
+    })
 
-    content.removeChild(undoBox)
+    closeBtn.addEventListener('click', () => {
+        removeUndoBox(undoBox)
+    })
 }
