@@ -4,6 +4,7 @@
     flex-direction: column;
     padding: 1rem 2.5rem;
     color: var(--text-color-dark);
+    position: relative;
 }
 
 .content__title{
@@ -33,4 +34,32 @@
     align-items: center;
     justify-content: start;
     gap:1rem;
+}
+
+.undo__box{
+    position: absolute;
+    top: 20px;
+    min-width: 200px;
+    right: 20px;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100px;
+    background: var(--background-color-2);
+    border-radius: 10px;
+}
+
+.undo__box .buttons{
+    margin-left: 1rem;
+}
+
+.undo__box .undo__btn{
+    background: var(--edit-btn-color);
+    color: #FFF;
+}
+
+.undo__box .close__btn{
+    background: var(--delete-btn-color);
+    color: #FFF;
 }
