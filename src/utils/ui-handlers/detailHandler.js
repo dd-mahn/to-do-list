@@ -9,7 +9,7 @@ export function detailHandler(){
 
 
     closeBtn.addEventListener('click', () => {
-        closeThis(detail)
+        closeDetail()
     })
 
     // deleteBtn.addEventListener('click', () => {
@@ -33,6 +33,15 @@ export function openDetail(){
         openThis(detail)
         detailHandler()
     }
+}
+
+export function closeDetail(){
+    const detail = document.querySelector('.detail')
+    detail.setAttribute('closing','')
+    detail.addEventListener('animationend', () => {
+        detail.removeAttribute('closing')
+        closeThis(detail)
+    })
 }
 
 export function isDetailOpen(){

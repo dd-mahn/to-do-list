@@ -11,11 +11,21 @@ export default function headerHandler(){
 
     menuBtn.addEventListener('click', () => {
         if(menu.classList.contains('d-off')){
-            closeThis(navBar)
-            openThis(menu)
+            navBar.setAttribute('closing','')
+            navBar.addEventListener('animationend', () => {
+                navBar.removeAttribute('closing')
+                closeThis(navBar)
+                openThis(menu)
+            }, {once: true})
+            
+            
         }else{
-            closeThis(menu)
-            openThis(navBar)
+            menu.setAttribute('closing','')
+            menu.addEventListener('animationend', () => {
+                menu.removeAttribute('closing')
+                closeThis(menu)
+                openThis(navBar)
+            }, {once: true})
         }
     })
 
