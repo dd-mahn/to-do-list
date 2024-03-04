@@ -55,6 +55,7 @@ export default function menuHandler(){
             setCurrentState(targetProject)
             renderLayout()
             openMenu()
+            openProjectList()
         })
     })
 
