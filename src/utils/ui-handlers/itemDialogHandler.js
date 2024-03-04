@@ -44,24 +44,30 @@ export default function itemDialogHandler() {
 
     function addTodo() {
         const newTodo = todo()
-        populateItem(newTodo, todoForm)
+        populateTodo(newTodo, todoForm)
         getSelectedProject().addItem(newTodo)
         itemContainerObj.addItem(newTodo)
     }
 
     function addNote() {
         const newNote = note()
-        populateItem(newNote, noteForm)
+        populateNote(newNote, noteForm)
         getSelectedProject().addItem(newNote)
     }
 
-    function populateItem(item, form) {
-        const titleInput = form.querySelector('.item__title-input')
-        const desInput = form.querySelector('.item__des-input')
-        const startInput = form.querySelector('.item__start-input')
-        const dueInput = form.querySelector('.item__due-input')
-        const priorityInput = form.querySelector('.item__priority-input')
+    function populateTodo(item, form) {
+        const titleInput = form.querySelector('.todo__title-input')
+        const desInput = form.querySelector('.todo__des-input')
+        const startInput = form.querySelector('.todo__start-input')
+        const dueInput = form.querySelector('.todo__due-input')
+        const priorityInput = form.querySelector('.todo__priority-input')
         item.changeValue(titleInput.value, desInput.value, startInput.value, dueInput.value, priorityInput.value)
+    }
+
+    function populateNote(item, form) {
+        const titleInput = form.querySelector('.note__title-input')
+        const desInput = form.querySelector('.note__des-input')
+        item.changeValue(titleInput.value, desInput.value)
     }
 
     function getSelectedProject() {
