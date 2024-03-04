@@ -154,7 +154,7 @@ export function createEditDialog(){
     const dialog = document.createElement('dialog')
     dialog.id = 'item__edit-dialog'
 
-    appendChildren(dialog, [createTodoEditForm(), createNoteEditForm(), createEditButtonDiv()])
+    appendChildren(dialog, [createTodoEditForm(), createNoteEditForm(), createProjectEditForm(), createEditButtonDiv()])
 
     return dialog
 }
@@ -198,6 +198,23 @@ function createNoteEditForm(){
         </div>`
 
     return noteEditForm
+}
+
+function createProjectEditForm(){
+    const projectEditForm = document.createElement('form')
+    projectEditForm.id = 'project__edit-form'
+    projectEditForm.classList.add('d-off')
+    projectEditForm.innerHTML = `
+        <div>
+            <label for="title">Title:</label>
+            <input required type="text" id="title" name="title" class="project__title-input">
+        </div>
+        <div>
+            <label for="description">Description:</label>
+            <textarea id="description" name="description" class="project__des-input"></textarea>
+        </div>`
+
+    return projectEditForm
 }
 
 function createEditButtonDiv() {
