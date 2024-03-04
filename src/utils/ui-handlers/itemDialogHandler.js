@@ -73,6 +73,6 @@ export default function itemDialogHandler() {
     function getSelectedProject() {
         const projectList = document.querySelector('.item__project-input')
         const selectedValue = projectList.value
-        return projectContainerObj.getAllProject().find(prj => prj.getValue().title === selectedValue)
+        return projectContainerObj.getAllItem().find(prj => prj.getValue().title === selectedValue)
     }
 }
