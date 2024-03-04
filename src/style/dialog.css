@@ -1,3 +1,66 @@
+
+dialog div {
+    /* Styling for form divs */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-bottom: .5rem;
+}
+
+dialog input {
+    /* Styling for form inputs */
+    border: 1px solid var(--nav-border-color);
+    height: 30px;
+    border-radius: 5px;
+    padding: 0 .5rem;
+    font-size: 1rem;
+    font-family: 'Inconsolata', monospace;
+}
+
+dialog label {
+    /* Styling for form labels */
+    width: 150px;
+    font-size: 1rem;
+    margin-bottom: .2rem;
+    font-family: 'Inconsolata', monospace;
+}
+
+dialog textarea {
+    /* Styling for form textareas */
+    border: 1px solid var(--nav-border-color);
+    height: 60px;
+    border-radius: 5px;
+    resize: none;
+    padding: .2rem .5rem;
+    font-size: 1rem;
+    font-family: 'Inconsolata', monospace;
+}
+
+dialog .buttons {
+    /* Styling for button container */
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: center;
+    align-items: center;
+    gap: .5rem;
+    margin-top: 1rem;
+    margin-bottom: 0;
+}
+
+dialog .add__btn {
+    /* Styling for add button */
+    background-color: var(--priority-low-color);
+    color: var(--text-color-light);
+    font-size: 1.1rem !important;
+}
+
+dialog .close__btn {
+    /* Styling for close button */
+    background-color: var(--delete-btn-color);
+    color: var(--text-color-light);
+    font-size: 1.1rem !important;
+}
+
 /* Project Dialog section */
 #project__add-dialog {
     /* Styling for the dialog */
@@ -13,82 +76,6 @@
 
 #project__add-form{
     width: 100%;
-}
-
-#project__add-dialog>form>div,
-#item__add-dialog>form>div,
-#item__edit-dialog>form>div {
-    /* Styling for form divs */
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    margin-bottom: .5rem;
-}
-
-#project__add-dialog>form>div>input,
-#item__add-dialog>form>div>input,
-#item__edit-dialog>form>div>input {
-    /* Styling for form inputs */
-    border: 1px solid var(--nav-border-color);
-    height: 30px;
-    border-radius: 5px;
-    padding: 0 .5rem;
-    font-size: 1rem;
-    font-family: 'Inconsolata', monospace;
-}
-
-#project__add-dialog>form>div>label,
-#item__add-dialog>form>div>label,
-#item__edit-dialog>form>div>label {
-    /* Styling for form labels */
-    width: 150px;
-    font-size: 1rem;
-    margin-bottom: .2rem;
-    font-family: 'Inconsolata', monospace;
-}
-
-#project__add-dialog>form>div>textarea,
-#item__add-dialog>form>div>textarea,
-#item__edit-dialog>form>div>textarea {
-    /* Styling for form textareas */
-    border: 1px solid var(--nav-border-color);
-    height: 60px;
-    border-radius: 5px;
-    resize: none;
-    padding: .2rem .5rem;
-    font-size: 1rem;
-    font-family: 'Inconsolata', monospace;
-}
-
-#project__add-dialog .buttons,
-#item__add-dialog .buttons,
-#item__edit-dialog .buttons {
-    /* Styling for button container */
-    display: flex !important;
-    flex-direction: row !important;
-    justify-content: center;
-    align-items: center;
-    gap: .5rem;
-    margin-top: 1rem;
-    margin-bottom: 0;
-}
-
-#project__add-dialog .buttons .add__btn,
-#item__add-dialog .buttons .add__btn,
-#item__edit-dialog .buttons .add__btn {
-    /* Styling for add button */
-    background-color: var(--priority-low-color);
-    color: var(--text-color-light);
-    font-size: 1.1rem !important;
-}
-
-#project__add-dialog .buttons .close__btn,
-#item__add-dialog .buttons .close__btn,
-#item__edit-dialog .buttons .close__btn {
-    /* Styling for close button */
-    background-color: var(--delete-btn-color);
-    color: var(--text-color-light);
-    font-size: 1.1rem !important;
 }
 
 /* Item dialog section */
@@ -140,9 +127,14 @@
 #item__add-dialog > div {
     /* Styling for additional div */
     display: flex;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
     margin-bottom: 1rem;
+}
+
+#item__add-dialog > div > label{
+    width: auto !important;
 }
 
 #item__add-dialog>div>select {
@@ -165,4 +157,24 @@
     align-items: center;
     border-radius: 10px;
     border: 1px solid var(--nav-border-color);
+}
+
+/* Confirm dialog section */
+#confirm__dialog{
+    border: 1px solid var(--nav-border-color);
+    padding: 1rem 2rem;
+    width: 300px;
+    background-color: var(--background-color-2);
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+}
+
+#confirm__dialog>span {
+    /* Styling for form labels */
+    width: 150px;
+    font-size: 1rem;
+    margin-bottom: .2rem;
+    font-family: 'Inconsolata', monospace;
 }
