@@ -13,8 +13,16 @@ export default function todo(){
         priority = pri
     }
 
+    const changePriority = (pri) => {
+        priority = pri
+    }
+
     const changeStatus = () => {
-        status === false ? true : false
+        if(status === false){
+            status = true
+        }else{
+            status = false
+        }
     }
     
     const getType = () => type
@@ -33,6 +41,7 @@ export default function todo(){
     return{
         changeValue,
         changeStatus,
+        changePriority,
         getType,
         getValue
     }
