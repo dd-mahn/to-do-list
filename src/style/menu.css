@@ -53,7 +53,6 @@
 .menu__item:hover{
     cursor: pointer;
     background:var(--hover-background-color);
-    color: var(--hover-text-color);
 }
 
 .menu__item span{
@@ -82,7 +81,6 @@
 
 .menu__item.project__list > div:hover{
     background: var(--hover-background-color);
-    color:var(--hover-text-color);
     cursor: pointer;
 }
 
@@ -102,27 +100,62 @@
 
 .menu__item.project__list ul li{
     list-style: none;
+    height: 40px;
     margin-bottom: .75rem;
     padding:.25rem 0.5rem;
     border:1px solid var(--nav-border-color);
     border-radius:10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* background: var(--nav-border-color); */
+    color: var(--text-color-dark);
+}
+
+.menu__item.project__list ul li span{
+    max-width: 5rem;
+    overflow: hidden;
+}
+
+.menu__item.project__list ul li span:hover{
+    cursor:pointer;
+}
+
+.menu__item.project__list ul li .buttons{
+    display: flex;
+    align-items: center;
+    gap: .3rem;
+}
+
+.menu__item.project__list ul li .buttons button{
+    border:none;
+    background: inherit;
+    color: var(--text-color-dark);
+    font-size:1.2rem;
+}
+
+.menu__item.project__list ul li .buttons button:hover{
+    cursor:pointer;
+    color:var(--hover-text-color)
 }
 
 .menu__item.project__list ul li:hover{
-    cursor: pointer;
-    border:2px solid var(--nav-border-color);
+    box-shadow: var(--shadow-color) 5px 5px 10px;
+
 }
 
 .project__add-btn{
     border:none !important;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
     margin-bottom: 0 !important;
+    background: inherit !important;
 }
 
 .project__add-btn:hover{
     cursor: default !important;
+    box-shadow: none !important;
 }
 
 .project__add-btn button{
@@ -136,7 +169,7 @@
 
 .project__add-btn button:hover{
     cursor: pointer;
-    opacity: 0.8;
+    box-shadow: var(--shadow-color) 5px 5px 10px;
     border:none !important;
 }
 

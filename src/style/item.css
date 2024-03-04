@@ -11,7 +11,6 @@
 
 .to-do:hover,
 .note:hover{
-    border: 2px solid var(--nav-border-color);
     box-shadow: var(--shadow-color) 5px 5px 10px;
 }
 
