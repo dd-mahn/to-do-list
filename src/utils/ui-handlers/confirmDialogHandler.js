@@ -19,7 +19,7 @@ export function deleteConfirmHandler(project, index){
             const undoBox = createUndoBox('1 item deleted')
             content.appendChild(undoBox)
             undoDeleteHandler(project, deleteItem, undoBox) // Pass undoBox to undoDeleteHandler
-            undoBoxQueue.push(undoBox) // Add undoBox to the queue
+            addToQueue(undoBox) // Add undoBox to the queue
             checkUndoBoxQueue() // Check the queue for handling undoBox elements
         }, 500)
     })
@@ -29,6 +29,10 @@ export function deleteConfirmHandler(project, index){
     })
 }
 
+export function addToQueue(item){
+    undoBoxQueue.push(item)
+} 
+
 export function removeUndoBox(undoBox) {
     const index = undoBoxQueue.indexOf(undoBox)
     if (index !== -1) {
@@ -37,7 +41,7 @@ export function removeUndoBox(undoBox) {
     }
 }
 
-function checkUndoBoxQueue() {
+export function checkUndoBoxQueue() {
     setTimeout(() => {
         const undoBox = undoBoxQueue.shift() // Get the first undoBox from the queue
         if (undoBox) {
