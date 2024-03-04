@@ -7,6 +7,7 @@ import projectDialogHandler from "./projectDialogHandler"
 import projectContainerObj from "../../component/projectContainer"
 import closeThis from "../common/closeThis"
 import openThis from "../common/openThis"
+import { deleteProjectConfirmHandler } from "./confirmDialogHandler"
 
 export default function menuHandler(){
     const menu = document.querySelector('.menu')
@@ -49,13 +50,24 @@ export default function menuHandler(){
     })
 
     projectListItems.forEach(item => {
-        const projects = projectContainerObj.getAllProject()
-        item.addEventListener('click', () => {
+        const projects = projectContainerObj.getAllItem()
+        const title = item.querySelector('span')
+        title.addEventListener('click', () => {
             const targetProject = projects.find(prj => prj.getValue().title === item.textContent)
             setCurrentState(targetProject)
             renderLayout()
             openMenu()
             openProjectList()
+        })
+
+        const editBtn = item.querySelector('.edit__btn')
+
+        const deleteBtn = item.querySelector('.delete__btn')
+        deleteBtn.addEventListener('click', () => {
+            const confirmDialog = document.getElementById('confirm__dialog')
+            confirmDialog.showModal()
+            const index = projectContainerObj.getAllItem().findIndex(prj => prj.getValue().title === title.textContent)
+            deleteProjectConfirmHandler(projectContainerObj, index )
         })
     })
 
