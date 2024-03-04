@@ -9,6 +9,8 @@ import closeThis from "../common/closeThis"
 import openThis from "../common/openThis"
 import { deleteProjectConfirmHandler } from "./confirmDialogHandler"
 import { editProjectDialogHandler } from "./editDialogHandler"
+import searchResult from "../../component/Default Project/searchResult"
+import searchAllItems from "../common/searchAllItems"
 
 export default function menuHandler(){
     const menu = document.querySelector('.menu')
@@ -20,17 +22,21 @@ export default function menuHandler(){
     const projectAddButton = projectAddButtonDiv.querySelector('button')
     const projectDialog = document.getElementById('project__add-dialog')
     const projectListItems = document.querySelectorAll('.project__list-item')
+    const searchInput = menu.querySelector('.search__input')
+    const searchBtn = menu.querySelector('.search__icon')
 
     inboxNav.addEventListener('click', () => {
         setCurrentState(inbox)
         renderLayout()
         openMenu()
     })
+
     todayNav.addEventListener('click', () => {
         setCurrentState(today)
         renderLayout()
         openMenu()
     })
+
     projectNav.addEventListener('click', () => {
         const list = menu.querySelector('ul')
         if(list.classList.contains('d-off')){
@@ -39,11 +45,13 @@ export default function menuHandler(){
             closeProjectList()
         }
     })
+
     historyNav.addEventListener('click', () => {
         setCurrentState(history)
         renderLayout()
         openMenu()
     })
+
     projectAddButton.addEventListener('click', () => {
         projectDialog.showModal()
         projectDialog.classList.add('df')
@@ -84,6 +92,19 @@ export default function menuHandler(){
             const index = projectContainerObj.getAllItem().findIndex(prj => prj.getValue().title === title.textContent)
             deleteProjectConfirmHandler(projectContainerObj, index )
         })
+    })
+
+    searchBtn.addEventListener('click', () => {
+        if(searchInput.value !== ''){
+            const searchResultObj = searchResult()
+            const results = searchAllItems(searchInput.value)
+            results.forEach(item => {
+                searchResultObj.addItem(item)
+            })
+
+            setCurrentState(searchResultObj)
+            renderLayout()
+        }
     })
 
 }
