@@ -178,14 +178,6 @@ function createTodoEditForm(){
         <div>
             <label for="dueDate">Due date:</label>
             <input required type="date" name="dueDate" id="dueDate" class="todo__due-input">
-        </div>
-        <div>
-            <label for="priority">Priority:</label>
-            <select name="priority" id="priority" class="todo__priority-input">
-                <option value="low">Low</option>
-                <option value="medium">Medium</option>
-                <option value="high">High</option>
-            </select>
         </div>`
 
     return todoEditForm

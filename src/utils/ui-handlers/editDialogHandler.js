@@ -3,12 +3,11 @@ import { isDetailOpen, openDetail } from './detailHandler'
 import { isMenuOpen, openMenu } from './menuHandler'
 
 function populateTodoForm(todoForm, item) {
-    const { title, description, startDate, dueDate, priority } = item.getValue()
+    const { title, description, startDate, dueDate} = item.getValue()
     todoForm.querySelector('.todo__title-input').value = title
     todoForm.querySelector('.todo__des-input').value = description
     todoForm.querySelector('.todo__start-input').value = new Date(startDate).toISOString().split('T')[0]
     todoForm.querySelector('.todo__due-input').value = new Date(dueDate).toISOString().split('T')[0]
-    todoForm.querySelector('.todo__priority-input').value = priority
 }
 
 function populateNoteForm(noteForm, item) {
@@ -41,8 +40,8 @@ export function editTodoDialogHandler(item) {
     const todoForm = editDialog.querySelector('#todo__edit-form')
     populateTodoForm(todoForm, item)
     attachFormListeners(editDialog, item, (item) => {
-        const { title, description, startDate, dueDate, priority } = todoForm.elements
-        item.changeValue(title.value, description.value, startDate.value, dueDate.value, priority.value)
+        const { title, description, startDate, dueDate} = todoForm.elements
+        item.changeValue(title.value, description.value, startDate.value, dueDate.value, item.getValue().priority)
     })
 }
 
