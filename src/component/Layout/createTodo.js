@@ -11,6 +11,7 @@ export default function createTodo(todo) {
     const checkboxDiv = createDivWithClass('checkbox')
     const checkbox = document.createElement('input')
     checkbox.type = 'checkbox'
+    checkbox.classList.add('checkbox__input')
     checkboxDiv.appendChild(checkbox)
 
     const titleDiv = createDivWithClass('title')
