@@ -2,7 +2,7 @@ import project from "../project";
 
 function history(){
     const history = Object.create(project())
-    history.changeValue('History', 'You can see all your finished/deleted todos here')
+    history.changeValue('History', 'You can see all your finished todos here')
 
     return history
 }
