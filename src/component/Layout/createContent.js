@@ -1,9 +1,8 @@
 import createTodo from "./createTodo"
 import createNote from "./createNote"
-import todo from "../todo"
-import note from "../note"
 import appendChildren from "../../utils/common/appendChildren"
 import createDivWithClass from "../../utils/common/createDivWithClass"
+import createFinishedTodo from "./createFinishedTodo"
 
 export default function createContent(prj) {
     const title = prj.getValue().title
@@ -22,7 +21,9 @@ export default function createContent(prj) {
     const items = prj.getAllItem()
     items.forEach(item => {
         const itemType = item.getType()
-        if (itemType === 'note') {
+        if (itemType === 'todo' && item.getValue().status === true){
+            itemDiv.appendChild(createFinishedTodo(item))
+        } else if (itemType === 'note') {
             itemDiv.appendChild(createNote(item))
         } else if (itemType === 'todo') {
             itemDiv.appendChild(createTodo(item))
