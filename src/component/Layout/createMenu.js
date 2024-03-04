@@ -9,7 +9,7 @@ export default function createMenu() {
     const menuTop = createDivWithClass('menu__top')
     const menuItemsHTML = `
         <div class="search__bar">
-            <input type="text">
+            <input type="text" class="search__input">
             <div class="search__icon icon__small">
                 <i class="ri-search-line"></i>
             </div>
