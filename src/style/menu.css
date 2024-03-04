@@ -7,6 +7,11 @@
     align-items: center;
     justify-content: space-between;
     padding: 1rem 0;
+    animation: slideInLeft linear .3s;
+}
+
+.menu[closing]{
+    animation: slideOutLeft linear .3s;
 }
 
 .menu__top > div{

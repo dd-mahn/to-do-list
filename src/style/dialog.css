@@ -1,3 +1,11 @@
+dialog{
+    border:none;
+    animation:fadeIn linear .5s;
+}
+
+dialog[closing]{
+    animation:fadeOut linear .3s;
+}
 
 dialog div {
     /* Styling for form divs */
@@ -17,6 +25,10 @@ dialog input {
     font-family: 'Inconsolata', monospace;
 }
 
+dialog input:focus{
+    outline: none;
+}
+
 dialog label {
     /* Styling for form labels */
     width: 150px;
@@ -34,6 +46,10 @@ dialog textarea {
     padding: .2rem .5rem;
     font-size: 1rem;
     font-family: 'Inconsolata', monospace;
+}
+
+dialog textarea:focus{
+    outline:none;
 }
 
 dialog .buttons {
@@ -64,7 +80,7 @@ dialog .close__btn {
 /* Project Dialog section */
 #project__add-dialog {
     /* Styling for the dialog */
-    border: 1px solid var(--nav-border-color);
+    /* border: 1px solid var(--nav-border-color); */
     padding: 1rem 2rem;
     width: 400px;
     height: 250px;
@@ -80,18 +96,16 @@ dialog .close__btn {
 
 /* Item dialog section */
 #item__add-dialog {
-    /* Styling for the dialog */
     padding: 1rem 2rem;
     width: 400px;
     background-color: var(--background-color-2);
     justify-content: center;
     align-items: center;
     border-radius: 10px;
-    border: 1px solid var(--nav-border-color);
+    /* border: 1px solid var(--nav-border-color); */
 }
 
 #item__add-dialog .select__item-form {
-    /* Styling for select item form */
     margin-bottom: 1.5rem;
     display: flex;
     align-items: center;
@@ -99,7 +113,6 @@ dialog .close__btn {
 }
 
 #item__add-dialog .select__item-form select {
-    /* Styling for select element */
     width: 200px;
     height: 30px;
     border-radius: 5px;
@@ -110,12 +123,11 @@ dialog .close__btn {
 }
 
 #item__add-dialog>form {
-    /* Styling for form */
     margin-bottom: 1.5rem;
 }
 
+#item__move-dialog select,
 #item__add-dialog>form>div>select {
-    /* Styling for select inside form */
     height: 30px;
     border-radius: 5px;
     background: #fff;
@@ -125,7 +137,6 @@ dialog .close__btn {
 }
 
 #item__add-dialog > div {
-    /* Styling for additional div */
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -138,7 +149,6 @@ dialog .close__btn {
 }
 
 #item__add-dialog>div>select {
-    /* Styling for select inside additional div */
     width: 200px;
     height: 30px;
     border-radius: 5px;
@@ -156,12 +166,12 @@ dialog .close__btn {
     justify-content: center;
     align-items: center;
     border-radius: 10px;
-    border: 1px solid var(--nav-border-color);
+    /* border: 1px solid var(--nav-border-color); */
 }
 
 /* Confirm dialog section */
 #confirm__dialog{
-    border: 1px solid var(--nav-border-color);
+    /* border: 1px solid var(--nav-border-color); */
     padding: 1rem 2rem;
     width: 300px;
     background-color: var(--background-color-2);
@@ -177,4 +187,25 @@ dialog .close__btn {
     font-size: 1rem;
     margin-bottom: .2rem;
     font-family: 'Inconsolata', monospace;
+}
+
+/* Move dialog */
+#item__move-dialog{
+    /* border: 1px solid var(--nav-border-color); */
+    padding: 1rem 2rem;
+    width: 300px;
+    background-color: var(--background-color-2);
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+}
+
+#item__move-dialog div{
+    justify-content: center;
+    align-items: center;
+}
+
+#item__move-dialog select{
+    width: 200px;
 }

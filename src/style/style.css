@@ -34,6 +34,7 @@ body{
     font-size:20px;
     color: var(--text-color-dark);
     background: var(--background-color-1);
+    overflow: hidden;
 }
 /* Common */
 .df{
@@ -104,3 +105,56 @@ body{
     min-height: 95vh;
 }
 
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+@keyframes slideInLeft {
+    from { transform: translateX(-100%); }
+    to { transform: translateX(0); }
+}
+
+@keyframes slideOutLeft{
+    from { transform: translateX(0); }
+    to { transform: translateX(-100%); }
+}
+
+@keyframes slideInRight {
+    from { transform: translateX(100%); }
+    to { transform: translateX(0); }
+}
+
+@keyframes slideOutRight {
+    from { transform: translateX(0); }
+    to { transform: translateX(100%); }
+}
+
+.fadeIn{
+    animation:fadeIn linear .3s;
+}
+
+.fadeOut{
+    animation: fadeOut linear .3s;
+}
+
+.slideInLeft{
+    animation: slideInLeft linear .3s;
+}
+
+.slideOutLeft{
+    animation: slideOutLeft linear .3s;
+}
+
+.slideInRight{
+    animation: slideInRight linear .3s;
+}
+
+.slideOutRight{
+    animation: slideOutRight linear .3s;
+}

@@ -6,6 +6,11 @@
     justify-content: space-between;
     padding: 1rem 0;
     border-right: 1px solid var(--tab-border-color);
+    animation: slideInLeft linear .3s;
+}
+
+.nav__bar[closing]{
+    animation: slideOutLeft linear .3s;
 }
 
 .nav__items{
