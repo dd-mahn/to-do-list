@@ -92,7 +92,7 @@ export default function contentHandler() {
     })
 
     contentItems.forEach((item, index) => {
-        if (!item.classList.contains('finished')) {
+        if (!item.classList.contains('finished') && currentProject.getValue().title !== 'Search Result') {
             const title = item.querySelector('.title')
             title.addEventListener('click', () => handleDetailClick(index))
 
@@ -114,7 +114,13 @@ export default function contentHandler() {
                     handleCheckboxChange(index)
                 })
             }
-        } else {
+        } else if(currentProject.getValue().title === 'Search Result'){
+            const title = item.querySelector('.title')
+            title.addEventListener('click', () => handleDetailClick(index))
+        }else {
+            const title = item.querySelector('.title')
+            title.addEventListener('click', () => handleDetailClick(index))
+
             const deleteBtn = item.querySelector('.delete__btn')
             deleteBtn.addEventListener('click', () => handleDeleteButtonClick(index))
         }
