@@ -8,6 +8,7 @@ import projectContainerObj from "../../component/projectContainer"
 import closeThis from "../common/closeThis"
 import openThis from "../common/openThis"
 import { deleteProjectConfirmHandler } from "./confirmDialogHandler"
+import { editProjectDialogHandler } from "./editDialogHandler"
 
 export default function menuHandler(){
     const menu = document.querySelector('.menu')
@@ -52,8 +53,9 @@ export default function menuHandler(){
     projectListItems.forEach(item => {
         const projects = projectContainerObj.getAllItem()
         const title = item.querySelector('span')
+        const targetProject = projects.find(prj => prj.getValue().title === item.textContent)
+
         title.addEventListener('click', () => {
-            const targetProject = projects.find(prj => prj.getValue().title === item.textContent)
             setCurrentState(targetProject)
             renderLayout()
             openMenu()
@@ -61,6 +63,19 @@ export default function menuHandler(){
         })
 
         const editBtn = item.querySelector('.edit__btn')
+        editBtn.addEventListener('click', () => {
+            const editDialog = document.getElementById('item__edit-dialog')
+            const todoForm = editDialog.querySelector('#todo__edit-form')
+            const noteForm = editDialog.querySelector('#note__edit-form')
+            const projectForm = editDialog.querySelector('#project__edit-form')
+
+            editDialog.showModal()
+            openThis(projectForm)
+            closeThis(noteForm)
+            closeThis(todoForm)
+            editProjectDialogHandler(targetProject)
+            openProjectList()
+        })
 
         const deleteBtn = item.querySelector('.delete__btn')
         deleteBtn.addEventListener('click', () => {
@@ -71,6 +86,15 @@ export default function menuHandler(){
         })
     })
 
+}
+export function isProjectListOpen(){
+    const menu = document.querySelector('.menu')
+    const list = menu.querySelector('ul')
+    if(!list.classList.contains('d-off')){
+        return true
+    }else{
+        return false
+    }
 }
 
 export function openProjectList(){
