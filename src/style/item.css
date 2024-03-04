@@ -80,6 +80,16 @@
     color: var(--hover-text-color);
 }
 
+.to-do .priority__btn.priority__low:hover{
+    color: var(--priority-low-color) !important;
+}
+.to-do .priority__btn.priority__medium:hover{
+    color: var(--priority-medium-color) !important;
+}
+.to-do .priority__btn.priority__high:hover{
+    color: var(--priority-high-color) !important;
+}
+
 /* CHECKBOX */
 input[type='checkbox']{
     appearance: none;
