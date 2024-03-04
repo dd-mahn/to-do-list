@@ -111,7 +111,7 @@ function createProjectSelect() {
 
     appendChildren(projectSelectDiv, [projectSelectLabel, projectSelectList])
 
-    const projects = projectContainer.getAllProject()
+    const projects = projectContainer.getAllItem()
     projects.forEach(prj => {
         const option = document.createElement('option')
         option.innerText = `${prj.getValue().title}`

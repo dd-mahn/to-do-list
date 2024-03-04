@@ -1,4 +1,5 @@
 import appendChildren from "../../utils/common/appendChildren"
+import createButtonWithClass from "../../utils/common/createButtonWithClass"
 import createDivWithClass from "../../utils/common/createDivWithClass"
 import projectContainerObj from "../projectContainer"
 
@@ -58,12 +59,17 @@ function createProjectList(){
 
     const projectList = document.createElement('ul')
     projectList.classList.add('project__list-items', 'd-off')
-    const projects = projectContainerObj.getAllProject()
+    const projects = projectContainerObj.getAllItem()
     projects.forEach(prj => {
         if(prj.getValue().title !== 'Inbox' && prj.getValue().title !== 'Today'){
             const projectLi = document.createElement('li')
             projectLi.classList.add('project__list-item')
-            projectLi.textContent = prj.getValue().title
+            projectLi.innerHTML = `<span>${prj.getValue().title}</span>`
+            const buttonDiv = createDivWithClass('buttons')
+            const editBtn = createButtonWithClass('edit__btn', 'ri-edit-box-line')
+            const deleteBtn = createButtonWithClass('delete__btn', 'ri-delete-bin-6-line')
+            appendChildren(buttonDiv, [editBtn, deleteBtn])
+            projectLi.appendChild(buttonDiv)
             projectList.appendChild(projectLi)
         }
     })

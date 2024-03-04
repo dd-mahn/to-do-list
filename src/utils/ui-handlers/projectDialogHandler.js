@@ -21,7 +21,7 @@ export default function projectDialogHandler() {
     })
 
     addBtn.addEventListener('click', () => {
-        const allProjects = projectContainerObj.getAllProject()
+        const allProjects = projectContainerObj.getAllItem()
         const nameValue = nameInput.value.trim()
         const desValue = desInput.value.trim()
         if (nameValue && desValue) {
@@ -32,7 +32,7 @@ export default function projectDialogHandler() {
             } else {
                 newProject.changeValue(nameValue, desValue)
             }
-            projectContainerObj.addProject(newProject)
+            projectContainerObj.addItem(newProject)
             setCurrentState(newProject)
             renderLayout()
             openMenu()

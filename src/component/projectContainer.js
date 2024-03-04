@@ -1,21 +1,22 @@
 import inboxObj from './Default Project/inbox'
 import todayObj from './Default Project/today'
+import project from './project'
 function projectContainer() {
     const arr = []
 
-    const addProject = (prj) => {
+    const addItem = (prj) => {
         arr.push(prj)
     }
 
-    const getProject = (index) => {
+    const getItem = (index) => {
         if(index >= 0 && index < arr.length) return arr[index]
     }
 
-    const getAllProject = () => {
+    const getAllItem = () => {
         return arr
     }
 
-    const deleteProject = (index) => {
+    const deleteItem = (index) => {
         if(index === 0){
             arr.splice(0,1)
         }else{
@@ -24,14 +25,19 @@ function projectContainer() {
     }
 
     return{
-        addProject,
-        getProject,
-        getAllProject,
-        deleteProject
+        addItem,
+        getItem,
+        getAllItem,
+        deleteItem
     }
 }
 
 const projectContainerObj = projectContainer()
-projectContainerObj.addProject(inboxObj)
-projectContainerObj.addProject(todayObj)
+projectContainerObj.addItem(inboxObj)
+projectContainerObj.addItem(todayObj)
+
+const test = project()
+test.changeValue('test','to test')
+
+projectContainerObj.addItem(test)
 export default projectContainerObj
