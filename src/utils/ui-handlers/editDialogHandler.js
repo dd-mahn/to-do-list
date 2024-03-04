@@ -1,6 +1,6 @@
 import renderLayout from '../render'
 import { isDetailOpen, openDetail } from './detailHandler'
-import { isMenuOpen, openMenu } from './menuHandler'
+import { isMenuOpen, isProjectListOpen, openMenu, openProjectList } from './menuHandler'
 
 function populateTodoForm(todoForm, item) {
     const { title, description, startDate, dueDate} = item.getValue()
@@ -16,18 +16,27 @@ function populateNoteForm(noteForm, item) {
     noteForm.querySelector('.note__des-input').value = description
 }
 
+function populateProjectForm(projectForm, item) {
+    const { title, description } = item.getValue()
+    projectForm.querySelector('.project__title-input').value = title
+    projectForm.querySelector('.project__des-input').value = description
+}
+
+
 function attachFormListeners(editDialog, item, saveHandler) {
     const saveBtn = editDialog.querySelector('.add__btn')
     const cancelBtn = editDialog.querySelector('.close__btn')
 
     saveBtn.addEventListener('click', () => {
         const menuOpen = isMenuOpen()
+        const projectListOpen = isProjectListOpen()
         const detailOpen = isDetailOpen()
         saveHandler(item)
         editDialog.close('saved')
         renderLayout()
         if (menuOpen) openMenu()
         if (detailOpen) openDetail()
+        if (projectListOpen) openProjectList()
     })
 
     cancelBtn.addEventListener('click', () => {
@@ -51,6 +60,16 @@ export function editNoteDialogHandler(item) {
     populateNoteForm(noteForm, item)
     attachFormListeners(editDialog, item, (item) => {
         const { title, description } = noteForm.elements
+        item.changeValue(title.value, description.value)
+    })
+}
+
+export function editProjectDialogHandler(item) {
+    const editDialog = document.getElementById('item__edit-dialog')
+    const projectForm = editDialog.querySelector('#project__edit-form')
+    populateProjectForm(projectForm, item)
+    attachFormListeners(editDialog, item, (item) => {
+        const { title, description } = projectForm.elements
         item.changeValue(title.value, description.value)
     })
 }
