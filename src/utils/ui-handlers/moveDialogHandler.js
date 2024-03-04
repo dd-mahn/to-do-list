@@ -7,7 +7,7 @@ export default function moveDialogHandler(curr, index){
     const saveBtn = moveDialog.querySelector('.add__btn')
     const cancelBtn = moveDialog.querySelector('.close__btn')
 
-    const projects = projectContainerObj.getAllProject()
+    const projects = projectContainerObj.getAllItem()
 
     saveBtn.addEventListener('click', () => {
         const item = curr.getItem(index)
