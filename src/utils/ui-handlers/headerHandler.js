@@ -1,6 +1,6 @@
-import closeThis from "../common/closeThis"
-import openThis from "../common/openThis"
+import executeWithAnimation from "../common/executeWithAnimation"
 import itemDialogHandler from "./itemDialogHandler"
+import { closeMenu, openMenu } from "./menuHandler"
 
 export default function headerHandler(){
     const header = document.querySelector('header')
@@ -11,21 +11,13 @@ export default function headerHandler(){
 
     menuBtn.addEventListener('click', () => {
         if(menu.classList.contains('d-off')){
-            navBar.setAttribute('closing','')
-            navBar.addEventListener('animationend', () => {
-                navBar.removeAttribute('closing')
-                closeThis(navBar)
-                openThis(menu)
-            }, {once: true})
-            
-            
+            executeWithAnimation(navBar, () => {
+                openMenu(true)
+            })          
         }else{
-            menu.setAttribute('closing','')
-            menu.addEventListener('animationend', () => {
-                menu.removeAttribute('closing')
-                closeThis(menu)
-                openThis(navBar)
-            }, {once: true})
+            executeWithAnimation(menu, () => {
+                closeMenu()
+            })
         }
     })
 
