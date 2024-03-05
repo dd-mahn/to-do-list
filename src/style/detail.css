@@ -7,7 +7,14 @@
     position: relative;
     width: 400px;
     border-left: 1px solid var(--tab-border-color);
+    /* animation: slideInRight linear .3s; */
+}
+.detail[opening]{
     animation: slideInRight linear .3s;
+}
+
+.detail[open]{
+    animation: none
 }
 
 .detail[closing]{

@@ -65,3 +65,7 @@
     background: var(--delete-btn-color);
     color: #FFF;
 }
+
+.undo__box[closing]{
+    animation:fadeOut linear .3s;
+}

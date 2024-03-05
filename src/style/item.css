@@ -7,6 +7,12 @@
     height: 2.5rem;
     border: 1px solid var(--nav-border-color);
     border-radius: 10px;
+    animation:fadeIn linear .3s;
+}
+
+.to-do[closing],
+.note[closing]{    
+    animation: fadeOut linear .3s;    
 }
 
 .to-do:hover,
