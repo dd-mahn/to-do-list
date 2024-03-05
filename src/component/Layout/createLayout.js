@@ -13,7 +13,7 @@ export default function createLayout(obj){
     container.classList.add('container')
 
     const content = createContent(obj)
-    const detail = createDetail(obj)
+    // const detail = createDetail(obj)
     const projectDialog = createProjectDialog()
     const itemDialog = createItemDialog()
     const editDialog = createEditDialog()
@@ -21,5 +21,5 @@ export default function createLayout(obj){
     const confirmDialog = createConfirmDialog()
 
     appendChildren(body, [header(), container])
-    appendChildren(container, [navBar(), menu(), content, detail, projectDialog, itemDialog, editDialog, moveDialog, confirmDialog])
+    appendChildren(container, [navBar(), menu(), content, projectDialog, itemDialog, editDialog, moveDialog, confirmDialog])
 }
