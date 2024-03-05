@@ -12,157 +12,129 @@ import { editProjectDialogHandler } from "./editDialogHandler"
 import searchResult from "../../component/Default Project/searchResult"
 import searchAllItems from "../common/searchAllItems"
 
-export default function menuHandler(){
+export default function menuHandler() {
     const menu = document.querySelector('.menu')
     const inboxNav = menu.querySelector('.inbox__nav')
     const todayNav = menu.querySelector('.today__nav')
     const projectNav = menu.querySelector('.project__nav')
     const historyNav = menu.querySelector('.history__nav')
-    const projectAddButtonDiv = menu.querySelector('.project__add-btn')
-    const projectAddButton = projectAddButtonDiv.querySelector('button')
-    const projectDialog = document.getElementById('project__add-dialog')
+    const projectAddButton = menu.querySelector('.project__add-btn button')
     const projectListItems = document.querySelectorAll('.project__list-item')
-    const searchInput = menu.querySelector('.search__input')
     const searchBtn = menu.querySelector('.search__icon')
 
-    inboxNav.addEventListener('click', () => {
-        setCurrentState(inbox)
-        renderLayout()
-        openMenu()
-    })
-
-    todayNav.addEventListener('click', () => {
-        setCurrentState(today)
-        renderLayout()
-        openMenu()
-    })
-
-    projectNav.addEventListener('click', () => {
-        const list = menu.querySelector('ul')
-        if(list.classList.contains('d-off')){
-            openProjectList()
-        }else{
-            closeProjectList()
-        }
-    })
-
-    historyNav.addEventListener('click', () => {
-        setCurrentState(history)
-        renderLayout()
-        openMenu()
-    })
-
-    projectAddButton.addEventListener('click', () => {
-        projectDialog.showModal()
-        projectDialog.classList.add('df')
-        projectDialogHandler()
-    })
+    inboxNav.addEventListener('click', () => navClickHandler(inbox))
+    todayNav.addEventListener('click', () => navClickHandler(today))
+    projectNav.addEventListener('click', toggleProjectList)
+    historyNav.addEventListener('click', () => navClickHandler(history))
+    projectAddButton.addEventListener('click', handleProjectAddButtonClick)
 
     projectListItems.forEach(item => {
-        const projects = projectContainerObj.getAllItem()
         const title = item.querySelector('span')
+        const editBtn = item.querySelector('.edit__btn')
+        const deleteBtn = item.querySelector('.delete__btn')
+        const projects = projectContainerObj.getAllItem()
         const targetProject = projects.find(prj => prj.getValue().title === item.textContent)
 
-        title.addEventListener('click', () => {
-            setCurrentState(targetProject)
-            renderLayout()
-            openMenu()
-            openProjectList()
-        })
-
-        const editBtn = item.querySelector('.edit__btn')
-        editBtn.addEventListener('click', () => {
-            const editDialog = document.getElementById('item__edit-dialog')
-            const todoForm = editDialog.querySelector('#todo__edit-form')
-            const noteForm = editDialog.querySelector('#note__edit-form')
-            const projectForm = editDialog.querySelector('#project__edit-form')
-
-            editDialog.showModal()
-            openThis(projectForm)
-            closeThis(noteForm)
-            closeThis(todoForm)
-            editProjectDialogHandler(targetProject)
-            openProjectList()
-        })
-
-        const deleteBtn = item.querySelector('.delete__btn')
-        deleteBtn.addEventListener('click', () => {
-            const confirmDialog = document.getElementById('confirm__dialog')
-            confirmDialog.showModal()
-            const index = projectContainerObj.getAllItem().findIndex(prj => prj.getValue().title === title.textContent)
-            deleteProjectConfirmHandler(projectContainerObj, index )
-        })
+        title.addEventListener('click', () => handleTitleClick(targetProject))
+        editBtn.addEventListener('click', () => handleEditButtonClick(targetProject))
+        deleteBtn.addEventListener('click', () => handleDeleteButtonClick(title.textContent))
     })
 
-    searchBtn.addEventListener('click', () => {
-        if(searchInput.value !== ''){
-            const searchResultObj = searchResult()
-            const results = searchAllItems(searchInput.value)
-            results.forEach(item => {
-                searchResultObj.addItem(item)
-            })
-
-            setCurrentState(searchResultObj)
-            renderLayout()
-        }
-    })
-
+    searchBtn.addEventListener('click', handleSearchButtonClick)
 }
-export function isProjectListOpen(){
-    const menu = document.querySelector('.menu')
-    const list = menu.querySelector('ul')
-    if(!list.classList.contains('d-off')){
-        return true
-    }else{
-        return false
+
+function navClickHandler(project) {
+    setCurrentState(project)
+    renderLayout()
+    openMenu(isProjectListOpen())
+}
+
+function toggleProjectList() {
+    const list = document.querySelector('.menu ul')
+    list.classList.toggle('d-off')
+    const arrow = document.querySelector('.arrow')
+    arrow.classList.toggle('rotate-180')
+}
+
+function handleProjectAddButtonClick() {
+    const projectDialog = document.getElementById('project__add-dialog')
+    projectDialog.showModal()
+    projectDialog.classList.add('df')
+    projectDialogHandler()
+}
+
+function handleTitleClick(project) {
+    setCurrentState(project)
+    renderLayout()
+    openMenu(false)
+    openProjectList()
+}
+
+function handleEditButtonClick(project) {
+    const editDialog = document.getElementById('item__edit-dialog')
+    const todoForm = editDialog.querySelector('#todo__edit-form')
+    const noteForm = editDialog.querySelector('#note__edit-form')
+    const projectForm = editDialog.querySelector('#project__edit-form')
+
+    editDialog.showModal()
+    openThis(projectForm)
+    closeThis(noteForm)
+    closeThis(todoForm)
+    editProjectDialogHandler(project)
+    openProjectList()
+}
+
+function handleDeleteButtonClick(title) {
+    const confirmDialog = document.getElementById('confirm__dialog')
+    confirmDialog.showModal()
+    const index = projectContainerObj.getAllItem().findIndex(prj => prj.getValue().title === title)
+    deleteProjectConfirmHandler(projectContainerObj, index)
+}
+
+function handleSearchButtonClick() {
+    const searchInput = menu.querySelector('.search__input')
+    if (searchInput.value !== '') {
+        const searchResultObj = searchResult()
+        const results = searchAllItems(searchInput.value)
+        results.forEach(item => searchResultObj.addItem(item))
+        setCurrentState(searchResultObj)
+        renderLayout()
+        openMenu(false)
     }
 }
 
-export function openProjectList(){
-    const menu = document.querySelector('.menu')
-    const list = menu.querySelector('ul')
-    const arrow = menu.querySelector('.arrow')
+export function isProjectListOpen() {
+    const list = document.querySelector('.menu ul')
+    return !list.classList.contains('d-off')
+}
 
+export function openProjectList() {
+    const list = document.querySelector('.menu ul')
+    const arrow = document.querySelector('.arrow')
     list.classList.remove('d-off')
     arrow.classList.add('rotate-180')
 }
 
-function closeProjectList(){
+export function isMenuOpen() {
     const menu = document.querySelector('.menu')
-    const list = menu.querySelector('ul')
-    const arrow = menu.querySelector('.arrow')
-
-    list.classList.add('d-off')
-    arrow.classList.remove('rotate-180')
+    return !menu.classList.contains('d-off')
 }
 
-export function isMenuOpen(){
-    const menu = document.querySelector('.menu')
-    if(!menu.classList.contains('d-off')){
-        return true
-    }else{
-        return false
-    }
-}
-
-export function openMenu(animated){
+export function openMenu(animated) {
     const navBar = document.querySelector('.nav__bar')
     const menu = document.querySelector('.menu')
-
-    if(animated === false){
-        closeThis(navBar)
+    closeThis(navBar)
+    if (animated === false) {
         openThis(menu)
-    }else{
-        closeThis(navBar)
+    } else {
         menu.classList.add('slideInLeft')
         openThis(menu)
     }
 }
 
-export function closeMenu(){
+export function closeMenu() {
     const navBar = document.querySelector('.nav__bar')
     const menu = document.querySelector('.menu')
-
     closeThis(menu)
     navBar.classList.add('slideInLeft')
     openThis(navBar)
