@@ -1,4 +1,5 @@
 import projectContainerObj from "../../component/projectContainer"
+import executeWithAnimation from "../common/executeWithAnimation"
 import renderLayout from "../render"
 
 export default function moveDialogHandler(curr, index){
@@ -14,11 +15,15 @@ export default function moveDialogHandler(curr, index){
         const destination = projects.find(prj => prj.getValue().title === projectInput.value)
         curr.deleteItem(index)
         destination.addItem(item)
-        moveDialog.close('saved')
-        renderLayout()
+        executeWithAnimation(moveDialog, () => {
+            moveDialog.close('saved')
+            renderLayout()
+        })
     })
 
     cancelBtn.addEventListener('click', () => {
-        moveDialog.close('canceled')
+        executeWithAnimation(moveDialog, () => {
+            moveDialog.close('canceled')
+        })
     })
 }
