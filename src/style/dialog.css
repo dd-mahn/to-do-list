@@ -1,10 +1,15 @@
 dialog{
     border:none;
-    animation:fadeIn linear .5s;
+    animation:fadeIn linear .2s;
+}
+
+dialog::backdrop{
+    background: #33333335;
+    animation:fadeIn linear .2s;
 }
 
 dialog[closing]{
-    animation:fadeOut linear .3s;
+    animation:fadeOut linear .2s;
 }
 
 dialog div {
