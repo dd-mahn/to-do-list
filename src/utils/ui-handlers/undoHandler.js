@@ -1,36 +1,93 @@
 import historyObj from "../../component/Default Project/history"
+import createUndoBox from "../../component/Layout/createUndoBox"
+import executeWithAnimation from "../common/executeWithAnimation"
 import renderLayout from "../render"
-import { removeUndoBox } from "./confirmDialogHandler"
 
-export function undoDeleteHandler(project, item, undoBox){
+let undoBoxQueue = [] // Queue to store undoBox elements
+
+function addToQueue(item){
+    undoBoxQueue.push(item)
+} 
+
+function removeUndoBox(undoBox) {
+    const index = undoBoxQueue.indexOf(undoBox)
+    if (index !== -1) {
+        undoBoxQueue.splice(index, 1)
+        undoBox.parentElement.removeChild(undoBox) 
+    }
+}
+
+function checkUndoBoxQueue() {
+    setTimeout(() => {
+        const undoBox = undoBoxQueue.shift() // Get the first undoBox from the queue
+        if (undoBox) {
+            undoBox.parentElement.removeChild(undoBox) // Remove the undoBox from the DOM
+            checkUndoBoxQueue() // Check the queue for more undoBox elements
+        }
+    }, 5000)
+}
+
+
+function undoDeleteHandler(project, item, undoBox){
     const undoBtn = undoBox.querySelector('.undo__btn')
     const closeBtn = undoBox.querySelector('.close__btn')
 
     undoBtn.addEventListener('click', () => {
-        project.addItem(item)
-        removeUndoBox(undoBox)
-        renderLayout()
+        executeWithAnimation(undoBox, () => {
+            project.addItem(item)
+            removeUndoBox(undoBox)
+            renderLayout()
+        })
     })
 
     closeBtn.addEventListener('click', () => {
-        removeUndoBox(undoBox)
+        executeWithAnimation(undoBox, () => {
+            removeUndoBox(undoBox)
+        })
     })
 }
 
-export function undoCheckboxHandler(project, item, undoBox){
+function undoCheckboxHandler(project, item, undoBox){
     const undoBtn = undoBox.querySelector('.undo__btn')
     const closeBtn = undoBox.querySelector('.close__btn')
 
     undoBtn.addEventListener('click', () => {
-        item.changeStatus()
-        project.addItem(item)
-        const index = historyObj.getAllItem().findIndex(obj => obj.getValue().title === item.getValue().title)
-        historyObj.deleteItem(index)
-        removeUndoBox(undoBox)
-        renderLayout()
+        executeWithAnimation(undoBox, () => {
+            item.changeStatus()
+            project.addItem(item)
+            const index = historyObj.getAllItem().findIndex(obj => obj.getValue().title === item.getValue().title)
+            historyObj.deleteItem(index)
+            removeUndoBox(undoBox)
+            renderLayout()
+        })
     })
 
     closeBtn.addEventListener('click', () => {
-        removeUndoBox(undoBox)
+        executeWithAnimation(undoBox, () => {
+            removeUndoBox(undoBox)
+        })
     })
 }
+
+export function undoCheckbox(project,item){
+    setTimeout(() => {
+        const content = document.querySelector('.content')
+        const undoBox = createUndoBox('1 item marked finished')
+        content.appendChild(undoBox)
+        undoCheckboxHandler(project, item, undoBox) 
+        addToQueue(undoBox) 
+        checkUndoBoxQueue() 
+    }, 500)
+}
+
+export function undoDelete(project,item){
+    setTimeout(() => {
+        const content = document.querySelector('.content')
+        const undoBox = createUndoBox('1 item deleted')
+        content.appendChild(undoBox)
+        undoDeleteHandler(project, item, undoBox) 
+        addToQueue(undoBox) 
+        checkUndoBoxQueue() 
+    }, 500)
+}
+
