@@ -78,6 +78,17 @@ function createTodoAddForm() {
             </select>
         </div>`
 
+    const startDateInput = todoAddForm.querySelector('#startDate')
+    const dueDateInput = todoAddForm.querySelector('#dueDate')
+
+    startDateInput.addEventListener('input', function() {
+        dueDateInput.min = startDateInput.value
+    })
+
+    dueDateInput.addEventListener('click', () => {
+        startDateInput.max = dueDateInput.value
+    })
+
     return todoAddForm
 }
 
