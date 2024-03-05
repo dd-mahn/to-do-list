@@ -11,6 +11,7 @@ import { deleteProjectConfirmHandler } from "./confirmDialogHandler"
 import { editProjectDialogHandler } from "./editDialogHandler"
 import searchResult from "../../component/Default Project/searchResult"
 import searchAllItems from "../common/searchAllItems"
+import appearanceHandler from "./appearanceHandler"
 
 export default function menuHandler() {
     const menu = document.querySelector('.menu')
@@ -21,6 +22,7 @@ export default function menuHandler() {
     const projectAddButton = menu.querySelector('.project__add-btn button')
     const projectListItems = document.querySelectorAll('.project__list-item')
     const searchBtn = menu.querySelector('.search__icon')
+    const appearanceBtn = menu.querySelector('.menu__bot')
 
     inboxNav.addEventListener('click', () => navClickHandler(inbox))
     todayNav.addEventListener('click', () => navClickHandler(today))
@@ -41,6 +43,8 @@ export default function menuHandler() {
     })
 
     searchBtn.addEventListener('click', handleSearchButtonClick)
+
+    appearanceBtn.addEventListener('click',appearanceHandler)
 }
 
 function navClickHandler(project) {
