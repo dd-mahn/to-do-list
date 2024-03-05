@@ -145,10 +145,25 @@ export function isMenuOpen(){
     }
 }
 
-export function openMenu(){
+export function openMenu(animated){
     const navBar = document.querySelector('.nav__bar')
     const menu = document.querySelector('.menu')
 
-    closeThis(navBar)
-    openThis(menu)
+    if(animated === false){
+        closeThis(navBar)
+        openThis(menu)
+    }else{
+        closeThis(navBar)
+        menu.classList.add('slideInLeft')
+        openThis(menu)
+    }
+}
+
+export function closeMenu(){
+    const navBar = document.querySelector('.nav__bar')
+    const menu = document.querySelector('.menu')
+
+    closeThis(menu)
+    navBar.classList.add('slideInLeft')
+    openThis(navBar)
 }
