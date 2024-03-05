@@ -2,6 +2,7 @@ import historyObj from "../../component/Default Project/history"
 import createUndoBox from "../../component/Layout/createUndoBox"
 import executeWithAnimation from "../common/executeWithAnimation"
 import renderLayout from "../render"
+import { isMenuOpen, openMenu } from "./menuHandler"
 
 let undoBoxQueue = [] // Queue to store undoBox elements
 
@@ -21,10 +22,12 @@ function checkUndoBoxQueue() {
     setTimeout(() => {
         const undoBox = undoBoxQueue.shift() // Get the first undoBox from the queue
         if (undoBox) {
-            undoBox.parentElement.removeChild(undoBox) // Remove the undoBox from the DOM
-            checkUndoBoxQueue() // Check the queue for more undoBox elements
-        }
-    }, 5000)
+            executeWithAnimation(undoBox, () => {
+                undoBox.parentElement.removeChild(undoBox) // Remove the undoBox from the DOM
+                checkUndoBoxQueue() // Check the queue for more undoBox elements
+            })
+        }  
+    }, 2000)
 }
 
 
@@ -33,10 +36,12 @@ function undoDeleteHandler(project, item, undoBox){
     const closeBtn = undoBox.querySelector('.close__btn')
 
     undoBtn.addEventListener('click', () => {
+        const menuOpen = isMenuOpen()
         executeWithAnimation(undoBox, () => {
             project.addItem(item)
             removeUndoBox(undoBox)
             renderLayout()
+            if(menuOpen) openMenu(false)
         })
     })
 
@@ -52,6 +57,7 @@ function undoCheckboxHandler(project, item, undoBox){
     const closeBtn = undoBox.querySelector('.close__btn')
 
     undoBtn.addEventListener('click', () => {
+        const menuOpen = isMenuOpen()
         executeWithAnimation(undoBox, () => {
             item.changeStatus()
             project.addItem(item)
@@ -59,6 +65,7 @@ function undoCheckboxHandler(project, item, undoBox){
             historyObj.deleteItem(index)
             removeUndoBox(undoBox)
             renderLayout()
+            if(menuOpen) openMenu(false)
         })
     })
 
