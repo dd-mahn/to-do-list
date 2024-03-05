@@ -7,6 +7,7 @@ import renderLayout from '../render'
 import itemContainerObj from '../../component/itemContainer'
 import { isMenuOpen, openMenu } from './menuHandler'
 import { isDetailOpen, openDetail } from './detailHandler'
+import executeWithAnimation from '../common/executeWithAnimation'
 
 export default function itemDialogHandler() {
     const itemDialog = document.getElementById('item__add-dialog')
@@ -26,20 +27,27 @@ export default function itemDialogHandler() {
     selectInput.addEventListener('change', switchForm)
 
     closeBtn.addEventListener('click', () => {
-        const form = selectInput.value === 'to-do' ? todoForm : noteForm
-        form.removeAttribute('novalidate')
-        itemDialog.close('canceled')
-        form.setAttribute('novalidate', 'true')
+        executeWithAnimation(itemDialog, () => {
+            const form = selectInput.value === 'to-do' ? todoForm : noteForm
+            form.removeAttribute('novalidate')
+            itemDialog.close('canceled')
+            form.setAttribute('novalidate', 'true')
+        })
     })
 
     addBtn.addEventListener('click', () => {
-        const menuOpen = isMenuOpen()
-        const detailOpen = isDetailOpen()
-        if (selectInput.value === 'to-do') addTodo()
-        else if (selectInput.value === 'note') addNote()
-        renderLayout()
-        if (menuOpen) openMenu()
-        if (detailOpen) openDetail()
+        const filled = checkValue()
+        if(filled){
+            executeWithAnimation(itemDialog, () => {
+                const menuOpen = isMenuOpen()
+                const detailOpen = isDetailOpen()
+                if (selectInput.value === 'to-do') addTodo()
+                else if (selectInput.value === 'note') addNote()
+                renderLayout()
+                if (menuOpen) openMenu()
+                if (detailOpen) openDetail()
+            })
+        }
     })
 
     function addTodo() {
@@ -68,6 +76,23 @@ export default function itemDialogHandler() {
         const titleInput = form.querySelector('.note__title-input')
         const desInput = form.querySelector('.note__des-input')
         item.changeValue(titleInput.value, desInput.value)
+    }
+
+    function checkValue(){
+        if(selectInput.value === 'to-do'){
+            const titleInput = form.querySelector('.todo__title-input')
+            const desInput = form.querySelector('.todo__des-input')
+            const startInput = form.querySelector('.todo__start-input')
+            const dueInput = form.querySelector('.todo__due-input')
+            const priorityInput = form.querySelector('.todo__priority-input')
+
+            return titleInput.value&&desInput.value&&startInput.value&&dueInput.value&&priorityInput.value
+        }else{
+            const titleInput = form.querySelector('.note__title-input')
+            const desInput = form.querySelector('.note__des-input')
+
+            return titleInput&&desInput
+        }
     }
 
     function getSelectedProject() {
