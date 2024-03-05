@@ -1,5 +1,6 @@
+import executeWithAnimation from '../common/executeWithAnimation'
 import renderLayout from '../render'
-import { isDetailOpen, openDetail } from './detailHandler'
+import { changeDetail, isDetailOpen, openDetail } from './detailHandler'
 import { isMenuOpen, isProjectListOpen, openMenu, openProjectList } from './menuHandler'
 
 function populateTodoForm(todoForm, item) {
@@ -28,19 +29,26 @@ function attachFormListeners(editDialog, item, saveHandler) {
     const cancelBtn = editDialog.querySelector('.close__btn')
 
     saveBtn.addEventListener('click', () => {
-        const menuOpen = isMenuOpen()
-        const projectListOpen = isProjectListOpen()
-        const detailOpen = isDetailOpen()
-        saveHandler(item)
-        editDialog.close('saved')
-        renderLayout()
-        if (menuOpen) openMenu()
-        if (detailOpen) openDetail()
-        if (projectListOpen) openProjectList()
+        executeWithAnimation(editDialog, () => {
+            const menuOpen = isMenuOpen()
+            const projectListOpen = isProjectListOpen()
+            // const detailOpen = isDetailOpen()
+            saveHandler(item)
+            editDialog.close('saved')
+            renderLayout()
+            if (menuOpen) openMenu(false)
+            // if (detailOpen){
+                changeDetail(item)
+                openDetail()
+            // } 
+            if (projectListOpen) openProjectList()
+        })
     })
 
     cancelBtn.addEventListener('click', () => {
-        editDialog.close('cancelled')
+        executeWithAnimation(editDialog, () => {
+            editDialog.close('cancelled')
+        })
     })
 }
 
