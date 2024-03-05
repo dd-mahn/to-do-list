@@ -1,8 +1,9 @@
 import projectContainerObj from "../../component/projectContainer"
+import closeThis from "../common/closeThis"
 import executeWithAnimation from "../common/executeWithAnimation"
 import renderLayout from "../render"
 
-export default function moveDialogHandler(curr, index){
+export default function moveDialogHandler(curr, item, index){
     const moveDialog = document.getElementById('item__move-dialog')
     const projectInput = moveDialog.querySelector('.item__project-input')
     const saveBtn = moveDialog.querySelector('.add__btn')
@@ -11,13 +12,16 @@ export default function moveDialogHandler(curr, index){
     const projects = projectContainerObj.getAllItem()
 
     saveBtn.addEventListener('click', () => {
-        const item = curr.getItem(index)
+        const moveItem = curr.getItem(index)
         const destination = projects.find(prj => prj.getValue().title === projectInput.value)
         curr.deleteItem(index)
-        destination.addItem(item)
+        destination.addItem(moveItem)
         executeWithAnimation(moveDialog, () => {
             moveDialog.close('saved')
-            renderLayout()
+            executeWithAnimation(item, () => {
+                closeThis(item)
+                renderLayout()
+            })
         })
     })
 
