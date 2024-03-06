@@ -57,6 +57,10 @@ dialog textarea:focus{
     outline:none;
 }
 
+dialog select:focus{
+    outline:none
+}
+
 dialog .buttons {
     /* Styling for button container */
     display: flex !important;
