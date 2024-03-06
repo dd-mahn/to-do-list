@@ -1,6 +1,5 @@
 import inboxObj from './Default Project/inbox'
 import todayObj from './Default Project/today'
-import project from './project'
 function projectContainer() {
     const arr = []
 
@@ -36,8 +35,4 @@ const projectContainerObj = projectContainer()
 projectContainerObj.addItem(inboxObj)
 projectContainerObj.addItem(todayObj)
 
-const test = project()
-test.changeValue('test','to test')
-
-projectContainerObj.addItem(test)
 export default projectContainerObj
