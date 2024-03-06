@@ -5,3 +5,4 @@ export default function executeWithAnimation(item, callback) {
         callback(item)
     }, {once:true})
 }
+

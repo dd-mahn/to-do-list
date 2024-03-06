@@ -41,7 +41,7 @@ export default function projectDialogHandler() {
                 projectContainerObj.addItem(newProject)
                 setCurrentState(newProject)
                 renderLayout()
-                openMenu()
+                openMenu(false)
                 openProjectList()
             }) 
         } else {

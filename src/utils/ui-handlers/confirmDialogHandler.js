@@ -3,7 +3,7 @@ import closeThis from "../common/closeThis"
 import executeWithAnimation from "../common/executeWithAnimation"
 import renderLayout from "../render"
 import { setCurrentState } from "../state"
-import { isMenuOpen, openMenu } from "./menuHandler"
+import { isMenuOpen, isProjectListOpen, openMenu, openProjectList } from "./menuHandler"
 import { undoDelete } from "./undoHandler"
 
 
@@ -14,6 +14,7 @@ export function deleteConfirmHandler(project, item, index){
 
     yesBtn.addEventListener('click', () => {
         const menuOpen = isMenuOpen()
+        const listOpen = isProjectListOpen()
         executeWithAnimation(confirmDialog, () => {
             const deleteItem = project.getItem(index)
             project.deleteItem(index)
@@ -22,6 +23,7 @@ export function deleteConfirmHandler(project, item, index){
                 closeThis(item)
                 renderLayout()
                 if(menuOpen) openMenu(false)
+                if(listOpen) openProjectList()
                 undoDelete(project,deleteItem)
             })           
         })
@@ -47,6 +49,7 @@ export function deleteProjectConfirmHandler(project, index){
             setCurrentState(inboxObj)
             renderLayout()
             openMenu(false)
+            openProjectList()
             undoDelete(project,deleteItem)
         })
     })

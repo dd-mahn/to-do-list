@@ -48,9 +48,12 @@ export default function menuHandler() {
 }
 
 function navClickHandler(project) {
+    const listOpen = isProjectListOpen()
     setCurrentState(project)
     renderLayout()
-    openMenu(isProjectListOpen())
+    openMenu(false)
+    if(listOpen) toggleProjectList()
+
 }
 
 function toggleProjectList() {
@@ -96,7 +99,7 @@ function handleDeleteButtonClick(title) {
 }
 
 function handleSearchButtonClick() {
-    const searchInput = menu.querySelector('.search__input')
+    const searchInput = document.querySelector('.search__input')
     if (searchInput.value !== '') {
         const searchResultObj = searchResult()
         const results = searchAllItems(searchInput.value)

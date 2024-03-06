@@ -8,7 +8,7 @@ import { getCurrentState } from '../state'
 import { deleteConfirmHandler } from './confirmDialogHandler'
 import { openDetail, changeDetail } from './detailHandler'
 import { editNoteDialogHandler, editTodoDialogHandler } from './editDialogHandler'
-import { isMenuOpen, openMenu } from './menuHandler'
+import { isMenuOpen, isProjectListOpen, openMenu, openProjectList } from './menuHandler'
 import moveDialogHandler from './moveDialogHandler'
 import { undoCheckbox } from './undoHandler'
 
@@ -63,6 +63,7 @@ export default function contentHandler() {
 
     function handleCheckboxChange(item, index) {
         const menuOpen = isMenuOpen()
+        const projectListOpen = isProjectListOpen()
         setTimeout(() => {
             const finishedItem = currentProject.getItem(index)
             finishedItem.changeStatus()
@@ -72,6 +73,7 @@ export default function contentHandler() {
                 closeThis(item)
                 renderLayout()
                 if (menuOpen) openMenu(false)
+                if (projectListOpen) openProjectList()
                 undoCheckbox(currentProject, finishedItem)
             })
         }, 500)

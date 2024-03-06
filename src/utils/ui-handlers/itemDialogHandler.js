@@ -4,10 +4,9 @@ import todo from '../../component/todo'
 import note from '../../component/note'
 import projectContainerObj from '../../component/projectContainer'
 import renderLayout from '../render'
-import itemContainerObj from '../../component/itemContainer'
-import { isMenuOpen, openMenu } from './menuHandler'
+import { isMenuOpen, isProjectListOpen, openMenu, openProjectList } from './menuHandler'
 import { isDetailOpen, openDetail } from './detailHandler'
-import executeWithAnimation from '../common/executeWithAnimation'
+import executeWithAnimation, { executeWithUnlimitedAnimation } from '../common/executeWithAnimation'
 
 export default function itemDialogHandler() {
     const itemDialog = document.getElementById('item__add-dialog')
@@ -28,10 +27,7 @@ export default function itemDialogHandler() {
 
     closeBtn.addEventListener('click', () => {
         executeWithAnimation(itemDialog, () => {
-            const form = selectInput.value === 'to-do' ? todoForm : noteForm
-            form.removeAttribute('novalidate')
             itemDialog.close('canceled')
-            form.setAttribute('novalidate', 'true')
         })
     })
 
@@ -41,10 +37,13 @@ export default function itemDialogHandler() {
             executeWithAnimation(itemDialog, () => {
                 const menuOpen = isMenuOpen()
                 const detailOpen = isDetailOpen()
+                const projectListOpen = isProjectListOpen()
                 if (selectInput.value === 'to-do') addTodo()
                 else if (selectInput.value === 'note') addNote()
+                itemDialog.close('added')
                 renderLayout()
-                if (menuOpen) openMenu()
+                if (menuOpen) openMenu(false)
+                if (projectListOpen) openProjectList()
                 if (detailOpen) openDetail()
             })
         }
@@ -54,7 +53,6 @@ export default function itemDialogHandler() {
         const newTodo = todo()
         populateTodo(newTodo, todoForm)
         getSelectedProject().addItem(newTodo)
-        itemContainerObj.addItem(newTodo)
     }
 
     function addNote() {
@@ -79,6 +77,7 @@ export default function itemDialogHandler() {
     }
 
     function checkValue(){
+        const form = selectInput.value === 'to-do' ? todoForm : noteForm
         if(selectInput.value === 'to-do'){
             const titleInput = form.querySelector('.todo__title-input')
             const desInput = form.querySelector('.todo__des-input')
@@ -91,7 +90,7 @@ export default function itemDialogHandler() {
             const titleInput = form.querySelector('.note__title-input')
             const desInput = form.querySelector('.note__des-input')
 
-            return titleInput&&desInput
+            return titleInput.value&&desInput.value
         }
     }
 
