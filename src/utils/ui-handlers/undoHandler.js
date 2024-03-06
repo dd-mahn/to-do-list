@@ -2,7 +2,7 @@ import historyObj from "../../component/Default Project/history"
 import createUndoBox from "../../component/Layout/createUndoBox"
 import executeWithAnimation from "../common/executeWithAnimation"
 import renderLayout from "../render"
-import { isMenuOpen, openMenu } from "./menuHandler"
+import { isMenuOpen, isProjectListOpen, openMenu, openProjectList } from "./menuHandler"
 
 let undoBoxQueue = [] // Queue to store undoBox elements
 
@@ -27,7 +27,7 @@ function checkUndoBoxQueue() {
                 checkUndoBoxQueue() // Check the queue for more undoBox elements
             })
         }  
-    }, 2000)
+    }, 3000)
 }
 
 
@@ -37,11 +37,13 @@ function undoDeleteHandler(project, item, undoBox){
 
     undoBtn.addEventListener('click', () => {
         const menuOpen = isMenuOpen()
+        const projectListOpen = isProjectListOpen()
         executeWithAnimation(undoBox, () => {
             project.addItem(item)
             removeUndoBox(undoBox)
             renderLayout()
             if(menuOpen) openMenu(false)
+            if(projectListOpen) openProjectList()
         })
     })
 
@@ -58,6 +60,7 @@ function undoCheckboxHandler(project, item, undoBox){
 
     undoBtn.addEventListener('click', () => {
         const menuOpen = isMenuOpen()
+        const projectListOpen = isProjectListOpen()
         executeWithAnimation(undoBox, () => {
             item.changeStatus()
             project.addItem(item)
@@ -66,6 +69,7 @@ function undoCheckboxHandler(project, item, undoBox){
             removeUndoBox(undoBox)
             renderLayout()
             if(menuOpen) openMenu(false)
+            if(projectListOpen) openProjectList()
         })
     })
 
