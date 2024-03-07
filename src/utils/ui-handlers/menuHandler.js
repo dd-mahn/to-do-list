@@ -12,6 +12,7 @@ import { editProjectDialogHandler } from "./editDialogHandler"
 import searchResult from "../../component/Default Project/searchResult"
 import searchAllItems from "../common/searchAllItems"
 import appearanceHandler from "./appearanceHandler"
+import { loadFromLocalStorage, saveToLocalStorage } from "../localStorage"
 
 export default function menuHandler() {
     const menu = document.querySelector('.menu')
@@ -24,10 +25,17 @@ export default function menuHandler() {
     const searchBtn = menu.querySelector('.search__icon')
     const appearanceBtn = menu.querySelector('.menu__bot')
 
-    inboxNav.addEventListener('click', () => navClickHandler(inbox))
-    todayNav.addEventListener('click', () => navClickHandler(today))
+    inboxNav.addEventListener('click', () => navClickHandler(projectContainerObj.getItem(0)))
+    todayNav.addEventListener('click', () => navClickHandler(projectContainerObj.getItem(1)))
     projectNav.addEventListener('click', toggleProjectList)
-    historyNav.addEventListener('click', () => navClickHandler(history))
+    historyNav.addEventListener('click', () => {
+        if(localStorage.getItem('history')){
+            navClickHandler(loadFromLocalStorage('history'))
+        }else{
+            navClickHandler(history)
+            saveToLocalStorage('history', history)
+        }
+    })
     projectAddButton.addEventListener('click', handleProjectAddButtonClick)
 
     projectListItems.forEach(item => {
@@ -53,7 +61,6 @@ function navClickHandler(project) {
     renderLayout()
     openMenu(false)
     if(listOpen) toggleProjectList()
-
 }
 
 function toggleProjectList() {

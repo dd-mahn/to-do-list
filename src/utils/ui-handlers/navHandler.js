@@ -1,10 +1,10 @@
-import inbox from "../../component/Default Project/inbox"
-import today from "../../component/Default Project/today"
 import history from "../../component/Default Project/history"
 import { setCurrentState } from "../state"
 import renderLayout from "../render"
 import { openMenu, openProjectList } from "./menuHandler"
 import appearanceHandler from "./appearanceHandler"
+import { loadFromLocalStorage, saveToLocalStorage } from "../localStorage"
+import projectContainerObj from "../../component/projectContainer"
 
 export default function navHandler(){
     const navBar = document.querySelector('.nav__bar')
@@ -18,11 +18,11 @@ export default function navHandler(){
     searchNav.addEventListener('click', () => openMenu())
     
     inboxNav.addEventListener('click', () => {
-        setCurrentState(inbox)
+        setCurrentState(projectContainerObj.getItem(0))
         renderLayout()
     })
     todayNav.addEventListener('click', () => {
-        setCurrentState(today)
+        setCurrentState(projectContainerObj.getItem(1))
         renderLayout()
     })
     projectNav.addEventListener('click', () => {
@@ -30,7 +30,13 @@ export default function navHandler(){
         openProjectList()
     })
     historyNav.addEventListener('click', () => {
-        setCurrentState(history)
+        if(localStorage.getItem('history')){
+            setCurrentState(loadFromLocalStorage('history'))
+        }else{
+            setCurrentState(history)
+            saveToLocalStorage('history', history)
+        }
+        
         renderLayout()
     })
 
