@@ -19,13 +19,6 @@ export default function contentHandler() {
     const detailBtn = titleDiv.querySelector('i')
     const contentItems = document.querySelectorAll('.content__item')
     const currentProject = getCurrentState()
-    // let currentProject
-    // if(currentProject.getValue().title === 'History'){
-    //     currentProjectInContainer = loadFromLocalStorage('history')
-    // }else{
-    //     currentProjectInContainer = projectContainerObj.getAllItem().find(prj => prj.getValue().title === currentProject.getValue().title)
-    // }
-    
 
     function handleDetailClick(index) {
         const item = currentProject.getItem(index)
@@ -40,14 +33,22 @@ export default function contentHandler() {
 
         editDialog.showModal()
         if (item.classList.contains('note')) {
-            openThis(noteForm)
-            closeThis(todoForm)
-            editNoteDialogHandler(currentProject.getItem(index))
+            handleNoteEdit(noteForm, todoForm, index)
         } else {
-            openThis(todoForm)
-            closeThis(noteForm)
-            editTodoDialogHandler(currentProject.getItem(index))
+            handleTodoEdit(todoForm, noteForm, index)
         }
+    }
+
+    function handleNoteEdit(noteForm, todoForm, index) {
+        openThis(noteForm)
+        closeThis(todoForm)
+        editNoteDialogHandler(currentProject.getItem(index))
+    }
+
+    function handleTodoEdit(todoForm, noteForm, index) {
+        openThis(todoForm)
+        closeThis(noteForm)
+        editTodoDialogHandler(currentProject.getItem(index))
     }
 
     function handleMoveButtonClick(item, index) {
@@ -65,7 +66,7 @@ export default function contentHandler() {
     function handlePriorityButtonClick(index, priorityBtn) {
         const currentItem = currentProject.getItem(index)
         const priority = currentItem.getValue().priority
-        const newPriority = priority === 'low' ? 'medium' : (priority === 'medium' ? 'high' : 'low')
+        const newPriority = priority === 'low' ? 'medium' : priority === 'medium' ? 'high' : 'low'
         currentItem.changePriority(newPriority)
         saveToLocalStorage('projectContainer', projectContainerObj)
         setPriorityClass(priorityBtn, newPriority)
@@ -79,17 +80,11 @@ export default function contentHandler() {
             finishedItem.changeStatus()
             console.log(finishedItem.getValue().status)
 
-            if(localStorage.getItem('history')){
-                const loadedHistoryObj = loadFromLocalStorage('history')
-                loadedHistoryObj.addItem(finishedItem)
-                saveToLocalStorage('history', loadedHistoryObj)
-                console.log(loadedHistoryObj.getAllItem())
-            }else{
-                historyObj.addItem(finishedItem)
-                saveToLocalStorage('history', historyObj)
-                console.log(historyObj.getAllItem())
-            }
-            
+            const history = localStorage.getItem('history') ? loadFromLocalStorage('history') : historyObj
+            history.addItem(finishedItem)
+            saveToLocalStorage('history', history)
+            console.log(history.getAllItem())
+
             currentProject.deleteItem(index)
             saveToLocalStorage('projectContainer', projectContainerObj)
 
@@ -111,18 +106,20 @@ export default function contentHandler() {
 
     contentItems.forEach((item, index) => {
         const isSearchResult = currentProject.getValue().title === 'Search Result'
-        if (!item.classList.contains('finished') && !isSearchResult) {
-            const title = item.querySelector('.title')
-            title.addEventListener('click', () => handleDetailClick(index))
+        const title = item.querySelector('.title')
+        title.addEventListener('click', () => handleDetailClick(index))
 
+        if (!isSearchResult) {
+            const deleteBtn = item.querySelector('.delete__btn')
+            deleteBtn.addEventListener('click', () => handleDeleteButtonClick(item, index))
+        }
+
+        if (!item.classList.contains('finished') && !isSearchResult) {
             const editBtn = item.querySelector('.edit__btn')
             editBtn.addEventListener('click', () => handleEditButtonClick(item, index))
 
             const moveBtn = item.querySelector('.move__btn')
             moveBtn.addEventListener('click', () => handleMoveButtonClick(item, index))
-
-            const deleteBtn = item.querySelector('.delete__btn')
-            deleteBtn.addEventListener('click', () => handleDeleteButtonClick(item, index))
 
             if (item.classList.contains('to-do')) {
                 const priorityBtn = item.querySelector('.priority__btn')
@@ -130,14 +127,6 @@ export default function contentHandler() {
 
                 const checkbox = item.querySelector('.checkbox__input')
                 checkbox.addEventListener('change', () => handleCheckboxChange(item, index))
-            }
-        } else {
-            const title = item.querySelector('.title')
-            title.addEventListener('click', () => handleDetailClick(index))
-
-            if (!isSearchResult) {
-                const deleteBtn = item.querySelector('.delete__btn')
-                deleteBtn.addEventListener('click', () => handleDeleteButtonClick(item, index))
             }
         }
     })
