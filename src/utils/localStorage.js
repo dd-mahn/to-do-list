@@ -98,6 +98,9 @@ function createTodo(data) {
     const obj = todo()
     obj.changeValue(data.title, data.description, data.startDate, data.dueDate)
     obj.changePriority(data.priority)
+    if(data.status){
+        obj.changeStatus()
+    }
     return obj
 }
 
