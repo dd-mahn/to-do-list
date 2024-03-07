@@ -1,10 +1,12 @@
 import historyObj from '../../component/Default Project/history'
+import projectContainerObj from '../../component/projectContainer'
 import closeThis from '../common/closeThis'
 import executeWithAnimation from '../common/executeWithAnimation'
 import openThis from '../common/openThis'
 import setPriorityClass from '../common/setPriorityClass'
+import { loadFromLocalStorage, saveToLocalStorage } from '../localStorage'
 import renderLayout from '../render'
-import { getCurrentState } from '../state'
+import { getCurrentState, setCurrentState } from '../state'
 import { deleteConfirmHandler } from './confirmDialogHandler'
 import { openDetail, changeDetail } from './detailHandler'
 import { editNoteDialogHandler, editTodoDialogHandler } from './editDialogHandler'
@@ -17,6 +19,13 @@ export default function contentHandler() {
     const detailBtn = titleDiv.querySelector('i')
     const contentItems = document.querySelectorAll('.content__item')
     const currentProject = getCurrentState()
+    // let currentProject
+    // if(currentProject.getValue().title === 'History'){
+    //     currentProjectInContainer = loadFromLocalStorage('history')
+    // }else{
+    //     currentProjectInContainer = projectContainerObj.getAllItem().find(prj => prj.getValue().title === currentProject.getValue().title)
+    // }
+    
 
     function handleDetailClick(index) {
         const item = currentProject.getItem(index)
@@ -58,6 +67,7 @@ export default function contentHandler() {
         const priority = currentItem.getValue().priority
         const newPriority = priority === 'low' ? 'medium' : (priority === 'medium' ? 'high' : 'low')
         currentItem.changePriority(newPriority)
+        saveToLocalStorage('projectContainer', projectContainerObj)
         setPriorityClass(priorityBtn, newPriority)
     }
 
@@ -67,10 +77,25 @@ export default function contentHandler() {
         setTimeout(() => {
             const finishedItem = currentProject.getItem(index)
             finishedItem.changeStatus()
-            historyObj.addItem(finishedItem)
+            console.log(finishedItem.getValue().status)
+
+            if(localStorage.getItem('history')){
+                const loadedHistoryObj = loadFromLocalStorage('history')
+                loadedHistoryObj.addItem(finishedItem)
+                saveToLocalStorage('history', loadedHistoryObj)
+                console.log(loadedHistoryObj.getAllItem())
+            }else{
+                historyObj.addItem(finishedItem)
+                saveToLocalStorage('history', historyObj)
+                console.log(historyObj.getAllItem())
+            }
+            
             currentProject.deleteItem(index)
+            saveToLocalStorage('projectContainer', projectContainerObj)
+
             executeWithAnimation(item, () => {
                 closeThis(item)
+                setCurrentState(getCurrentState())
                 renderLayout()
                 if (menuOpen) openMenu(false)
                 if (projectListOpen) openProjectList()
