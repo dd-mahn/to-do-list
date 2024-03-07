@@ -10,16 +10,7 @@ export default function renderLayout() {
     const body = document.querySelector('body')
     body.innerHTML = ''
 
-    let currentProject 
-
-    if(localStorage.getItem('currentProject') === null || localStorage.getItem('currentProject') === 'undefined'){
-        currentProject = getCurrentState()
-        saveToLocalStorage('currentProject', currentProject)
-    }else{
-        currentProject = loadFromLocalStorage('currentProject')
-        setCurrentState(currentProject)
-    
-    }
+    let currentProject = getCurrentState()
 
     createLayout(currentProject)
     
