@@ -3,7 +3,8 @@
 .to-do,
 .note{
     display: flex;
-    min-width: 50%;
+    min-width: 70%;
+    max-width: 100%;
     height: 2.5rem;
     border: 1px solid var(--nav-border-color);
     border-radius: 10px;
@@ -21,18 +22,18 @@
 }
 
 .to-do .checkbox{
-    width: 2.5rem;
+    width: 3rem;
     height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     border-right:1px solid var(--nav-border-color);
-    flex-grow: 1;
+    flex-grow: 0;
 }
 
 .to-do .title{
     display: flex;
-    min-width: 40%;
+    min-width: 50%;
     justify-content: start;
     align-items: center;
     padding: 0 1rem;
@@ -40,12 +41,17 @@
     flex-grow: 20;
 }
 
-.to-do .title span{
-    min-width: 200px;
+.to-do .title span,
+.note .title span{
+    max-width: 70%;
+    height: 1rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .note .title{
     display: flex;
+    min-width: 50%;
     justify-content: start;
     align-items: center;
     padding: 0 1rem;
@@ -59,22 +65,17 @@
     cursor:pointer;
 }
 
-.to-do .buttons{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 1.3rem;
-    gap: 1rem;
-    width: 300px;
-}
+.to-do .buttons,
 .note .buttons{
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 1.3rem;
+    font-size: 1.4rem;
     gap: 1rem;
-    width: 300px;
+    min-width: 30%;
+    max-width: 40%;
 }
+
 
 .to-do .buttons button,
 .note .buttons button
@@ -82,7 +83,7 @@
     border: none;
     background: inherit;
     height: 100%;
-    font-size: 1.3rem;
+    font-size: 1.4rem;
 }
 
 .to-do .buttons button:hover,
