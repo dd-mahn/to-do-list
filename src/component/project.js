@@ -23,7 +23,7 @@ export default function project(){
         if(index === 0){
             arr.splice(0,1)
         }else{
-            arr.splice(index, index)
+            arr.splice(index, 1)
         }
     }
 
