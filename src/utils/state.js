@@ -7,7 +7,6 @@ let currentState = {
 
 export function setCurrentState(obj){
     currentState.currentProject = obj
-    saveToLocalStorage('currentProject', obj)
 }
 
 export function getCurrentState(){
