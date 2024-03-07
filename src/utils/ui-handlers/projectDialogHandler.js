@@ -2,6 +2,7 @@
 import project from "../../component/project"
 import projectContainerObj from "../../component/projectContainer"
 import executeWithAnimation from "../common/executeWithAnimation"
+import { saveToLocalStorage } from "../localStorage"
 import renderLayout from "../render"
 import { setCurrentState } from "../state"
 import { openMenu, openProjectList } from "./menuHandler"
@@ -39,6 +40,7 @@ export default function projectDialogHandler() {
                     newProject.changeValue(nameValue, desValue)
                 }
                 projectContainerObj.addItem(newProject)
+                saveToLocalStorage('projectContainer', projectContainerObj)
                 setCurrentState(newProject)
                 renderLayout()
                 openMenu(false)

@@ -1,7 +1,11 @@
+import { set } from 'date-fns'
+import projectContainerObj from '../../component/projectContainer'
 import executeWithAnimation from '../common/executeWithAnimation'
+import { saveToLocalStorage } from '../localStorage'
 import renderLayout from '../render'
 import { changeDetail, isDetailOpen, openDetail } from './detailHandler'
 import { isMenuOpen, isProjectListOpen, openMenu, openProjectList } from './menuHandler'
+import { getCurrentState, setCurrentState } from '../state'
 
 function populateTodoForm(todoForm, item) {
     const { title, description, startDate, dueDate} = item.getValue()
@@ -35,6 +39,7 @@ function attachFormListeners(editDialog, item, saveHandler) {
             // const detailOpen = isDetailOpen()
             saveHandler(item)
             editDialog.close('saved')
+            setCurrentState(getCurrentState())
             renderLayout()
             if (menuOpen) openMenu(false)
             // if (detailOpen){
@@ -59,6 +64,7 @@ export function editTodoDialogHandler(item) {
     attachFormListeners(editDialog, item, (item) => {
         const { title, description, startDate, dueDate} = todoForm.elements
         item.changeValue(title.value, description.value, startDate.value, dueDate.value, item.getValue().priority)
+        saveToLocalStorage('projectContainer', projectContainerObj)
     })
 }
 
@@ -69,6 +75,7 @@ export function editNoteDialogHandler(item) {
     attachFormListeners(editDialog, item, (item) => {
         const { title, description } = noteForm.elements
         item.changeValue(title.value, description.value)
+        saveToLocalStorage('projectContainer', projectContainerObj)
     })
 }
 
@@ -79,5 +86,6 @@ export function editProjectDialogHandler(item) {
     attachFormListeners(editDialog, item, (item) => {
         const { title, description } = projectForm.elements
         item.changeValue(title.value, description.value)
+        saveToLocalStorage('projectContainer', projectContainerObj)
     })
 }

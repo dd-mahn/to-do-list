@@ -1,6 +1,7 @@
 import projectContainerObj from "../../component/projectContainer"
 import closeThis from "../common/closeThis"
 import executeWithAnimation from "../common/executeWithAnimation"
+import { saveToLocalStorage } from "../localStorage"
 import renderLayout from "../render"
 import { isMenuOpen, isProjectListOpen, openMenu, openProjectList } from "./menuHandler"
 
@@ -19,6 +20,7 @@ export default function moveDialogHandler(curr, item, index){
         const destination = projects.find(prj => prj.getValue().title === projectInput.value)
         curr.deleteItem(index)
         destination.addItem(moveItem)
+        saveToLocalStorage('projectContainer', projectContainerObj)
         executeWithAnimation(moveDialog, () => {
             moveDialog.close('saved')
             executeWithAnimation(item, () => {

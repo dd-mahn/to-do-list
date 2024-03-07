@@ -1,4 +1,5 @@
 import inboxObj from "../../component/Default Project/inbox"
+import projectContainerObj from "../../component/projectContainer"
 import closeThis from "../common/closeThis"
 import executeWithAnimation from "../common/executeWithAnimation"
 import renderLayout from "../render"
@@ -21,6 +22,7 @@ export function deleteConfirmHandler(project, item, index){
             confirmDialog.close('deleted')
             executeWithAnimation(item, () => {
                 closeThis(item)
+                setCurrentState(project)
                 renderLayout()
                 if(menuOpen) openMenu(false)
                 if(listOpen) openProjectList()
@@ -46,7 +48,7 @@ export function deleteProjectConfirmHandler(project, index){
             const deleteItem = project.getItem(index)
             project.deleteItem(index)
             confirmDialog.close('deleted')
-            setCurrentState(inboxObj)
+            setCurrentState(projectContainerObj.getItem(0))
             renderLayout()
             openMenu(false)
             openProjectList()

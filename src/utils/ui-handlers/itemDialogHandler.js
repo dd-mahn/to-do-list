@@ -6,7 +6,9 @@ import projectContainerObj from '../../component/projectContainer'
 import renderLayout from '../render'
 import { isMenuOpen, isProjectListOpen, openMenu, openProjectList } from './menuHandler'
 import { isDetailOpen, openDetail } from './detailHandler'
-import executeWithAnimation, { executeWithUnlimitedAnimation } from '../common/executeWithAnimation'
+import executeWithAnimation from '../common/executeWithAnimation'
+import { saveToLocalStorage } from '../localStorage'
+import { setCurrentState } from '../state'
 
 export default function itemDialogHandler() {
     const itemDialog = document.getElementById('item__add-dialog')
@@ -41,6 +43,7 @@ export default function itemDialogHandler() {
                 if (selectInput.value === 'to-do') addTodo()
                 else if (selectInput.value === 'note') addNote()
                 itemDialog.close('added')
+                setCurrentState(getSelectedProject())
                 renderLayout()
                 if (menuOpen) openMenu(false)
                 if (projectListOpen) openProjectList()
@@ -53,12 +56,14 @@ export default function itemDialogHandler() {
         const newTodo = todo()
         populateTodo(newTodo, todoForm)
         getSelectedProject().addItem(newTodo)
+        saveToLocalStorage('projectContainer', projectContainerObj)
     }
 
     function addNote() {
         const newNote = note()
         populateNote(newNote, noteForm)
         getSelectedProject().addItem(newNote)
+        saveToLocalStorage('projectContainer', projectContainerObj)
     }
 
     function populateTodo(item, form) {
