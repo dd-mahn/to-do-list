@@ -1,8 +1,8 @@
 import {format} from 'date-fns'
-import itemContainer from './itemContainer'
 
 export default function project(){
     const arr = []
+    const type = 'project'
     let title, description
     const date = format(new Date(), 'MM/dd/yyyy')
 
@@ -34,12 +34,16 @@ export default function project(){
         return arr
     }
 
+    const getType = () => type
+    
+
     return{
         changeValue,
         getValue,
         addItem,
         deleteItem,
         getItem,
-        getAllItem
+        getAllItem,
+        getType
     }
 }
