@@ -1,5 +1,5 @@
 .menu{
-    width: 300px;
+    min-width: 12%;
     background: var(--background-color-2);
     border-right: 1px solid var(--tab-border-color);
     display: flex;
@@ -14,8 +14,12 @@
     animation: slideOutLeft linear .3s;
 }
 
+.menu__top{
+    width: 90%;
+}
+
 .menu__top > div{
-    width: 14rem;
+    width: 100%;
 }
 
 .search__bar{
@@ -29,7 +33,7 @@
 }
 
 .search__bar > input{
-    width: 10rem;
+    min-width: 50%;
     border: none;
     border-radius: 10px;
     padding-left: .5rem;

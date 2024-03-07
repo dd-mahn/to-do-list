@@ -3,7 +3,7 @@
 .to-do,
 .note{
     display: flex;
-    width: 1200px;
+    min-width: 50%;
     height: 2.5rem;
     border: 1px solid var(--nav-border-color);
     border-radius: 10px;
@@ -32,13 +32,18 @@
 
 .to-do .title{
     display: flex;
-    width: 30rem;
+    min-width: 40%;
     justify-content: start;
     align-items: center;
     padding: 0 1rem;
     border-right: 1px solid var(--nav-border-color);
     flex-grow: 20;
 }
+
+.to-do .title span{
+    min-width: 200px;
+}
+
 .note .title{
     display: flex;
     justify-content: start;
