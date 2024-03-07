@@ -1,7 +1,10 @@
+import { loadFromLocalStorage, saveToLocalStorage } from '../utils/localStorage'
 import inboxObj from './Default Project/inbox'
 import todayObj from './Default Project/today'
-function projectContainer() {
+
+export function projectContainer() {
     const arr = []
+    const type = 'projectContainer'
 
     const addItem = (prj) => {
         arr.push(prj)
@@ -19,20 +22,36 @@ function projectContainer() {
         if(index === 0){
             arr.splice(0,1)
         }else{
-            arr.splice(index, index)
+            arr.splice(index, 1)
         }
     }
+
+    const getType = () => type
 
     return{
         addItem,
         getItem,
         getAllItem,
-        deleteItem
+        deleteItem,
+        getType
     }
 }
 
-const projectContainerObj = projectContainer()
-projectContainerObj.addItem(inboxObj)
-projectContainerObj.addItem(todayObj)
+function projectContainerConstructor() {
+    if(localStorage.getItem('projectContainer') === null){
+        console.log('Saving to local storage')
+        const projectContainerObj = projectContainer()
+        projectContainerObj.addItem(inboxObj)
+        projectContainerObj.addItem(todayObj)
+        saveToLocalStorage('projectContainer', projectContainerObj)
+        return projectContainerObj
+    }else{
+        const loadedProjectContainer = loadFromLocalStorage('projectContainer')
+        console.log(loadedProjectContainer)
+        return loadedProjectContainer
+    }
+}
+
+const projectContainerObj = projectContainerConstructor()
 
 export default projectContainerObj

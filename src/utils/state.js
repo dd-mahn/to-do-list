@@ -1,11 +1,13 @@
-import inbox from "../component/Default Project/inbox"
+import projectContainerObj from "../component/projectContainer"
+import { saveToLocalStorage } from "./localStorage"
 
 let currentState = {
-    currentProject: inbox
+    currentProject: projectContainerObj.getItem(0)
 }
 
 export function setCurrentState(obj){
     currentState.currentProject = obj
+    saveToLocalStorage('currentProject', obj)
 }
 
 export function getCurrentState(){
