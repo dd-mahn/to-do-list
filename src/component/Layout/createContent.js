@@ -21,7 +21,8 @@ export default function createContent(prj) {
     const items = prj.getAllItem()
     items.forEach(item => {
         const itemType = item.getType()
-        if (itemType === 'todo' && item.getValue().status === true){
+        if (prj.getValue().title === 'History'){
+            console.log('added finished item')
             itemDiv.appendChild(createFinishedTodo(item))
         } else if (itemType === 'note') {
             itemDiv.appendChild(createNote(item))
