@@ -1,6 +1,8 @@
 import historyObj from "../../component/Default Project/history"
 import createUndoBox from "../../component/Layout/createUndoBox"
+import projectContainerObj from "../../component/projectContainer"
 import executeWithAnimation from "../common/executeWithAnimation"
+import { saveToLocalStorage } from "../localStorage"
 import renderLayout from "../render"
 import { isMenuOpen, isProjectListOpen, openMenu, openProjectList } from "./menuHandler"
 
@@ -40,6 +42,7 @@ function undoDeleteHandler(project, item, undoBox){
         const projectListOpen = isProjectListOpen()
         executeWithAnimation(undoBox, () => {
             project.addItem(item)
+            saveToLocalStorage('projectContainer', projectContainerObj)
             removeUndoBox(undoBox)
             renderLayout()
             if(menuOpen) openMenu(false)
@@ -66,6 +69,8 @@ function undoCheckboxHandler(project, item, undoBox){
             project.addItem(item)
             const index = historyObj.getAllItem().findIndex(obj => obj.getValue().title === item.getValue().title)
             historyObj.deleteItem(index)
+            saveToLocalStorage('projectContainer', projectContainerObj)
+            saveToLocalStorage('history', historyObj)
             removeUndoBox(undoBox)
             renderLayout()
             if(menuOpen) openMenu(false)
