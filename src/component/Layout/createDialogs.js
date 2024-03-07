@@ -1,6 +1,6 @@
 import appendChildren from "../../utils/common/appendChildren"
 import createDivWithClass from "../../utils/common/createDivWithClass"
-import projectContainer from '../projectContainer'
+import projectContainerObj from '../projectContainer'
 import {getCurrentState} from '../../utils/state'
 
 // Project add dialog
@@ -122,7 +122,7 @@ function createProjectSelect() {
 
     appendChildren(projectSelectDiv, [projectSelectLabel, projectSelectList])
 
-    const projects = projectContainer.getAllItem()
+    const projects = projectContainerObj.getAllItem()
     projects.forEach(prj => {
         const option = document.createElement('option')
         option.innerText = `${prj.getValue().title}`
