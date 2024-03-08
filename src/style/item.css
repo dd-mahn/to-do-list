@@ -44,7 +44,6 @@
 .to-do .title span,
 .note .title span{
     max-width: 70%;
-    height: 1rem;
     overflow: hidden;
     text-overflow: ellipsis;
 }
