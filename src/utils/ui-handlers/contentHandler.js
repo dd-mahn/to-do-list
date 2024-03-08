@@ -78,12 +78,10 @@ export default function contentHandler() {
         setTimeout(() => {
             const finishedItem = currentProject.getItem(index)
             finishedItem.changeStatus()
-            console.log(finishedItem.getValue().status)
 
             const history = localStorage.getItem('history') ? loadFromLocalStorage('history') : historyObj
             history.addItem(finishedItem)
             saveToLocalStorage('history', history)
-            console.log(history.getAllItem())
 
             currentProject.deleteItem(index)
             saveToLocalStorage('projectContainer', projectContainerObj)

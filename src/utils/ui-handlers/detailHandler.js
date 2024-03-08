@@ -6,17 +6,10 @@ import openThis from "../common/openThis"
 export function detailHandler(){
     const detail = document.querySelector('.detail')
     const closeBtn = detail.querySelector('.close__btn')
-    const deleteBtn = detail.querySelector('.delete__btn')
-
 
     closeBtn.addEventListener('click', () => {
         closeDetail()
     })
-
-    // deleteBtn.addEventListener('click', () => {
-
-    // })
-    
 }
 
 export function changeDetail(obj){

@@ -39,15 +39,15 @@ export function projectContainer() {
 
 function projectContainerConstructor() {
     if(localStorage.getItem('projectContainer') === null){
-        console.log('Saving to local storage')
         const projectContainerObj = projectContainer()
         projectContainerObj.addItem(inboxObj)
         projectContainerObj.addItem(todayObj)
         saveToLocalStorage('projectContainer', projectContainerObj)
+        console.log('Saved to local storage')
         return projectContainerObj
     }else{
         const loadedProjectContainer = loadFromLocalStorage('projectContainer')
-        console.log(loadedProjectContainer)
+        console.log('Loaded from local storage')
         return loadedProjectContainer
     }
 }

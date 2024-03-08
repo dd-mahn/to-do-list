@@ -5,8 +5,8 @@ import todo from "../component/todo"
 
 export function saveToLocalStorage(key, value) {
     const serializedValue = JSON.stringify(serialize(value))
-    console.log(serializedValue)
     localStorage.setItem(key, serializedValue)
+    console.log('saving to local storage')
 }
 
 function serialize(inputObj){
@@ -58,7 +58,7 @@ function serialize(inputObj){
 
 export function loadFromLocalStorage(key) {
     const loaded = JSON.parse(localStorage.getItem(key))
-    console.log(loaded)
+    console.log('loading from local storage')
     switch (loaded.type) { 
         case 'projectContainer':
             return createProjectContainer(loaded.data)
@@ -114,31 +114,3 @@ function createComponent(type, data) {
             return null
     }
 }
-
-
-// const data = JSON.parse(localStorage.getItem(key), (_key, value) => {
-//     if (value.type) {
-//         let obj
-//         switch (value.type) {
-//             case 'projectContainer':
-//                 obj = createProjectContainer(value.data)
-//                 break
-//             case 'project':
-//                 obj = createProject(value.data)
-//                 break
-//             case 'note':
-//                 obj = createNote(value.data)
-//                 break
-//             case 'todo':
-//                 obj = createTodo(value.data)
-//                 break
-//             default:
-//                 obj = value
-//         }
-//         console.log('right')
-//         return obj
-//     }
-//     console.log('wrong')
-//     return value
-// })
-// return data
