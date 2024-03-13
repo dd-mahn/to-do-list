@@ -123,6 +123,7 @@
 .menu__item.project__list ul li span{
     max-width: 5rem;
     overflow: hidden;
+    white-space: nowrap;
 }
 
 .menu__item.project__list ul li span:hover{

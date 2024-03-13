@@ -43,8 +43,9 @@
 
 .to-do .title span,
 .note .title span{
-    max-width: 70%;
+    max-width: 95%;
     overflow: hidden;
+    white-space: nowrap;
 }
 
 .note .title{
