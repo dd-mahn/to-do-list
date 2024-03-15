@@ -1,13 +1,13 @@
-import project from '../project'
+import project from "../project";
 
 const today = () => {
-    const todayObj = Object.create(project())
+  const todayObj = Object.create(project());
 
-    todayObj.changeValue('Today', `You can store your today's to-dos here`)
+  todayObj.changeValue("Today", `You can store your today's to-dos here`);
 
-    return todayObj
-}
+  return todayObj;
+};
 
-const todayObj = today()
+const todayObj = today();
 
-export default todayObj
+export default todayObj;

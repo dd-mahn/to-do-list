@@ -1,67 +1,67 @@
-.detail{
-    background: var(--background-color-2);
-    padding: 1rem 2rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: relative;
-    min-width: 15%;
-    max-width: 20%;
-    border-left: 1px solid var(--tab-border-color);
-    /* animation: slideInRight linear .3s; */
+.detail {
+  background: var(--background-color-2);
+  padding: 1rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  min-width: 15%;
+  max-width: 20%;
+  border-left: 1px solid var(--tab-border-color);
+  /* animation: slideInRight linear .3s; */
 }
-.detail[opening]{
-    animation: slideInRight linear .3s;
-}
-
-.detail[open]{
-    animation: none
+.detail[opening] {
+  animation: slideInRight linear 0.3s;
 }
 
-.detail[closing]{
-    animation: slideOutRight linear .3s;
+.detail[open] {
+  animation: none;
 }
 
-.detail h1{
-    margin: 2rem 0;
-    display: flex;
-    align-items: center;
-    justify-content: start;
-    overflow: hidden;
-    width: 100%;
+.detail[closing] {
+  animation: slideOutRight linear 0.3s;
 }
 
-.detail p{
-    margin: 0 0 1rem 0;
-    width: 100%;
+.detail h1 {
+  margin: 2rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  overflow: hidden;
+  width: 100%;
 }
 
-.detail div{
-    display: flex;
-    flex-direction: column;
-    align-items: start;
-    justify-content: center;
-    gap: 1rem;
-    width: 100%;
-    margin-bottom: 2rem;
+.detail p {
+  margin: 0 0 1rem 0;
+  width: 100%;
 }
 
-.detail button.delete__btn{
-    background: var(--delete-btn-color);
-    color: var(--text-color-light);
+.detail div {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+  gap: 1rem;
+  width: 100%;
+  margin-bottom: 2rem;
 }
 
-.detail button.close__btn{
-    position: absolute;
-    top: .1rem;
-    left: .1rem;
-    border:none;
-    background: inherit;
-    font-size: 1.2rem;
-    opacity: 0.5;
+.detail button.delete__btn {
+  background: var(--delete-btn-color);
+  color: var(--text-color-light);
 }
 
-.detail button.close__btn:hover{
-    cursor: pointer;
-    color: var(--hover-text-color)
+.detail button.close__btn {
+  position: absolute;
+  top: 0.1rem;
+  left: 0.1rem;
+  border: none;
+  background: inherit;
+  font-size: 1.2rem;
+  opacity: 0.5;
+}
+
+.detail button.close__btn:hover {
+  cursor: pointer;
+  color: var(--hover-text-color);
 }

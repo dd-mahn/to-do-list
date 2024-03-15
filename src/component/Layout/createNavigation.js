@@ -1,11 +1,11 @@
-import appendChildren from "../../utils/common/appendChildren"
-import createDivWithClass from "../../utils/common/createDivWithClass"
+import appendChildren from "../../utils/common/appendChildren";
+import createDivWithClass from "../../utils/common/createDivWithClass";
 
 export default function createNavigationBar() {
-    const navBar = createDivWithClass('nav__bar')
+  const navBar = createDivWithClass("nav__bar");
 
-    const navItems = createDivWithClass('nav__items')
-    const navItemHTML = `
+  const navItems = createDivWithClass("nav__items");
+  const navItemHTML = `
         <div class="nav__item icon__big search__nav">
             <i class="ri-search-line"></i>
         </div>
@@ -21,13 +21,13 @@ export default function createNavigationBar() {
         <div class="nav__item icon__big history__nav">
             <i class="ri-history-line"></i>
         </div>
-    `
-    navItems.innerHTML = navItemHTML
+    `;
+  navItems.innerHTML = navItemHTML;
 
-    const appearanceMode = createDivWithClass('appearance__mode', 'icon__big')
-    appearanceMode.innerHTML = '<i class="ri-sun-line"></i>'
+  const appearanceMode = createDivWithClass("appearance__mode", "icon__big");
+  appearanceMode.innerHTML = '<i class="ri-sun-line"></i>';
 
-    appendChildren(navBar, [navItems, appearanceMode])
+  appendChildren(navBar, [navItems, appearanceMode]);
 
-    return navBar
+  return navBar;
 }

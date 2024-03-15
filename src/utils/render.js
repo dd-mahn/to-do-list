@@ -7,17 +7,17 @@ import menuHandler from "./ui-handlers/menuHandler";
 import navHandler from "./ui-handlers/navHandler";
 
 export default function renderLayout() {
-    const body = document.querySelector('body')
-    body.innerHTML = ''
+  const body = document.querySelector("body");
+  body.innerHTML = "";
 
-    let currentProject = getCurrentState()
+  let currentProject = getCurrentState();
 
-    createLayout(currentProject)
-    
-    if(body.innerHTML !== ''){
-        headerHandler()
-        navHandler()
-        menuHandler()
-        contentHandler()
-    }
+  createLayout(currentProject);
+
+  if (body.innerHTML !== "") {
+    headerHandler();
+    navHandler();
+    menuHandler();
+    contentHandler();
+  }
 }

@@ -1,135 +1,133 @@
 /* TODOS*/
 
 .to-do,
-.note{
-    display: flex;
-    min-width: 70%;
-    max-width: 100%;
-    height: 2.5rem;
-    border: 1px solid var(--nav-border-color);
-    border-radius: 10px;
-    animation:fadeIn linear .3s;
+.note {
+  display: flex;
+  min-width: 70%;
+  max-width: 100%;
+  height: 2.5rem;
+  border: 1px solid var(--nav-border-color);
+  border-radius: 10px;
+  animation: fadeIn linear 0.3s;
 }
 
 .to-do[closing],
-.note[closing]{    
-    animation: fadeOut linear .3s;    
+.note[closing] {
+  animation: fadeOut linear 0.3s;
 }
 
 .to-do:hover,
-.note:hover{
-    box-shadow: var(--shadow-color) 5px 5px 10px;
+.note:hover {
+  box-shadow: var(--shadow-color) 5px 5px 10px;
 }
 
-.to-do .checkbox{
-    width: 3rem;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-right:1px solid var(--nav-border-color);
-    flex-grow: 0;
+.to-do .checkbox {
+  width: 3rem;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-right: 1px solid var(--nav-border-color);
+  flex-grow: 0;
 }
 
-.to-do .title{
-    display: flex;
-    min-width: 50%;
-    justify-content: start;
-    align-items: center;
-    padding: 0 1rem;
-    border-right: 1px solid var(--nav-border-color);
-    flex-grow: 20;
+.to-do .title {
+  display: flex;
+  min-width: 50%;
+  justify-content: start;
+  align-items: center;
+  padding: 0 1rem;
+  border-right: 1px solid var(--nav-border-color);
+  flex-grow: 20;
 }
 
 .to-do .title span,
-.note .title span{
-    max-width: 95%;
-    overflow: hidden;
-    white-space: nowrap;
+.note .title span {
+  max-width: 95%;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
-.note .title{
-    display: flex;
-    min-width: 50%;
-    justify-content: start;
-    align-items: center;
-    padding: 0 1rem;
-    border-right: 1px solid var(--nav-border-color);
-    flex-grow: 5;
+.note .title {
+  display: flex;
+  min-width: 50%;
+  justify-content: start;
+  align-items: center;
+  padding: 0 1rem;
+  border-right: 1px solid var(--nav-border-color);
+  flex-grow: 5;
 }
 
 .to-do .checkbox input:hover,
 .to-do .title:hover,
-.note .title:hover{
-    cursor:pointer;
+.note .title:hover {
+  cursor: pointer;
 }
 
 .to-do .buttons,
-.note .buttons{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 1.4rem;
-    gap: 1rem;
-    min-width: 30%;
-    max-width: 40%;
+.note .buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.4rem;
+  gap: 1rem;
+  min-width: 30%;
+  max-width: 40%;
 }
 
-
 .to-do .buttons button,
-.note .buttons button
-    {
-    border: none;
-    background: inherit;
-    height: 100%;
-    font-size: 1.4rem;
+.note .buttons button {
+  border: none;
+  background: inherit;
+  height: 100%;
+  font-size: 1.4rem;
 }
 
 .to-do .buttons button:hover,
-.note .buttons button:hover{
-    cursor: pointer;
-    color: var(--hover-text-color);
+.note .buttons button:hover {
+  cursor: pointer;
+  color: var(--hover-text-color);
 }
 
-.to-do .priority__btn.priority__low:hover{
-    color: var(--priority-low-color) !important;
+.to-do .priority__btn.priority__low:hover {
+  color: var(--priority-low-color) !important;
 }
-.to-do .priority__btn.priority__medium:hover{
-    color: var(--priority-medium-color) !important;
+.to-do .priority__btn.priority__medium:hover {
+  color: var(--priority-medium-color) !important;
 }
-.to-do .priority__btn.priority__high:hover{
-    color: var(--priority-high-color) !important;
+.to-do .priority__btn.priority__high:hover {
+  color: var(--priority-high-color) !important;
 }
 
 /* CHECKBOX */
-input[type='checkbox']{
-    appearance: none;
-    background-color: #fff;
-    margin:0;
-    font:inherit;
-    color: var(--priority-low-color);
-    border: 1px solid var(--header-hover-color);
-    width: 1.2rem;
-    height:1.2rem;
-    border-radius: 5px;
-    display: grid;
-    place-content: center;
+input[type="checkbox"] {
+  appearance: none;
+  background-color: #fff;
+  margin: 0;
+  font: inherit;
+  color: var(--priority-low-color);
+  border: 1px solid var(--header-hover-color);
+  width: 1.2rem;
+  height: 1.2rem;
+  border-radius: 5px;
+  display: grid;
+  place-content: center;
 }
 
-input[type='checkbox']:hover{
-    border:2px solid var(--header-hover-color)
+input[type="checkbox"]:hover {
+  border: 2px solid var(--header-hover-color);
 }
 
-input[type='checkbox']::before{
-    content: '';
-    width: 0.6rem;
-    height: 0.6rem;
-    border-radius: 3px;
-    transform: scale(0);
-    transition: .12s transform ease-in-out;
-    box-shadow: inset 1em 1em var(--priority-low-color);
+input[type="checkbox"]::before {
+  content: "";
+  width: 0.6rem;
+  height: 0.6rem;
+  border-radius: 3px;
+  transform: scale(0);
+  transition: 0.12s transform ease-in-out;
+  box-shadow: inset 1em 1em var(--priority-low-color);
 }
 
-input[type='checkbox']:checked::before{
-    transform:scale(1);
+input[type="checkbox"]:checked::before {
+  transform: scale(1);
 }

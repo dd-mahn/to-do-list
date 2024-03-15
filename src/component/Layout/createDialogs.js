@@ -1,16 +1,16 @@
-import appendChildren from "../../utils/common/appendChildren"
-import createDivWithClass from "../../utils/common/createDivWithClass"
-import projectContainerObj from '../projectContainer'
-import {getCurrentState} from '../../utils/state'
+import appendChildren from "../../utils/common/appendChildren";
+import createDivWithClass from "../../utils/common/createDivWithClass";
+import projectContainerObj from "../projectContainer";
+import { getCurrentState } from "../../utils/state";
 
 // Project add dialog
 export function createProjectDialog() {
-    const dialog = document.createElement('dialog')
-    dialog.id = 'project__add-dialog'
+  const dialog = document.createElement("dialog");
+  dialog.id = "project__add-dialog";
 
-    const form = document.createElement('form')
-    form.id = 'project__add-form'
-    form.innerHTML = `
+  const form = document.createElement("form");
+  form.id = "project__add-form";
+  form.innerHTML = `
         <div>
             <label for="title">Project Title:</label>
             <input required type="text" id="title" name="title" class="project__title-input">
@@ -19,40 +19,46 @@ export function createProjectDialog() {
             <label for="description">Description:</label>
             <textarea required type="text" id="description" name="description" class="project__des-input"></textarea>
         </div>
-    `
+    `;
 
-    appendChildren(form, [createAddButtonDiv()])
-    dialog.appendChild(form)
+  appendChildren(form, [createAddButtonDiv()]);
+  dialog.appendChild(form);
 
-    return dialog
+  return dialog;
 }
 
 // Item add dialog
 export function createItemDialog() {
-    const dialog = document.createElement('dialog')
-    dialog.id = 'item__add-dialog'
+  const dialog = document.createElement("dialog");
+  dialog.id = "item__add-dialog";
 
-    const selectItemForm = document.createElement('form')
-    selectItemForm.classList.add('select__item-form')
-    selectItemForm.innerHTML = `
+  const selectItemForm = document.createElement("form");
+  selectItemForm.classList.add("select__item-form");
+  selectItemForm.innerHTML = `
         <label for="item">Choose which item to create:</label>
         <select name="item" id="item" class="select__item-input">
             <option value="to-do">Todo</option>
             <option value="note">Note</option>
-        </select>`
+        </select>`;
 
-    const todoAddForm = createTodoAddForm()
-    const noteAddForm = createNoteAddForm()
+  const todoAddForm = createTodoAddForm();
+  const noteAddForm = createNoteAddForm();
 
-    appendChildren(dialog, [selectItemForm, todoAddForm, noteAddForm, createProjectSelect(), createAddButtonDiv()])
+  appendChildren(dialog, [
+    selectItemForm,
+    todoAddForm,
+    noteAddForm,
+    createProjectSelect(),
+    createAddButtonDiv(),
+  ]);
 
-    return dialog
+  return dialog;
 }
 
 function createTodoAddForm() {
-    const todoAddForm = document.createElement('form')
-    todoAddForm.id = 'todo__add-form'
-    todoAddForm.innerHTML = `
+  const todoAddForm = document.createElement("form");
+  todoAddForm.id = "todo__add-form";
+  todoAddForm.innerHTML = `
         <div>
             <label for="title">Title:</label>
             <input required type="text" id="title" name="title" class="todo__title-input">
@@ -76,27 +82,27 @@ function createTodoAddForm() {
                 <option value="medium">Medium</option>
                 <option value="high">High</option>
             </select>
-        </div>`
+        </div>`;
 
-    const startDateInput = todoAddForm.querySelector('#startDate')
-    const dueDateInput = todoAddForm.querySelector('#dueDate')
+  const startDateInput = todoAddForm.querySelector("#startDate");
+  const dueDateInput = todoAddForm.querySelector("#dueDate");
 
-    startDateInput.addEventListener('input', function() {
-        dueDateInput.min = startDateInput.value
-    })
+  startDateInput.addEventListener("input", function () {
+    dueDateInput.min = startDateInput.value;
+  });
 
-    dueDateInput.addEventListener('click', () => {
-        startDateInput.max = dueDateInput.value
-    })
+  dueDateInput.addEventListener("click", () => {
+    startDateInput.max = dueDateInput.value;
+  });
 
-    return todoAddForm
+  return todoAddForm;
 }
 
 function createNoteAddForm() {
-    const noteAddForm = document.createElement('form')
-    noteAddForm.id = 'note__add-form'
-    noteAddForm.classList.add('d-off')
-    noteAddForm.innerHTML = `
+  const noteAddForm = document.createElement("form");
+  noteAddForm.id = "note__add-form";
+  noteAddForm.classList.add("d-off");
+  noteAddForm.innerHTML = `
         <div>
             <label for="title">Title:</label>
             <input required type="text" id="title" name="title" class="note__title-input">
@@ -104,76 +110,81 @@ function createNoteAddForm() {
         <div>
             <label for="description">Description:</label>
             <textarea id="description" name="description" class="note__des-input"></textarea>
-        </div>`
+        </div>`;
 
-    return noteAddForm
+  return noteAddForm;
 }
 
 function createProjectSelect() {
-    const projectSelectDiv = document.createElement('div')
-    const projectSelectLabel = document.createElement('label')
-    projectSelectLabel.setAttribute('for', 'project')
-    projectSelectLabel.innerHTML = `Put it in: `
-    const projectSelectList = document.createElement('select')
-    projectSelectList.classList.add('item__project-input')
-    projectSelectList.setAttribute('name', 'project')
-    projectSelectList.setAttribute('id', 'project')
-    const currentProject = getCurrentState()
+  const projectSelectDiv = document.createElement("div");
+  const projectSelectLabel = document.createElement("label");
+  projectSelectLabel.setAttribute("for", "project");
+  projectSelectLabel.innerHTML = `Put it in: `;
+  const projectSelectList = document.createElement("select");
+  projectSelectList.classList.add("item__project-input");
+  projectSelectList.setAttribute("name", "project");
+  projectSelectList.setAttribute("id", "project");
+  const currentProject = getCurrentState();
 
-    appendChildren(projectSelectDiv, [projectSelectLabel, projectSelectList])
+  appendChildren(projectSelectDiv, [projectSelectLabel, projectSelectList]);
 
-    const projects = projectContainerObj.getAllItem()
-    projects.forEach(prj => {
-        const option = document.createElement('option')
-        option.innerText = `${prj.getValue().title}`
-        projectSelectList.appendChild(option)
-    })
+  const projects = projectContainerObj.getAllItem();
+  projects.forEach((prj) => {
+    const option = document.createElement("option");
+    option.innerText = `${prj.getValue().title}`;
+    projectSelectList.appendChild(option);
+  });
 
-    projectSelectList.value = currentProject.getValue().title
-    return projectSelectDiv
+  projectSelectList.value = currentProject.getValue().title;
+  return projectSelectDiv;
 }
 
 function createAddButtonDiv() {
-    const buttonDiv = createDivWithClass('buttons')
-    buttonDiv.innerHTML = `
+  const buttonDiv = createDivWithClass("buttons");
+  buttonDiv.innerHTML = `
         <button class="btn add__btn" formmethod="dialog">Create</button>
-        <button class="btn close__btn" formmethod="dialog">Cancel</button>`
+        <button class="btn close__btn" formmethod="dialog">Cancel</button>`;
 
-    return buttonDiv
+  return buttonDiv;
 }
 
 // Confirm dialog
 export function createConfirmDialog() {
-    const dialog = document.createElement('dialog')
-    dialog.id = 'confirm__dialog'
+  const dialog = document.createElement("dialog");
+  dialog.id = "confirm__dialog";
 
-    const message = document.createElement('span')
-    message.innerHTML = `Are you sure?`
+  const message = document.createElement("span");
+  message.innerHTML = `Are you sure?`;
 
-    const buttonDiv = createDivWithClass('buttons')
-    buttonDiv.innerHTML = `
+  const buttonDiv = createDivWithClass("buttons");
+  buttonDiv.innerHTML = `
         <button class="btn add__btn" formmethod="dialog">Yes</button>
-        <button class="btn close__btn" formmethod="dialog">No</button>`
+        <button class="btn close__btn" formmethod="dialog">No</button>`;
 
-    appendChildren(dialog, [message, buttonDiv])
+  appendChildren(dialog, [message, buttonDiv]);
 
-    return dialog
+  return dialog;
 }
 
 // Item edit dialog
-export function createEditDialog(){
-    const dialog = document.createElement('dialog')
-    dialog.id = 'item__edit-dialog'
+export function createEditDialog() {
+  const dialog = document.createElement("dialog");
+  dialog.id = "item__edit-dialog";
 
-    appendChildren(dialog, [createTodoEditForm(), createNoteEditForm(), createProjectEditForm(), createEditButtonDiv()])
+  appendChildren(dialog, [
+    createTodoEditForm(),
+    createNoteEditForm(),
+    createProjectEditForm(),
+    createEditButtonDiv(),
+  ]);
 
-    return dialog
+  return dialog;
 }
 
-function createTodoEditForm(){
-    const todoEditForm = document.createElement('form')
-    todoEditForm.id = 'todo__edit-form'
-    todoEditForm.innerHTML = `
+function createTodoEditForm() {
+  const todoEditForm = document.createElement("form");
+  todoEditForm.id = "todo__edit-form";
+  todoEditForm.innerHTML = `
         <div>
             <label for="title">Title:</label>
             <input required type="text" id="title" name="title" class="todo__title-input">
@@ -189,16 +200,16 @@ function createTodoEditForm(){
         <div>
             <label for="dueDate">Due date:</label>
             <input required type="date" name="dueDate" id="dueDate" class="todo__due-input">
-        </div>`
+        </div>`;
 
-    return todoEditForm
+  return todoEditForm;
 }
 
-function createNoteEditForm(){
-    const noteEditForm = document.createElement('form')
-    noteEditForm.id = 'note__edit-form'
-    noteEditForm.classList.add('d-off')
-    noteEditForm.innerHTML = `
+function createNoteEditForm() {
+  const noteEditForm = document.createElement("form");
+  noteEditForm.id = "note__edit-form";
+  noteEditForm.classList.add("d-off");
+  noteEditForm.innerHTML = `
         <div>
             <label for="title">Title:</label>
             <input required type="text" id="title" name="title" class="note__title-input">
@@ -206,16 +217,16 @@ function createNoteEditForm(){
         <div>
             <label for="description">Description:</label>
             <textarea id="description" name="description" class="note__des-input"></textarea>
-        </div>`
+        </div>`;
 
-    return noteEditForm
+  return noteEditForm;
 }
 
-function createProjectEditForm(){
-    const projectEditForm = document.createElement('form')
-    projectEditForm.id = 'project__edit-form'
-    projectEditForm.classList.add('d-off')
-    projectEditForm.innerHTML = `
+function createProjectEditForm() {
+  const projectEditForm = document.createElement("form");
+  projectEditForm.id = "project__edit-form";
+  projectEditForm.classList.add("d-off");
+  projectEditForm.innerHTML = `
         <div>
             <label for="title">Title:</label>
             <input required type="text" id="title" name="title" class="project__title-input">
@@ -223,26 +234,26 @@ function createProjectEditForm(){
         <div>
             <label for="description">Description:</label>
             <textarea id="description" name="description" class="project__des-input"></textarea>
-        </div>`
+        </div>`;
 
-    return projectEditForm
+  return projectEditForm;
 }
 
 function createEditButtonDiv() {
-    const buttonDiv = createDivWithClass('buttons')
-    buttonDiv.innerHTML = `
+  const buttonDiv = createDivWithClass("buttons");
+  buttonDiv.innerHTML = `
         <button class="btn add__btn" formmethod="dialog">Save</button>
-        <button class="btn close__btn" formmethod="dialog">Cancel</button>`
+        <button class="btn close__btn" formmethod="dialog">Cancel</button>`;
 
-    return buttonDiv
+  return buttonDiv;
 }
 
-// Move dialog 
+// Move dialog
 
-export function createMoveDialog(){
-    const dialog = document.createElement('dialog')
-    dialog.id = 'item__move-dialog'
-    appendChildren(dialog, [createProjectSelect(), createEditButtonDiv()])
+export function createMoveDialog() {
+  const dialog = document.createElement("dialog");
+  dialog.id = "item__move-dialog";
+  appendChildren(dialog, [createProjectSelect(), createEditButtonDiv()]);
 
-    return dialog
+  return dialog;
 }

@@ -1,220 +1,220 @@
-dialog{
-    border:none;
-    animation:fadeIn linear .2s;
+dialog {
+  border: none;
+  animation: fadeIn linear 0.2s;
 }
 
-dialog::backdrop{
-    background: #33333335;
-    animation:fadeIn linear .2s;
+dialog::backdrop {
+  background: #33333335;
+  animation: fadeIn linear 0.2s;
 }
 
-dialog[closing]{
-    animation:fadeOut linear .2s;
+dialog[closing] {
+  animation: fadeOut linear 0.2s;
 }
 
 dialog div {
-    /* Styling for form divs */
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    margin-bottom: .5rem;
+  /* Styling for form divs */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin-bottom: 0.5rem;
 }
 
 dialog input {
-    /* Styling for form inputs */
-    border: 1px solid var(--nav-border-color);
-    height: 30px;
-    border-radius: 5px;
-    padding: 0 .5rem;
-    font-size: 1rem;
-    font-family: 'Inconsolata', monospace;
+  /* Styling for form inputs */
+  border: 1px solid var(--nav-border-color);
+  height: 30px;
+  border-radius: 5px;
+  padding: 0 0.5rem;
+  font-size: 1rem;
+  font-family: "Inconsolata", monospace;
 }
 
-dialog input:focus{
-    outline: none;
+dialog input:focus {
+  outline: none;
 }
 
 dialog label {
-    /* Styling for form labels */
-    width: 150px;
-    font-size: 1rem;
-    margin-bottom: .2rem;
-    font-family: 'Inconsolata', monospace;
+  /* Styling for form labels */
+  width: 150px;
+  font-size: 1rem;
+  margin-bottom: 0.2rem;
+  font-family: "Inconsolata", monospace;
 }
 
 dialog textarea {
-    /* Styling for form textareas */
-    border: 1px solid var(--nav-border-color);
-    height: 60px;
-    border-radius: 5px;
-    resize: none;
-    padding: .2rem .5rem;
-    font-size: 1rem;
-    font-family: 'Inconsolata', monospace;
+  /* Styling for form textareas */
+  border: 1px solid var(--nav-border-color);
+  height: 60px;
+  border-radius: 5px;
+  resize: none;
+  padding: 0.2rem 0.5rem;
+  font-size: 1rem;
+  font-family: "Inconsolata", monospace;
 }
 
-dialog textarea:focus{
-    outline:none;
+dialog textarea:focus {
+  outline: none;
 }
 
-dialog select:focus{
-    outline:none
+dialog select:focus {
+  outline: none;
 }
 
 dialog .buttons {
-    /* Styling for button container */
-    display: flex !important;
-    flex-direction: row !important;
-    justify-content: center;
-    align-items: center;
-    gap: .5rem;
-    margin-top: 1rem;
-    margin-bottom: 0;
+  /* Styling for button container */
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  margin-bottom: 0;
 }
 
 dialog .add__btn {
-    /* Styling for add button */
-    background-color: var(--priority-low-color);
-    color: var(--text-color-light);
-    font-size: 1.1rem !important;
+  /* Styling for add button */
+  background-color: var(--priority-low-color);
+  color: var(--text-color-light);
+  font-size: 1.1rem !important;
 }
 
 dialog .close__btn {
-    /* Styling for close button */
-    background-color: var(--delete-btn-color);
-    color: var(--text-color-light);
-    font-size: 1.1rem !important;
+  /* Styling for close button */
+  background-color: var(--delete-btn-color);
+  color: var(--text-color-light);
+  font-size: 1.1rem !important;
 }
 
 /* Project Dialog section */
 #project__add-dialog {
-    /* Styling for the dialog */
-    /* border: 1px solid var(--nav-border-color); */
-    padding: 1rem 2rem;
-    width: 400px;
-    height: 250px;
-    background-color: var(--background-color-2);
-    justify-content: center;
-    align-items: center;
-    border-radius: 10px;
+  /* Styling for the dialog */
+  /* border: 1px solid var(--nav-border-color); */
+  padding: 1rem 2rem;
+  width: 400px;
+  height: 250px;
+  background-color: var(--background-color-2);
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
 }
 
-#project__add-form{
-    width: 100%;
+#project__add-form {
+  width: 100%;
 }
 
 /* Item dialog section */
 #item__add-dialog {
-    padding: 1rem 2rem;
-    width: 400px;
-    background-color: var(--background-color-2);
-    justify-content: center;
-    align-items: center;
-    border-radius: 10px;
-    /* border: 1px solid var(--nav-border-color); */
+  padding: 1rem 2rem;
+  width: 400px;
+  background-color: var(--background-color-2);
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  /* border: 1px solid var(--nav-border-color); */
 }
 
 #item__add-dialog .select__item-form {
-    margin-bottom: 1.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 #item__add-dialog .select__item-form select {
-    width: 200px;
-    height: 30px;
-    border-radius: 5px;
-    background: #fff;
-    padding: 0 0.25rem;
-    font-size: 1rem;
-    font-family: 'Inconsolata', monospace;
+  width: 200px;
+  height: 30px;
+  border-radius: 5px;
+  background: #fff;
+  padding: 0 0.25rem;
+  font-size: 1rem;
+  font-family: "Inconsolata", monospace;
 }
 
-#item__add-dialog>form {
-    margin-bottom: 1.5rem;
+#item__add-dialog > form {
+  margin-bottom: 1.5rem;
 }
 
 #item__move-dialog select,
-#item__add-dialog>form>div>select {
-    height: 30px;
-    border-radius: 5px;
-    background: #fff;
-    padding: 0 0.25rem;
-    font-size: 1rem;
-    font-family: 'Inconsolata', monospace;
+#item__add-dialog > form > div > select {
+  height: 30px;
+  border-radius: 5px;
+  background: #fff;
+  padding: 0 0.25rem;
+  font-size: 1rem;
+  font-family: "Inconsolata", monospace;
 }
 
 #item__add-dialog > div {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 1rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
 }
 
-#item__add-dialog > div > label{
-    width: auto !important;
+#item__add-dialog > div > label {
+  width: auto !important;
 }
 
-#item__add-dialog>div>select {
-    width: 200px;
-    height: 30px;
-    border-radius: 5px;
-    background: #fff;
-    padding: 0 0.25rem;
-    font-size: 1rem;
-    font-family: 'Inconsolata', monospace;
+#item__add-dialog > div > select {
+  width: 200px;
+  height: 30px;
+  border-radius: 5px;
+  background: #fff;
+  padding: 0 0.25rem;
+  font-size: 1rem;
+  font-family: "Inconsolata", monospace;
 }
 
 /* Edit dialog section */
-#item__edit-dialog{
-    padding: 1rem 2rem;
-    width: 400px;
-    background-color: var(--background-color-2);
-    justify-content: center;
-    align-items: center;
-    border-radius: 10px;
-    /* border: 1px solid var(--nav-border-color); */
+#item__edit-dialog {
+  padding: 1rem 2rem;
+  width: 400px;
+  background-color: var(--background-color-2);
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  /* border: 1px solid var(--nav-border-color); */
 }
 
 /* Confirm dialog section */
-#confirm__dialog{
-    /* border: 1px solid var(--nav-border-color); */
-    padding: 1rem 2rem;
-    width: 300px;
-    background-color: var(--background-color-2);
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-    border-radius: 10px;
+#confirm__dialog {
+  /* border: 1px solid var(--nav-border-color); */
+  padding: 1rem 2rem;
+  width: 300px;
+  background-color: var(--background-color-2);
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
 }
 
-#confirm__dialog>span {
-    /* Styling for form labels */
-    width: 150px;
-    font-size: 1rem;
-    margin-bottom: .2rem;
-    font-family: 'Inconsolata', monospace;
+#confirm__dialog > span {
+  /* Styling for form labels */
+  width: 150px;
+  font-size: 1rem;
+  margin-bottom: 0.2rem;
+  font-family: "Inconsolata", monospace;
 }
 
 /* Move dialog */
-#item__move-dialog{
-    /* border: 1px solid var(--nav-border-color); */
-    padding: 1rem 2rem;
-    width: 300px;
-    background-color: var(--background-color-2);
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-    border-radius: 10px;
+#item__move-dialog {
+  /* border: 1px solid var(--nav-border-color); */
+  padding: 1rem 2rem;
+  width: 300px;
+  background-color: var(--background-color-2);
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
 }
 
-#item__move-dialog div{
-    justify-content: center;
-    align-items: center;
+#item__move-dialog div {
+  justify-content: center;
+  align-items: center;
 }
 
-#item__move-dialog select{
-    width: 200px;
+#item__move-dialog select {
+  width: 200px;
 }
